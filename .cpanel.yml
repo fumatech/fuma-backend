@@ -1,0 +1,28 @@
+---
+deployment:
+  tasks:
+    - /bin/echo "Starting deployment for fuma-backend"
+
+    # 1) Build the Spring Boot jar
+    # If this fails with 'mvn: command not found', see note below.
+    - mvn -q -DskipTests package || { echo "Maven build failed"; exit 1; }
+
+    # 2) Set deployment path
+    - export DEPLOYPATH=/home/fuma/public_html/backend_fumamain/
+
+    - /bin/mkdir -p $DEPLOYPATH
+
+    # 3) Copy jar (see explanation below about which jar)
+    - /bin/cp target/*.jar $DEPLOYPATH/app.jar
+
+    # 4) Stop old app if running
+    - if [ -f $DEPLOYPATH/app.pid ]; then
+        kill $(cat $DEPLOYPATH/app.pid) || true;
+        rm -f $DEPLOYPATH/app.pid;
+      fi
+
+    # 5) Start new app
+    - cd $DEPLOYPATH && nohup java -jar app.jar > app.log 2>&1 &
+    - echo $! > $DEPLOYPATH/app.pid
+
+    - /bin/echo "Deployment finished for fuma-backend"
