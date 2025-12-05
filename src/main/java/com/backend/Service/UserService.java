@@ -1,0 +1,29 @@
+package com.backend.Service;
+
+import com.backend.Entity.User;
+import java.util.List;
+import java.util.Optional;
+
+public interface UserService {
+    User saveUser(User user);
+
+    boolean isActiveUser(String email);
+
+    Optional<User> findByEmail(String email);
+
+    boolean authenticate(String email, String password);
+
+    List<User> getallusers();
+
+    Optional<User> findById(Long id);
+
+    Optional<User> updateUser(Long id, User user);
+
+    boolean deleteUser(Long id);
+
+    // Add the following method to the interface
+    User getUserWithRolesAndPermissions(String email);
+    
+    
+    Optional<String> getUserName(String email);
+}
