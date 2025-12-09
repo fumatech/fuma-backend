@@ -1,5 +1,6 @@
 package com.backend.Repository;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -27,4 +28,7 @@ public interface FranchisePurchaseReturnRepo extends JpaRepository<FranchisePurc
 
 	@Query("SELECT f.totalShippedItems FROM FranchisePurchaseReturn f WHERE f.franchisePurchaseReturnId = :id")
 	Long getTotalShippedItems(String id);
+
+	@Query("SELECT COALESCE(SUM(pr.netTotalAmount),0) FROM FranchisePurchaseReturn pr")
+	BigDecimal totalFranchisePurchaseReturnWithTax();
 }

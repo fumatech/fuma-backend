@@ -1,5 +1,6 @@
 package com.backend.Repository;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.data.domain.Pageable;
@@ -18,5 +19,11 @@ public interface SaleDIOrderRepo extends JpaRepository<SaleDIOrder, Long> {
 
 	@Query("SELECT s FROM SaleDIOrder s WHERE s.referenceNumber LIKE 'FUMADIS%' ORDER BY LENGTH(s.referenceNumber) DESC, s.referenceNumber DESC")
 	List<SaleDIOrder> findTopOrderByReferenceNumber(Pageable pageable);
+
+	@Query("SELECT COALESCE(SUM(s.netTotalAmount - s.taxAmount), 0) FROM SaleDIOrder s")
+	BigDecimal totalSaleDI();
+
+	@Query("SELECT COALESCE(SUM(s.netTotalAmount),0) FROM SaleDIOrder s")
+	BigDecimal totalSaleDIWithTax();
 
 }

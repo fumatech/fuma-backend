@@ -5,7 +5,6 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,82 +15,73 @@ import jakarta.persistence.OneToMany;
 @Entity
 public class PurchasePoOrder {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    
-    private String purchasePoOrderId; 
-    
-    private Long status;
-    
-    private String vendor;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    private String addedBy;
-     
-    private String orderedBy;
- 
-    private String referenceNumber;
-    
-    private String purchaseReferenceNumber;
+	private String purchasePoOrderId;
 
-    private Date orderDate;
-    
-    private Date purchaseDate;
- 
-    private Long payTermNumber;
-    
-    private String payTermType;
+	private Long status;
 
-    private String location;
+	private String vendor;
 
-    private String file;
+	private String addedBy;
 
-    private Long totalItems;
-    
-    private BigDecimal netTotalAmount;
+	private String orderedBy;
 
-    private String discountType;
-    
-    private BigDecimal discountAmount;
-    
-    private String purchaseTax;
+	private String referenceNumber;
 
-    private BigDecimal taxAmount;
-  
-    private String additionalNotes;
+	private String purchaseReferenceNumber;
 
-    // List of product items (one-to-many relationship)
-    @OneToMany(mappedBy = "purchasePoOrder", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<PurchasePoItem> purchasePoItem = new ArrayList<>();
-    
-    // List of product items (one-to-many relationship)
-    @OneToMany(mappedBy = "purchasePoOrder", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Transaction> transaction = new ArrayList<>();
+	private Date orderDate;
 
-    // List of product items (one-to-many relationship)
-    @OneToMany(mappedBy = "purchasePoOrder", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ShippingPoDetails> shippingPoDetails = new ArrayList<>();
-    
+	private Date purchaseDate;
 
-    @OneToMany(mappedBy = "purchasePoOrder", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<StockTransaction> stockTransactions = new ArrayList<>();
-    
+	private Long payTermNumber;
 
-    // Getters and Setters
-    public Long getId() {
-        return id;        
-    }
+	private String payTermType;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	private String location;
 
- 
+	private String file;
 
+	private Long totalItems;
 
+	private BigDecimal netTotalAmount;
 
-	
-	
+	private String discountType;
+
+	private BigDecimal discountAmount;
+
+	private String purchaseTax;
+
+	private BigDecimal taxAmount;
+
+	private String additionalNotes;
+
+	// List of product items (one-to-many relationship)
+	@OneToMany(mappedBy = "purchasePoOrder", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<PurchasePoItem> purchasePoItem = new ArrayList<>();
+
+	// List of product items (one-to-many relationship)
+	@OneToMany(mappedBy = "purchasePoOrder", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Transaction> transaction = new ArrayList<>();
+
+	// List of product items (one-to-many relationship)
+	@OneToMany(mappedBy = "purchasePoOrder", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<ShippingPoDetails> shippingPoDetails = new ArrayList<>();
+
+	@OneToMany(mappedBy = "purchasePoOrder", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<StockTransaction> stockTransactions = new ArrayList<>();
+
+	// Getters and Setters
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public String getPurchasePoOrderId() {
 		return purchasePoOrderId;
@@ -106,24 +96,22 @@ public class PurchasePoOrder {
 	}
 
 	public String getVendor() {
-        return vendor;
-    }
+		return vendor;
+	}
 
-    public void setVendor(String vendor) {
-        this.vendor = vendor;
-    }
+	public void setVendor(String vendor) {
+		this.vendor = vendor;
+	}
 
-    public String getAddedBy() {
-        return addedBy;
-    }
+	public String getAddedBy() {
+		return addedBy;
+	}
 
-    public void setAddedBy(String addedBy) {
-        this.addedBy = addedBy;
-    }
-    
-    
+	public void setAddedBy(String addedBy) {
+		this.addedBy = addedBy;
+	}
 
-    public String getOrderedBy() {
+	public String getOrderedBy() {
 		return orderedBy;
 	}
 
@@ -148,17 +136,14 @@ public class PurchasePoOrder {
 	}
 
 	public Date getOrderDate() {
-        return orderDate;
-    }
+		return orderDate;
+	}
 
-    public void setOrderDate(Date orderDate) {
-        this.orderDate = orderDate;
-    }
-    
-    
-    
+	public void setOrderDate(Date orderDate) {
+		this.orderDate = orderDate;
+	}
 
-    public Date getPurchaseDate() {
+	public Date getPurchaseDate() {
 		return purchaseDate;
 	}
 
@@ -183,28 +168,20 @@ public class PurchasePoOrder {
 	}
 
 	public String getLocation() {
-        return location;
-    }
+		return location;
+	}
 
-    public void setLocation(String location) {
-        this.location = location;
-    }
-    
-    
+	public void setLocation(String location) {
+		this.location = location;
+	}
 
-    public String getFile() {
-        return file;
-    }
+	public String getFile() {
+		return file;
+	}
 
-    public void setFile(String file) {
-        this.file = file;
-    }
-    
-    
-    
-    
-
- 
+	public void setFile(String file) {
+		this.file = file;
+	}
 
 	public BigDecimal getNetTotalAmount() {
 		return netTotalAmount;
@@ -238,8 +215,6 @@ public class PurchasePoOrder {
 		this.discountType = discountType;
 	}
 
-
-
 	public String getPurchaseTax() {
 		return purchaseTax;
 	}
@@ -248,23 +223,21 @@ public class PurchasePoOrder {
 		this.purchaseTax = purchaseTax;
 	}
 
-
-
 	public Long getTotalItems() {
-        return totalItems;
-    }
+		return totalItems;
+	}
 
-    public void setTotalItems(Long totalItems) {
-        this.totalItems = totalItems;
-    }
+	public void setTotalItems(Long totalItems) {
+		this.totalItems = totalItems;
+	}
 
-    public String getAdditionalNotes() {
-        return additionalNotes;
-    }
+	public String getAdditionalNotes() {
+		return additionalNotes;
+	}
 
-    public void setAdditionalNotes(String additionalNotes) {
-        this.additionalNotes = additionalNotes;
-    }
+	public void setAdditionalNotes(String additionalNotes) {
+		this.additionalNotes = additionalNotes;
+	}
 
 	public List<PurchasePoItem> getPurchasePoItem() {
 		return purchasePoItem;
@@ -302,10 +275,4 @@ public class PurchasePoOrder {
 		this.purchasePoOrderId = purchasePoOrderId;
 	}
 
-	
-    
-    
-
- 
-    
 }

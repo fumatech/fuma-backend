@@ -33,4 +33,11 @@ public class CombinedPurchaseOrderController {
         Map<String, List<Object>> orders = combinedPurchaseOrderService.getPurchasesByVendor(vendor);
         return new ResponseEntity<>(orders, HttpStatus.OK);
     }
+    
+    @GetMapping("/with-tax")
+    public ResponseEntity<Map<String, List<Object>>> getAllOrdersWithTax() {
+        return ResponseEntity.ok(
+            combinedPurchaseOrderService.getAllPurchaseOrdersWithTax()
+        );
+    }
 }

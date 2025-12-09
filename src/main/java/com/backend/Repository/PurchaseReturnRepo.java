@@ -1,5 +1,6 @@
 package com.backend.Repository;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -32,5 +33,8 @@ public interface PurchaseReturnRepo extends JpaRepository<PurchaseReturn, Long> 
 	// Query to fetch the totalShippedItems field for a given purchaseOrderId
 	@Query("SELECT p.totalShippedItems FROM PurchaseReturn p WHERE p.purchaseReturnId = :purchaseReturnId")
 	Long getTotalShippedItems(@Param("purchaseReturnId") String purchaseReturnId);
+
+	@Query("SELECT COALESCE(SUM(pr.totalAmount),0) FROM PurchaseReturn pr")
+	BigDecimal totalPurchaseReturnWithTax();
 
 }
