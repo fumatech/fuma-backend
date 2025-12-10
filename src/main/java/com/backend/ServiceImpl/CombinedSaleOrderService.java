@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.backend.Entity.SaleDIOrder;
 import com.backend.Entity.SaleSoOrder;
 import com.backend.Repository.SaleDIOrderRepo;
@@ -17,41 +18,54 @@ import com.backend.Service.SaleSoOrderService;
 @Service
 public class CombinedSaleOrderService {
 
-    @Autowired
-    private SaleSoOrderService saleSoOrderService;
+	@Autowired
+	private SaleSoOrderService saleSoOrderService;
 
-    @Autowired
-    private SaleDIOrderService saleDIOrderService;
-    
-    @Autowired
-    private SaleDIOrderRepo  saleDIOrderRepo;
-    
-    @Autowired
-    private SaleSoOrderRepo  saleSoOrderRepo;
+	@Autowired
+	private SaleDIOrderService saleDIOrderService;
 
-    public List<Object> getAllCombinedOrders() {
-        List<Object> combinedOrders = new ArrayList<>();
+	@Autowired
+	private SaleDIOrderRepo saleDIOrderRepo;
 
-        combinedOrders.addAll(saleSoOrderService.getAllSaleSoOrders());
+	@Autowired
+	private SaleSoOrderRepo saleSoOrderRepo;
 
-        combinedOrders.addAll(saleDIOrderService.getAllSaleDIOrders());
+	public List<Object> getAllCombinedOrders() {
+		List<Object> combinedOrders = new ArrayList<>();
 
-        return combinedOrders;
-    }
-    
-    
-    
-    public Map<String, List<Object>> getSaleByFranchise(String franchise) {
-        Map<String, List<Object>> franchiseWiseOrders = new HashMap<>();
+		combinedOrders.addAll(saleSoOrderService.getAllSaleSoOrders());
 
-        List<SaleDIOrder> diOrders = saleDIOrderRepo.findByFranchise(franchise);
-        franchiseWiseOrders.put(franchise, new ArrayList<>(diOrders));
+		combinedOrders.addAll(saleDIOrderService.getAllSaleDIOrders());
 
-        
-        List<SaleSoOrder> soOrders = saleSoOrderRepo.findByFranchise(franchise);
-        franchiseWiseOrders.get(franchise).addAll(soOrders);
+		return combinedOrders;
+	}
 
-        return franchiseWiseOrders;
-    }
+	public Map<String, List<Object>> getSaleByFranchise(String franchise) {
+		Map<String, List<Object>> franchiseWiseOrders = new HashMap<>();
+
+		List<SaleDIOrder> diOrders = saleDIOrderRepo.findByFranchise(franchise);
+		franchiseWiseOrders.put(franchise, new ArrayList<>(diOrders));
+
+		List<SaleSoOrder> soOrders = saleSoOrderRepo.findByFranchise(franchise);
+		franchiseWiseOrders.get(franchise).addAll(soOrders);
+
+		return franchiseWiseOrders;
+	}
+
+	public Map<String, List<Object>> getAllSaleOrdersWithTax() {
+
+		Map<String, List<Object>> result = new HashMap<>();
+
+		List<Object> allOrders = new ArrayList<>();
+
+		// PO orders with tax
+		allOrders.addAll(saleSoOrderRepo.findAllWithSaleTax());
+
+		// DI orders with tax
+		allOrders.addAll(saleDIOrderRepo.findAllWithSaleTax());
+
+		result.put("orders", allOrders);
+
+		return result;
+	}
 }
-

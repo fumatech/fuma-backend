@@ -23,4 +23,10 @@ public interface SaleSoOrderRepo extends JpaRepository<SaleSoOrder, Long> {
 	@Query("SELECT COALESCE(SUM(s.netTotalAmount),0) FROM SaleSoOrder s")
 	BigDecimal totalSaleSoWithTax();
 
+	@Query("""
+			    SELECT p FROM SaleSoOrder p
+			    WHERE p.taxAmount IS NOT NULL
+			""")
+	List<SaleSoOrder> findAllWithSaleTax();
+
 }

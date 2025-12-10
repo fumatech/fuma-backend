@@ -31,23 +31,23 @@ public class AddExpensesServiceImpl implements AddExpensesService {
 
 		return addExpensesRepo.save(addExpenses);
 	}
+
 	@Override
 	@Transactional
 	public AddExpenses updateAddExpenses(Long id, AddExpenses updated) {
-	    return addExpensesRepo.findById(id).map(existing -> {
+		return addExpensesRepo.findById(id).map(existing -> {
 
-	        updated.setId(existing.getId());
+			updated.setId(existing.getId());
 
-	        // Keep transaction binding
-	        if (updated.getTransaction() != null) {
-	            updated.getTransaction().forEach(t -> t.setAddExpenses(updated));
-	        }
+			// Keep transaction binding
+			if (updated.getTransaction() != null) {
+				updated.getTransaction().forEach(t -> t.setAddExpenses(updated));
+			}
 
-	        return addExpensesRepo.save(updated);
+			return addExpensesRepo.save(updated);
 
-	    }).orElseThrow(() -> new RuntimeException("Expense not found with ID: " + id));
+		}).orElseThrow(() -> new RuntimeException("Expense not found with ID: " + id));
 	}
-
 
 	@Override
 	public Optional<AddExpenses> getAddExpensesById(Long id) {
@@ -62,5 +62,10 @@ public class AddExpensesServiceImpl implements AddExpensesService {
 	@Override
 	public void deleteAddExpenses(Long id) {
 		addExpensesRepo.deleteById(id);
+	}
+
+	@Override
+	public List<AddExpenses> getAllAddExpensesWithTax() {
+		return addExpensesRepo.findByTaxIsNotNull();
 	}
 }

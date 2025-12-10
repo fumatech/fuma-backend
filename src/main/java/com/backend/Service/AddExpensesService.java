@@ -16,4 +16,7 @@ public interface AddExpensesService {
 	List<AddExpenses> getAllAddExpenses();
 
 	void deleteAddExpenses(Long id);
+
+	List<AddExpenses> getAllAddExpensesWithTax();
+
 }

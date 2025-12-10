@@ -26,4 +26,10 @@ public interface SaleDIOrderRepo extends JpaRepository<SaleDIOrder, Long> {
 	@Query("SELECT COALESCE(SUM(s.netTotalAmount),0) FROM SaleDIOrder s")
 	BigDecimal totalSaleDIWithTax();
 
+	@Query("""
+			    SELECT d FROM SaleDIOrder d
+			    WHERE d.purchaseTax IS NOT NULL
+			""")
+	List<SaleDIOrder> findAllWithSaleTax();
+
 }

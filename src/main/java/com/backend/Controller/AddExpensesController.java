@@ -1,7 +1,6 @@
 package com.backend.Controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -83,67 +82,64 @@ public class AddExpensesController {
 	}
 
 	@PutMapping("/update/{id}")
-	public ResponseEntity<AddExpenses> updateExpense(
-	        @PathVariable Long id,
-	        @RequestParam("addExpenses") String addExpensesJson,
-	        @RequestParam("transaction") String transactionJson,
-	        @RequestParam(value = "file", required = false) MultipartFile file) {
+	public ResponseEntity<AddExpenses> updateExpense(@PathVariable Long id,
+			@RequestParam("addExpenses") String addExpensesJson, @RequestParam("transaction") String transactionJson,
+			@RequestParam(value = "file", required = false) MultipartFile file) {
 
-	    try {
+		try {
 
-	        AddExpenses existing = addExpensesService.getAddExpensesById(id)
-	                .orElseThrow(() -> new RuntimeException("Expense not found"));
+			AddExpenses existing = addExpensesService.getAddExpensesById(id)
+					.orElseThrow(() -> new RuntimeException("Expense not found"));
 
-	        ObjectMapper mapper = new ObjectMapper();
-	        mapper.findAndRegisterModules();
+			ObjectMapper mapper = new ObjectMapper();
+			mapper.findAndRegisterModules();
 
-	        // Convert JSON → objects
-	        AddExpenses updatedExpense = mapper.readValue(addExpensesJson, AddExpenses.class);
-	        updatedExpense.setId(id);
+			// Convert JSON → objects
+			AddExpenses updatedExpense = mapper.readValue(addExpensesJson, AddExpenses.class);
+			updatedExpense.setId(id);
 
-	        // Handle file
-	        if (file != null && !file.isEmpty()) {
-	            String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
-	            String filePath = fileUploadUtil.saveFile(fileName, file);
-	            updatedExpense.setFile(filePath);
-	        } else {
-	            updatedExpense.setFile(existing.getFile());
-	        }
+			// Handle file
+			if (file != null && !file.isEmpty()) {
+				String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
+				String filePath = fileUploadUtil.saveFile(fileName, file);
+				updatedExpense.setFile(filePath);
+			} else {
+				updatedExpense.setFile(existing.getFile());
+			}
 
-	        // Convert transaction JSON
-	        Transaction updatedTx = mapper.readValue(transactionJson, Transaction.class);
+			// Convert transaction JSON
+			Transaction updatedTx = mapper.readValue(transactionJson, Transaction.class);
 
-	        // ------------ IMPORTANT LOGIC ------------
-	        // Keep OLD TRANSACTION ID
-	        if (!existing.getTransaction().isEmpty()) {
-	            Long oldTxId = existing.getTransaction().get(0).getId();
-	            updatedTx.setId(oldTxId);
-	        }
-	        //------------------------------------------
+			// ------------ IMPORTANT LOGIC ------------
+			// Keep OLD TRANSACTION ID
+			if (!existing.getTransaction().isEmpty()) {
+				Long oldTxId = existing.getTransaction().get(0).getId();
+				updatedTx.setId(oldTxId);
+			}
+			// ------------------------------------------
 
-	        // Set Payment Account
-	        if (updatedTx.getPaymentAccountId() != null) {
-	            PaymentAccount acc = paymentAccountRepo.findById(updatedTx.getPaymentAccountId())
-	                    .orElseThrow(() -> new RuntimeException("Payment Account not found"));
-	            updatedTx.setPaymentAccount(acc);
-	        }
+			// Set Payment Account
+			if (updatedTx.getPaymentAccountId() != null) {
+				PaymentAccount acc = paymentAccountRepo.findById(updatedTx.getPaymentAccountId())
+						.orElseThrow(() -> new RuntimeException("Payment Account not found"));
+				updatedTx.setPaymentAccount(acc);
+			}
 
-	        // Reconnect transaction with updated expense
-	        updatedTx.setAddExpenses(updatedExpense);
+			// Reconnect transaction with updated expense
+			updatedTx.setAddExpenses(updatedExpense);
 
-	        // Replace existing transaction (UPDATE not INSERT)
-	        updatedExpense.getTransaction().clear();
-	        updatedExpense.getTransaction().add(updatedTx);
+			// Replace existing transaction (UPDATE not INSERT)
+			updatedExpense.getTransaction().clear();
+			updatedExpense.getTransaction().add(updatedTx);
 
-	        AddExpenses saved = addExpensesService.updateAddExpenses(id, updatedExpense);
-	        return new ResponseEntity<>(saved, HttpStatus.OK);
+			AddExpenses saved = addExpensesService.updateAddExpenses(id, updatedExpense);
+			return new ResponseEntity<>(saved, HttpStatus.OK);
 
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	        return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
-	    }
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+		}
 	}
-
 
 	@GetMapping("/getall")
 	public ResponseEntity<List<AddExpenses>> getAllExpenses() {
@@ -161,4 +157,10 @@ public class AddExpensesController {
 		addExpensesService.deleteAddExpenses(id);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
+
+	@GetMapping("/getall-with-tax")
+	public ResponseEntity<List<AddExpenses>> getAllExpensesWithTax() {
+		return new ResponseEntity<>(addExpensesService.getAllAddExpensesWithTax(), HttpStatus.OK);
+	}
+
 }
