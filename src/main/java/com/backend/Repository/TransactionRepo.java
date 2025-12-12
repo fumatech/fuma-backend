@@ -30,4 +30,7 @@ public interface TransactionRepo extends JpaRepository<Transaction, Long> {
 			""")
 	BigDecimal totalSaleReceived();
 
+	@Query("SELECT t FROM Transaction t WHERE LOWER(t.transactionType) = LOWER(:type)")
+	List<Transaction> findByType(String type);
+
 }

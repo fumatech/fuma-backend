@@ -1,6 +1,7 @@
 package com.backend.Entity;
 
 import java.math.BigDecimal;
+import java.sql.Date;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -27,7 +28,7 @@ public class SaleDIOrder {
 
 	private String addedBy;
 
-	private String saleDate;
+	private Date saleDate;
 
 	private Long customerId;
 
@@ -111,11 +112,11 @@ public class SaleDIOrder {
 		this.addedBy = addedBy;
 	}
 
-	public String getSaleDate() {
+	public Date getSaleDate() {
 		return saleDate;
 	}
 
-	public void setSaleDate(String saleDate) {
+	public void setSaleDate(Date saleDate) {
 		this.saleDate = saleDate;
 	}
 
