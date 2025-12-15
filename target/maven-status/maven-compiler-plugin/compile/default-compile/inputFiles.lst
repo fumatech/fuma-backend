@@ -44,6 +44,7 @@ C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Contr
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\SaleDIOrderController.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\SaleReturnController.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\SaleSoOrderController.java
+C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\SellReportController.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\ShiftController.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\StockAdjustmentController.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\StockReportController.java
@@ -127,6 +128,7 @@ C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entit
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\SaleSoItem.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\SaleSoOrder.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\SaleSoPaymentMethod.java
+C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\SellReportDTO.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\Shift.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\ShippingDetails.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\ShippingDIDetails.java
@@ -190,10 +192,12 @@ C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repos
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\PurchaseRepo.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\PurchaseReturnRepo.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\RoleRepository.java
+C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\SaleDIItemRepo.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\SaleDIOrderRepo.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\SalePaymentMethodRepo.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\SaleRepo.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\SaleReturnRepo.java
+C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\SaleSoItemRepo.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\SaleSoOrderRepo.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\ShiftRepo.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\ShippingDetailsRepo.java
@@ -250,6 +254,7 @@ C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Servi
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\SaleReturnService.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\SaleService.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\SaleSoOrderService.java
+C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\SellReportService.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\ShiftService.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\StockAdjustmentService.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\StockTransactionService.java

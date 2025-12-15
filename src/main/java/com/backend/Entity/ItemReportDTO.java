@@ -1,6 +1,7 @@
 package com.backend.Entity;
 
 import java.math.BigDecimal;
+import java.sql.Date;
 
 public class ItemReportDTO {
 
@@ -9,13 +10,13 @@ public class ItemReportDTO {
 	private String sku;
 	private String description;
 
-	private String purchaseDate;
+	private Date purchaseDate;
 	private BigDecimal purchase;
 	private String lotNumber;
 	private String supplier;
 	private BigDecimal purchasePrice;
 
-	private String sellDate;
+	private Date sellDate;
 	private BigDecimal sale;
 	private String customer;
 	private String location;
@@ -23,13 +24,11 @@ public class ItemReportDTO {
 	private BigDecimal selling;
 	private BigDecimal subtotal;
 
-	// ---------------------------------------------------------
-	// FULL CONSTRUCTOR REQUIRED BY JPQL (16 PARAMETERS)
-	// ---------------------------------------------------------
-	public ItemReportDTO(Long id, String product, String sku, String description, String purchaseDate,
-			BigDecimal purchase, String lotNumber, String supplier, BigDecimal purchasePrice, String sellDate,
+	public ItemReportDTO(Long id, String product, String sku, String description, Date purchaseDate,
+			BigDecimal purchase, String lotNumber, String supplier, BigDecimal purchasePrice, Date sellDate,
 			BigDecimal sale, String customer, String location, Long sellQuantity, BigDecimal selling,
 			BigDecimal subtotal) {
+		super();
 		this.id = id;
 		this.product = product;
 		this.sku = sku;
@@ -47,10 +46,6 @@ public class ItemReportDTO {
 		this.selling = selling;
 		this.subtotal = subtotal;
 	}
-
-	// ---------------------------------------------------------
-	// GETTERS & SETTERS
-	// ---------------------------------------------------------
 
 	public Long getId() {
 		return id;
@@ -84,11 +79,11 @@ public class ItemReportDTO {
 		this.description = description;
 	}
 
-	public String getPurchaseDate() {
+	public Date getPurchaseDate() {
 		return purchaseDate;
 	}
 
-	public void setPurchaseDate(String purchaseDate) {
+	public void setPurchaseDate(Date purchaseDate) {
 		this.purchaseDate = purchaseDate;
 	}
 
@@ -124,11 +119,11 @@ public class ItemReportDTO {
 		this.purchasePrice = purchasePrice;
 	}
 
-	public String getSellDate() {
+	public Date getSellDate() {
 		return sellDate;
 	}
 
-	public void setSellDate(String sellDate) {
+	public void setSellDate(Date sellDate) {
 		this.sellDate = sellDate;
 	}
 
@@ -179,4 +174,5 @@ public class ItemReportDTO {
 	public void setSubtotal(BigDecimal subtotal) {
 		this.subtotal = subtotal;
 	}
+
 }
