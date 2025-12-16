@@ -8,6 +8,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import com.backend.Entity.BrandWiseReportDTO;
+import com.backend.Entity.CategoryWiseReportDTO;
 import com.backend.Entity.Product;
 
 @Repository
@@ -35,5 +37,77 @@ public interface ProductRepo extends JpaRepository<Product, Long> {
 			+ "OR LOWER(p.sku) LIKE LOWER(CONCAT('%', :query, '%')) "
 			+ "OR LOWER(p.barcode) LIKE LOWER(CONCAT('%', :query, '%'))) " + "AND p.status = 0")
 	List<Product> searchInactive(@Param("query") String query);
+
+	@Query("""
+			    SELECT new com.backend.Entity.BrandWiseReportDTO(
+			        p.brand,
+
+			        COALESCE(SUM(
+			            CASE
+			                WHEN st.transactionType IN ('di_sale','so_sale')
+			                THEN st.quantity
+			                ELSE 0
+			            END
+			        ),0),
+
+			        COALESCE(SUM(
+			            CASE
+			                WHEN st.transactionType IN ('po_purchase','di_purchase','open_stock','sale_return','product_claimed')
+			                THEN st.quantity
+			                WHEN st.transactionType IN ('di_sale','so_sale','purchase_return','product_replaced','adjustment')
+			                THEN -st.quantity
+			                ELSE 0
+			            END
+			        ),0),
+
+			        COALESCE(
+			            SUM(soi.lineTotal) +
+			            SUM(dii.lineTotal),
+			        0)
+
+			    )
+			    FROM Product p
+			    LEFT JOIN StockTransaction st ON st.productId = p.id
+			    LEFT JOIN SaleSoItem soi ON soi.productId = p.id
+			    LEFT JOIN SaleDIItem dii ON dii.productId = p.id
+			    GROUP BY p.brand
+			""")
+	List<BrandWiseReportDTO> getBrandWiseReport();
+
+	@Query("""
+			    SELECT new com.backend.Entity.CategoryWiseReportDTO(
+			        p.category,
+
+			        COALESCE(SUM(
+			            CASE
+			                WHEN st.transactionType IN ('di_sale','so_sale')
+			                THEN st.quantity
+			                ELSE 0
+			            END
+			        ),0),
+
+			        COALESCE(SUM(
+			            CASE
+			                WHEN st.transactionType IN ('po_purchase','di_purchase','open_stock','sale_return','product_claimed')
+			                THEN st.quantity
+			                WHEN st.transactionType IN ('di_sale','so_sale','purchase_return','product_replaced','adjustment')
+			                THEN -st.quantity
+			                ELSE 0
+			            END
+			        ),0),
+
+			        COALESCE(
+			            SUM(soi.lineTotal) +
+			            SUM(dii.lineTotal),
+			        0)
+
+			    )
+			    FROM Product p
+			    LEFT JOIN StockTransaction st ON st.productId = p.id
+			    LEFT JOIN SaleSoItem soi ON soi.productId = p.id
+			    LEFT JOIN SaleDIItem dii ON dii.productId = p.id
+			    GROUP BY p.category
+			""")
+	List<CategoryWiseReportDTO> getCategoryWiseReport();
 
 }

@@ -27,7 +27,7 @@ public class AddExpenses {
 
 	private LocalDateTime date;
 
-	private Long expenseFor;
+	private String expenseFor;
 
 	private Long expenseForContact;
 
@@ -82,11 +82,11 @@ public class AddExpenses {
 		this.date = date;
 	}
 
-	public Long getExpenseFor() {
+	public String getExpenseFor() {
 		return expenseFor;
 	}
 
-	public void setExpenseFor(Long expenseFor) {
+	public void setExpenseFor(String expenseFor) {
 		this.expenseFor = expenseFor;
 	}
 

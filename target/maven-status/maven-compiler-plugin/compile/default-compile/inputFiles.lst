@@ -39,6 +39,7 @@ C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Contr
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\PurchasePoOrderController.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\PurchaseReturnController.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\PurchaseSaleSummaryController.java
+C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\ReportController.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\RoleController.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\SaleController.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\SaleDIOrderController.java
@@ -66,9 +67,11 @@ C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entit
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\AllOrdersResponse.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\Attendance.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\Brands.java
+C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\BrandWiseReportDTO.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\BusinessDetails.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\Campaign.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\Categories.java
+C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\CategoryWiseReportDTO.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\ClientLedgerDTO.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\ContactLogin.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\Customer.java
@@ -86,6 +89,7 @@ C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entit
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\FranchisePurchaseReturnItems.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\FranchiseWarrantyClaim.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\FranchiseWarrantyClaimItems.java
+C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\GroupedDateReportDTO.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\Holiday.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\ItemReportDTO.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\JournalEntry.java
@@ -145,6 +149,7 @@ C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entit
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\TaxRate.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\Transaction.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\Units.java
+C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\UploadedImage.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\User.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\Variations.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\Vendor.java
@@ -191,6 +196,7 @@ C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repos
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\PurchasePoOrderRepo.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\PurchaseRepo.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\PurchaseReturnRepo.java
+C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\ReportRepo.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\RoleRepository.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\SaleDIItemRepo.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\SaleDIOrderRepo.java
@@ -210,6 +216,7 @@ C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repos
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\TaxRepository.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\TransactionRepo.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\UnitRepo.java
+C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\UploadedImageRepository.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\UserRepo.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\VariationsRepo.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\VendorRepo.java
@@ -233,6 +240,7 @@ C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Servi
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\FranchiseWarrantyClaimService.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\HolidayService.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\IdGenerator.java
+C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\ImageUploadService.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\ItemReportService.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\LeadService.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\LeaveService.java
@@ -249,6 +257,7 @@ C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Servi
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\PurchasePoOrderService.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\PurchaseReturnService.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\PurchaseService.java
+C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\ReportService.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\RoleService.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\SaleDIOrderService.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\SaleReturnService.java
@@ -289,6 +298,7 @@ C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Servi
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\FranchisePurchaseReturnServiceImpl.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\FranchiseWarrantyClaimServiceImpl.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\HolidayServiceImpl.java
+C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\ImageUploadServiceImpl.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\LeadServiceImpl.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\LeaveServiceImpl.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\PayComponentServiceImpl.java
@@ -304,6 +314,7 @@ C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Servi
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\PurchaseReturnServiceImpl.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\PurchaseSaleSummaryService.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\PurchaseServiceImpl.java
+C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\ReportServiceImpl.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\RoleServiceImpl.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\SaleDIOrderServiceImpl.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\SaleReturnServiceImpl.java
