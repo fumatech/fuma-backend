@@ -1,5 +1,6 @@
 package com.backend.ServiceImpl;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -154,5 +155,20 @@ public class FranchisePurchaseReturnServiceImpl implements FranchisePurchaseRetu
 	@Override
 	public Long getTotalShippedItems(String purchaseReturnId) {
 		return repo.getTotalShippedItems(purchaseReturnId);
+	}
+
+	@Override
+	public List<FranchisePurchaseReturn> getReturnsByFranchiseId(String franchiseId) {
+		return repo.findByFranchiseId(franchiseId);
+	}
+
+	@Override
+	public List<FranchisePurchaseReturn> getReturnsByFranchiseIdAndStatus(String franchiseId, Long status) {
+		return repo.findByFranchiseIdAndStatus(franchiseId, status);
+	}
+
+	@Override
+	public BigDecimal getTotalReturnAmountByFranchise(String franchiseId) {
+		return repo.totalReturnAmountByFranchise(franchiseId);
 	}
 }

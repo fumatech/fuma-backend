@@ -31,4 +31,13 @@ public interface FranchisePurchaseReturnRepo extends JpaRepository<FranchisePurc
 
 	@Query("SELECT COALESCE(SUM(pr.netTotalAmount),0) FROM FranchisePurchaseReturn pr")
 	BigDecimal totalFranchisePurchaseReturnWithTax();
+
+	@Query("SELECT f FROM FranchisePurchaseReturn f WHERE f.franchiseId = :franchiseId")
+	List<FranchisePurchaseReturn> findByFranchiseId(String franchiseId);
+
+	@Query("SELECT f FROM FranchisePurchaseReturn f WHERE f.franchiseId = :franchiseId AND f.status = :status")
+	List<FranchisePurchaseReturn> findByFranchiseIdAndStatus(String franchiseId, Long status);
+
+	@Query("SELECT COALESCE(SUM(f.netTotalAmount), 0) FROM FranchisePurchaseReturn f WHERE f.franchiseId = :franchiseId")
+	BigDecimal totalReturnAmountByFranchise(String franchiseId);
 }

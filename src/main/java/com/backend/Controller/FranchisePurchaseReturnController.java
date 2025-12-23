@@ -1,5 +1,6 @@
 package com.backend.Controller;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -123,6 +124,25 @@ public class FranchisePurchaseReturnController {
 		}
 
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
+
+	// 🔹 All returns by franchise
+	@GetMapping("/franchise/{franchiseId}")
+	public ResponseEntity<List<FranchisePurchaseReturn>> getByFranchise(@PathVariable String franchiseId) {
+		return ResponseEntity.ok(service.getReturnsByFranchiseId(franchiseId));
+	}
+
+	// 🔹 Franchise + Status
+	@GetMapping("/franchise/{franchiseId}/status/{status}")
+	public ResponseEntity<List<FranchisePurchaseReturn>> getByFranchiseAndStatus(@PathVariable String franchiseId,
+			@PathVariable Long status) {
+		return ResponseEntity.ok(service.getReturnsByFranchiseIdAndStatus(franchiseId, status));
+	}
+
+	// 🔹 Franchise total return amount
+	@GetMapping("/franchise/{franchiseId}/total-amount")
+	public ResponseEntity<BigDecimal> getTotalAmount(@PathVariable String franchiseId) {
+		return ResponseEntity.ok(service.getTotalReturnAmountByFranchise(franchiseId));
 	}
 
 }

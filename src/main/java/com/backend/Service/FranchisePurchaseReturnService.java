@@ -1,5 +1,6 @@
 package com.backend.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,4 +32,10 @@ public interface FranchisePurchaseReturnService {
 	List<FranchisePurchaseReturn> getShipReturns();
 
 	Long getTotalShippedItems(String id);
+
+	List<FranchisePurchaseReturn> getReturnsByFranchiseId(String franchiseId);
+
+	List<FranchisePurchaseReturn> getReturnsByFranchiseIdAndStatus(String franchiseId, Long status);
+
+	BigDecimal getTotalReturnAmountByFranchise(String franchiseId);
 }
