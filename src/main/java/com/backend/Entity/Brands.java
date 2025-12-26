@@ -7,13 +7,13 @@ import jakarta.persistence.Id;
 
 @Entity
 public class Brands {
-	
-	  @Id
-	  @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	     
+
 	private String brandName;
-	
+
 	private String description;
 
 	public Long getId() {
@@ -39,8 +39,5 @@ public class Brands {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
-	
-	
 
 }
