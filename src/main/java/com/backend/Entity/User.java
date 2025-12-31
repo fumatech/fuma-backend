@@ -5,7 +5,16 @@ import java.sql.Date;
 import java.util.List;
 import java.util.Set;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 
 @Entity
 public class User {
@@ -24,6 +33,9 @@ public class User {
 	private String password;
 	private Boolean allowLogin;
 	private String location;
+
+	@ElementCollection
+	private List<Long> locationIds;;
 
 	private BigDecimal salesCommissionPercentage;
 	private BigDecimal commisionPercent;
@@ -63,9 +75,9 @@ public class User {
 	private String accountHolderName;
 	private Long accountNumber;
 	private String bankName;
-	private String ifsc;     
+	private String ifsc;
 	private String branch;
-	private String taxPayerId;      
+	private String taxPayerId;
 
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
@@ -333,6 +345,14 @@ public class User {
 
 	public void setLocation(String location) {
 		this.location = location;
+	}
+
+	public List<Long> getLocationIds() {
+		return locationIds;
+	}
+
+	public void setLocationIds(List<Long> locationIds) {
+		this.locationIds = locationIds;
 	}
 
 	public BigDecimal getSalesCommissionPercentage() {

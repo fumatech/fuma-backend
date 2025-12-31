@@ -48,6 +48,7 @@ public class BusinessLocationServiceImpl implements BusinessLocationService {
 		existing.setAlternateContactNumber(businessLocation.getAlternateContactNumber());
 		existing.setEmail(businessLocation.getEmail());
 		existing.setWebsite(businessLocation.getWebsite());
+		existing.setBusinessCategoryId(businessLocation.getBusinessCategoryId());
 		existing.setInvoiceSchemeForPosId(businessLocation.getInvoiceSchemeForPosId());
 		existing.setInvoiceSchemeForSaleId(businessLocation.getInvoiceSchemeForSaleId());
 		existing.setInvoiceLayoutForPosId(businessLocation.getInvoiceLayoutForPosId());

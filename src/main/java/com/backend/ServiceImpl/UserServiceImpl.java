@@ -68,7 +68,20 @@ public class UserServiceImpl implements UserService {
 			existingUser.setCommisionPercent(user.getCommisionPercent());
 			existingUser.setAllowContacts(user.getAllowContacts());
 			existingUser.setSelectedContacts(user.getSelectedContacts());
-
+			existingUser.setLocationIds(user.getLocationIds());
+//	        if (existingUser.getLocationIds() != null) {
+//	            existingUser.getLocationIds().clear();
+//	        }
+//	        if (user.getLocationIds() != null) {
+//	            existingUser.getLocationIds().addAll(user.getLocationIds());
+//	        }
+//
+//	        if (existingUser.getSelectedContacts() != null) {
+//	            existingUser.getSelectedContacts().clear();
+//	        }
+//	        if (user.getSelectedContacts() != null) {
+//	            existingUser.getSelectedContacts().addAll(user.getSelectedContacts());
+//	        }
 			existingUser.setLanguage(user.getLanguage());
 			existingUser.setDateOfBirth(user.getDateOfBirth());
 			existingUser.setGender(user.getGender());

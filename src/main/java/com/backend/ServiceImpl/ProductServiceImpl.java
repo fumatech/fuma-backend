@@ -53,7 +53,6 @@ public class ProductServiceImpl implements ProductService {
 																												// updated
 						}
 					} else {
-						// New variation (no ID), set it to null
 						variation.setId(null);
 					}
 				}

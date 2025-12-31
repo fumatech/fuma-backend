@@ -40,6 +40,8 @@ public class BusinessLocation {
 
 	private String website;
 
+	private Long businessCategoryId;
+
 	private Long invoiceSchemeForPosId;
 
 	private Long invoiceSchemeForSaleId;
@@ -178,6 +180,14 @@ public class BusinessLocation {
 
 	public void setWebsite(String website) {
 		this.website = website;
+	}
+
+	public Long getBusinessCategoryId() {
+		return businessCategoryId;
+	}
+
+	public void setBusinessCategoryId(Long businessCategoryId) {
+		this.businessCategoryId = businessCategoryId;
 	}
 
 	public Long getInvoiceSchemeForPosId() {

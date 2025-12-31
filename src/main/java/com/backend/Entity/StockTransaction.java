@@ -100,6 +100,12 @@ public class StockTransaction {
 	@JsonIgnore
 	private FranchiseWarrantyClaim franchiseWarrantyClaim;
 
+	@ManyToOne
+	@JoinColumn(name = "stock_transfer_id")
+	@JsonBackReference
+	@JsonIgnore
+	private StockTransfer stockTransfer;
+
 	public Long getId() {
 		return id;
 	}
@@ -250,6 +256,14 @@ public class StockTransaction {
 
 	public void setFranchiseWarrantyClaim(FranchiseWarrantyClaim franchiseWarrantyClaim) {
 		this.franchiseWarrantyClaim = franchiseWarrantyClaim;
+	}
+
+	public StockTransfer getStockTransfer() {
+		return stockTransfer;
+	}
+
+	public void setStockTransfer(StockTransfer stockTransfer) {
+		this.stockTransfer = stockTransfer;
 	}
 
 }

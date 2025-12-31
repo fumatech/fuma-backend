@@ -3,7 +3,9 @@ C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Contr
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\AllOrdersController.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\AttendanceController.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\BrandsController.java
+C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\BusinessCategoryController.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\BusinessDetailsController.java
+C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\BusinessLocationController.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\CampaignController.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\CategoriesController.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\ClientLedgerController.java
@@ -50,6 +52,7 @@ C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Contr
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\StockAdjustmentController.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\StockReportController.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\StockTransactionController.java
+C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\StockTransferController.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\TargetController.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\TaxController.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\TaxGroupController.java
@@ -68,7 +71,9 @@ C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entit
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\Attendance.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\Brands.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\BrandWiseReportDTO.java
+C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\BusinessCategory.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\BusinessDetails.java
+C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\BusinessLocation.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\Campaign.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\Categories.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\CategoryWiseReportDTO.java
@@ -143,6 +148,8 @@ C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entit
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\StockAdjustmentItems.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\StockReportDTO.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\StockTransaction.java
+C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\StockTransfer.java
+C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\StockTransferItems.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\Target.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\Tax.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\TaxGroup.java
@@ -162,7 +169,9 @@ C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repos
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\AddLeaveRepo.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\AttendanceRepo.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\BrandRepo.java
+C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\BusinessCategoryRepo.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\BusinessDetailsRepo.java
+C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\BusinessLocationRepository.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\CampaignRepo.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\CategoriesRepo.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\ContactLoginRepo.java
@@ -210,6 +219,7 @@ C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repos
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\StockAdjustmentItemsRepo.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\StockAdjustmentRepo.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\StockTransactionRepo.java
+C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\StockTransferRepo.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\TargetRepo.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\TaxGroupRepo.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\TaxRateRepo.java
@@ -226,7 +236,9 @@ C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Servi
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\AddLeaveService.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\AttendanceService.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\BrandsService.java
+C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\BusinessCategoryService.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\BusinessDetailsService.java
+C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\BusinessLocationService.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\CampaignService.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\CategoriesService.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\ContactLoginService.java
@@ -267,6 +279,7 @@ C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Servi
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\ShiftService.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\StockAdjustmentService.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\StockTransactionService.java
+C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\StockTransferService.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\TargetService.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\TaxGroupService.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\TaxRateService.java
@@ -281,7 +294,9 @@ C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Servi
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\AddLeaveServiceImpl.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\AttendanceServiceImpl.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\BrandsServiceImpl.java
+C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\BusinessCategoryServiceImpl.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\BusinessDetailsServiceImpl.java
+C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\BusinessLocationServiceImpl.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\CampaignServiceImpl.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\CategoriesServiceImpl.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\ClientLedgerService.java
@@ -324,6 +339,7 @@ C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Servi
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\StockAdjustmentServiceImpl.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\StockReportService.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\StockTransactionServiceImpl.java
+C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\StockTransferServiceImpl.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\TargetServiceImpl.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\TaxGroupServiceImpl.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\TaxRateServiceImpl.java

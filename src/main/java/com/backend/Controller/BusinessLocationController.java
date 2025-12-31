@@ -17,7 +17,7 @@ import com.backend.Entity.BusinessLocation;
 import com.backend.Service.BusinessLocationService;
 
 @RestController
-@RequestMapping("/business-location")
+@RequestMapping("/business-locations")
 @CrossOrigin(origins = { "http://localhost:3000", "http://fusionmastertech.com", "https://fusionmastertech.com",
 		"http://www.fusionmastertech.com", "https://www.fusionmastertech.com" }, allowCredentials = "true")
 public class BusinessLocationController {
