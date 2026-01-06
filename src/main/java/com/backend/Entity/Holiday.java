@@ -1,6 +1,7 @@
 package com.backend.Entity;
 
 import java.sql.Date;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,17 +11,17 @@ import jakarta.persistence.Id;
 public class Holiday {
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	private String name;
-	
+
 	private Date startDate;
 
 	private Date endDate;
-	
-	private String businessLocation;
-	
+
+	private Long businessLocationId;
+
 	private String note;
 
 	public Long getId() {
@@ -39,7 +40,6 @@ public class Holiday {
 		this.name = name;
 	}
 
-
 	public Date getStartDate() {
 		return startDate;
 	}
@@ -56,12 +56,12 @@ public class Holiday {
 		this.endDate = endDate;
 	}
 
-	public String getBusinessLocation() {
-		return businessLocation;
+	public Long getBusinessLocationId() {
+		return businessLocationId;
 	}
 
-	public void setBusinessLocation(String businessLocation) {
-		this.businessLocation = businessLocation;
+	public void setBusinessLocationId(Long businessLocationId) {
+		this.businessLocationId = businessLocationId;
 	}
 
 	public String getNote() {
@@ -71,7 +71,5 @@ public class Holiday {
 	public void setNote(String note) {
 		this.note = note;
 	}
-	
-	
-	
+
 }

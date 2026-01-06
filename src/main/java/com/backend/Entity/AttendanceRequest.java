@@ -1,26 +1,11 @@
 package com.backend.Entity;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
-@Entity
-public class Attendance {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+public class AttendanceRequest {
 
 	private Long employeeId;
 	private Long shiftId;
-
-	private LocalDate attendanceDate;
 
 	private LocalDateTime inTime;
 	private LocalDateTime outTime;
@@ -28,17 +13,6 @@ public class Attendance {
 	private String ipAddress;
 	private String inNote;
 	private String outNote;
-
-	@Enumerated(EnumType.STRING)
-	private AttendanceStatus status;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public Long getEmployeeId() {
 		return employeeId;
@@ -54,14 +28,6 @@ public class Attendance {
 
 	public void setShiftId(Long shiftId) {
 		this.shiftId = shiftId;
-	}
-
-	public LocalDate getAttendanceDate() {
-		return attendanceDate;
-	}
-
-	public void setAttendanceDate(LocalDate attendanceDate) {
-		this.attendanceDate = attendanceDate;
 	}
 
 	public LocalDateTime getInTime() {
@@ -102,14 +68,6 @@ public class Attendance {
 
 	public void setOutNote(String outNote) {
 		this.outNote = outNote;
-	}
-
-	public AttendanceStatus getStatus() {
-		return status;
-	}
-
-	public void setStatus(AttendanceStatus status) {
-		this.status = status;
 	}
 
 }

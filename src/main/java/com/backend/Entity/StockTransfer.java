@@ -33,10 +33,10 @@ public class StockTransfer {
 
 	private String note;
 
-	@OneToMany(mappedBy = "stockTransfer", cascade = CascadeType.ALL, orphanRemoval = false)
+	@OneToMany(mappedBy = "stockTransfer", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<StockTransferItems> stockTransferItems;
 
-	@OneToMany(mappedBy = "stockTransfer", cascade = CascadeType.ALL, orphanRemoval = false)
+	@OneToMany(mappedBy = "stockTransfer", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<StockTransaction> stockTransactions;
 
 	public Long getId() {

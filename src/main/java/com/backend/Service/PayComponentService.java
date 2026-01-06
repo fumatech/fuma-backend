@@ -2,12 +2,13 @@ package com.backend.Service;
 
 import java.util.List;
 
+import com.backend.DTO.PayComponentBulkRequest;
 import com.backend.Entity.PayComponent;
 
 public interface PayComponentService {
-	
+
 	PayComponent savePayComponent(PayComponent payComponent);
-	
+
 	List<PayComponent> getAllPayComponents();
 
 	PayComponent updatePayComponent(Long id, PayComponent updatedPayComponent);
@@ -15,5 +16,7 @@ public interface PayComponentService {
 	PayComponent getPayComponentById(Long id);
 
 	void deletePayComponentById(Long id);
+
+	void saveBulk(PayComponentBulkRequest request);
 
 }

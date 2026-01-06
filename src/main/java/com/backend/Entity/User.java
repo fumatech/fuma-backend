@@ -68,6 +68,7 @@ public class User {
 	private Long departmentId;
 	private Long designationId;
 	private String primaryWorkLocation;
+	private Long primaryWorkLocationId;
 	private BigDecimal basicSalary;
 	private String salaryIn;
 	private Long payComponentId;
@@ -409,6 +410,14 @@ public class User {
 
 	public void setPrimaryWorkLocation(String primaryWorkLocation) {
 		this.primaryWorkLocation = primaryWorkLocation;
+	}
+
+	public Long getPrimaryWorkLocationId() {
+		return primaryWorkLocationId;
+	}
+
+	public void setPrimaryWorkLocationId(Long primaryWorkLocationId) {
+		this.primaryWorkLocationId = primaryWorkLocationId;
 	}
 
 	public BigDecimal getBasicSalary() {

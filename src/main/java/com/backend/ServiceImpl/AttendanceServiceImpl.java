@@ -1,61 +1,117 @@
 package com.backend.ServiceImpl;
 
-import com.backend.Entity.Attendance;
-import com.backend.Repository.AttendanceRepo;
-import com.backend.Service.AttendanceService;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import com.backend.Entity.Attendance;
+import com.backend.Entity.AttendanceBulkRequest;
+import com.backend.Entity.AttendanceRequest;
+import com.backend.Entity.AttendanceStatus;
+import com.backend.Repository.AttendanceRepo;
+import com.backend.Service.AttendanceService;
 
 @Service
 public class AttendanceServiceImpl implements AttendanceService {
 
-    @Autowired
-    private AttendanceRepo attendanceRepo;
+	@Autowired
+	private AttendanceRepo attendanceRepo;
 
-    // Save Attendance
-    @Override
-    public Attendance saveAttendance(Attendance attendance) {
-        return attendanceRepo.save(attendance);
-    }
+	// 🔹 SINGLE SAVE
+	@Override
+	public Attendance saveAttendance(Attendance attendance) {
+		attendance.setStatus(calculateStatus(attendance.getInTime(), attendance.getOutTime()));
+		return attendanceRepo.save(attendance);
+	}
 
-    // Get All Attendances
-    @Override
-    public List<Attendance> getAllAttendances() {
-        return attendanceRepo.findAll();
-    }
+	// 🔹 BULK SAVE
+	@Override
+	public void saveBulkAttendance(AttendanceBulkRequest request) {
 
-    // Update Attendance
-    @Override
-    public Attendance updateAttendance(Long id, Attendance updatedAttendance) {
-        Optional<Attendance> existingAttendanceOpt = attendanceRepo.findById(id);
-        if (existingAttendanceOpt.isPresent()) {
-            Attendance existingAttendance = existingAttendanceOpt.get();
-            // Assuming you want to update all fields.
-            existingAttendance.setEmployee(updatedAttendance.getEmployee());
-            existingAttendance.setInTime(updatedAttendance.getInTime());
-            existingAttendance.setOutTime(updatedAttendance.getOutTime());
-            existingAttendance.setShift(updatedAttendance.getShift());
-            existingAttendance.setIpAddress(updatedAttendance.getIpAddress());
-            existingAttendance.setInNote(updatedAttendance.getInNote());
-            existingAttendance.setOutNote(updatedAttendance.getOutNote());
-            return attendanceRepo.save(existingAttendance);
-        } else {
-            return null;  // If attendance with the given ID doesn't exist
-        }
-    }
+		List<Attendance> list = new ArrayList<>();
 
-    // Get Attendance by ID
-    @Override
-    public Attendance getAttendanceById(Long id) {
-        return attendanceRepo.findById(id).orElse(null);
-    }
+		for (AttendanceRequest r : request.getRecords()) {
 
-    // Delete Attendance by ID
-    @Override
-    public void deleteAttendanceById(Long id) {
-        attendanceRepo.deleteById(id);
-    }
+			Attendance a = new Attendance();
+			a.setEmployeeId(r.getEmployeeId());
+			a.setShiftId(r.getShiftId());
+			a.setAttendanceDate(request.getAttendanceDate());
+			a.setInTime(r.getInTime());
+			a.setOutTime(r.getOutTime());
+			a.setIpAddress(r.getIpAddress());
+			a.setInNote(r.getInNote());
+			a.setOutNote(r.getOutNote());
+
+			a.setStatus(calculateStatus(r.getInTime(), r.getOutTime()));
+			list.add(a);
+		}
+
+		attendanceRepo.saveAll(list);
+	}
+
+	// 🔹 GET ALL
+	@Override
+	public List<Attendance> getAllAttendance() {
+		return attendanceRepo.findAll();
+	}
+
+	// 🔹 GET BY ID
+	@Override
+	public Attendance getAttendanceById(Long id) {
+		return attendanceRepo.findById(id).orElseThrow(() -> new RuntimeException("Attendance not found"));
+	}
+
+	// 🔹 DELETE BY ID
+	@Override
+	public void deleteAttendance(Long id) {
+		attendanceRepo.deleteById(id);
+	}
+
+	// 🔹 DELETE ALL
+	@Override
+	public void deleteAllAttendance() {
+		attendanceRepo.deleteAll();
+	}
+
+	// 🔥 STATUS LOGIC
+	private AttendanceStatus calculateStatus(LocalDateTime inTime, LocalDateTime outTime) {
+		if (inTime == null && outTime == null) {
+			return AttendanceStatus.ABSENT;
+		}
+		if (inTime != null && outTime == null) {
+			return AttendanceStatus.HALF_DAY;
+		}
+		return AttendanceStatus.PRESENT;
+	}
+
+	@Override
+	public Attendance updateAttendance(Long id, Attendance updatedAttendance) {
+
+		Attendance existing = attendanceRepo.findById(id)
+				.orElseThrow(() -> new RuntimeException("Attendance not found"));
+
+		existing.setEmployeeId(updatedAttendance.getEmployeeId());
+		existing.setShiftId(updatedAttendance.getShiftId());
+		existing.setAttendanceDate(updatedAttendance.getAttendanceDate());
+		existing.setInTime(updatedAttendance.getInTime());
+		existing.setOutTime(updatedAttendance.getOutTime());
+		existing.setIpAddress(updatedAttendance.getIpAddress());
+		existing.setInNote(updatedAttendance.getInNote());
+		existing.setOutNote(updatedAttendance.getOutNote());
+
+		existing.setStatus(calculateStatus(updatedAttendance.getInTime(), updatedAttendance.getOutTime()));
+
+		return attendanceRepo.save(existing);
+	}
+
+	@Override
+	public Attendance getTodayAttendance(Long employeeId) {
+		LocalDate today = LocalDate.now();
+		return attendanceRepo.findByEmployeeIdAndAttendanceDate(employeeId, today).orElse(null);
+	}
+
 }

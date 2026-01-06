@@ -65,10 +65,14 @@ C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Contr
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\VendorController.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\VendorWarrantyClaimController.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\WarrantyClaimController.java
+C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\DTO\PayComponentBulkRequest.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\AddExpenses.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\AddLeave.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\AllOrdersResponse.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\Attendance.java
+C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\AttendanceBulkRequest.java
+C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\AttendanceRequest.java
+C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\AttendanceStatus.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\Brands.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\BrandWiseReportDTO.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\BusinessCategory.java

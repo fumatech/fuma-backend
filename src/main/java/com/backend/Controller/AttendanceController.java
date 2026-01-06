@@ -1,65 +1,107 @@
 package com.backend.Controller;
 
-import com.backend.Entity.Attendance;
-import com.backend.Service.AttendanceService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.backend.Entity.Attendance;
+import com.backend.Entity.AttendanceBulkRequest;
+import com.backend.Service.AttendanceService;
 
 @RestController
 @RequestMapping("/attendance")
-@CrossOrigin(
-	    origins = {
-	      "http://localhost:3000",
-	      "http://fusionmastertech.com",
-	      "https://fusionmastertech.com",
-	      "http://www.fusionmastertech.com",
-	      "https://www.fusionmastertech.com"
-	    },
-	    allowCredentials = "true"
-	)
+@CrossOrigin(origins = { "http://localhost:3000", "http://fusionmastertech.com",
+		"https://fusionmastertech.com" }, allowCredentials = "true")
 public class AttendanceController {
 
-    @Autowired
-    private AttendanceService attendanceService;
+	@Autowired
+	private AttendanceService attendanceService;
 
-    // Get all attendances
-    @GetMapping("/getall")
-    public ResponseEntity<List<Attendance>> getAllAttendances() {
-        List<Attendance> attendances = attendanceService.getAllAttendances();
-        return new ResponseEntity<>(attendances, HttpStatus.OK);
-    }
+	// ✅ SAVE SINGLE
+	@PostMapping("/save")
+	public ResponseEntity<Attendance> saveAttendance(@RequestBody Attendance attendance) {
+		return ResponseEntity.ok(attendanceService.saveAttendance(attendance));
+	}
 
-    // Get attendance by ID
-    @GetMapping("/get/{id}")
-    public ResponseEntity<Attendance> getAttendanceById(@PathVariable Long id) {
-        Attendance attendance = attendanceService.getAttendanceById(id);
-        return attendance != null ? new ResponseEntity<>(attendance, HttpStatus.OK) :
-                new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }
+	// ✅ SAVE BULK
+	@PostMapping("/bulk")
+	public ResponseEntity<String> saveBulkAttendance(@RequestBody AttendanceBulkRequest request) {
+		attendanceService.saveBulkAttendance(request);
+		return ResponseEntity.ok("Bulk attendance saved");
+	}
 
-    // Save attendance
-    @PostMapping("/add")
-    public ResponseEntity<Attendance> saveAttendance(@RequestBody Attendance attendance) {
-        Attendance savedAttendance = attendanceService.saveAttendance(attendance);
-        return new ResponseEntity<>(savedAttendance, HttpStatus.CREATED);
-    }
+	// ✅ UPDATE ATTENDANCE
+	@PutMapping("/update/{id}")
+	public ResponseEntity<Attendance> updateAttendance(@PathVariable Long id, @RequestBody Attendance attendance) {
+		return ResponseEntity.ok(attendanceService.updateAttendance(id, attendance));
+	}
 
-    // Update attendance
-    @PutMapping("/update/{id}")
-    public ResponseEntity<Attendance> updateAttendance(@PathVariable Long id, @RequestBody Attendance updatedAttendance) {
-        Attendance attendance = attendanceService.updateAttendance(id, updatedAttendance);
-        return attendance != null ? new ResponseEntity<>(attendance, HttpStatus.OK) :
-                new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }
+	// ✅ GET ALL
+	@GetMapping("/getall")
+	public List<Attendance> getAllAttendance() {
+		return attendanceService.getAllAttendance();
+	}
 
-    // Delete attendance by ID
-    @DeleteMapping("delete/{id}")
-    public ResponseEntity<Void> deleteAttendance(@PathVariable Long id) {
-        attendanceService.deleteAttendanceById(id);
-        return ResponseEntity.noContent().build();
-    }
+	// ✅ GET BY ID
+	@GetMapping("/get/{id}")
+	public Attendance getAttendanceById(@PathVariable Long id) {
+		return attendanceService.getAttendanceById(id);
+	}
+
+	// ✅ DELETE BY ID
+	@DeleteMapping("/delete/{id}")
+	public ResponseEntity<String> deleteAttendance(@PathVariable Long id) {
+		attendanceService.deleteAttendance(id);
+		return ResponseEntity.ok("Attendance deleted");
+	}
+
+	// ✅ DELETE ALL
+	@DeleteMapping("/deleteall")
+	public ResponseEntity<String> deleteAllAttendance() {
+		attendanceService.deleteAllAttendance();
+		return ResponseEntity.ok("All attendance deleted");
+	}
+
+	// ✅ Check if user is clocked in
+	@GetMapping("/current-status/{employeeId}")
+	public ResponseEntity<?> getCurrentStatus(@PathVariable Long employeeId) {
+		Attendance attendance = attendanceService.getTodayAttendance(employeeId);
+		if (attendance != null && attendance.getInTime() != null && attendance.getOutTime() == null) {
+			return ResponseEntity.ok(Map.of("clockedIn", true, "attendanceId", attendance.getId()));
+		}
+		return ResponseEntity.ok(Map.of("clockedIn", false));
+	}
+
+	// ✅ Clock In
+	@PostMapping("/clock-in")
+	public ResponseEntity<?> clockIn(@RequestBody Attendance attendance) {
+		attendance.setAttendanceDate(LocalDate.now());
+		attendance.setInTime(LocalDateTime.now());
+		Attendance saved = attendanceService.saveAttendance(attendance);
+		return ResponseEntity.ok(Map.of("id", saved.getId()));
+	}
+
+	// ✅ Clock Out
+	@PostMapping("/clock-out/{id}")
+	public ResponseEntity<?> clockOut(@PathVariable Long id, @RequestBody Map<String, String> body) {
+		Attendance attendance = attendanceService.getAttendanceById(id);
+		attendance.setOutTime(LocalDateTime.now());
+		attendance.setOutNote(body.get("note")); // Optional
+		attendanceService.updateAttendance(id, attendance);
+		return ResponseEntity.ok(Map.of("success", true));
+	}
+
 }

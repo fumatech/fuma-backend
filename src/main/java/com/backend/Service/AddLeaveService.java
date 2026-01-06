@@ -5,9 +5,9 @@ import java.util.List;
 import com.backend.Entity.AddLeave;
 
 public interface AddLeaveService {
-	
+
 	AddLeave saveLeave(AddLeave addLeave);
-	
+
 	List<AddLeave> getAllLeaves();
 
 	AddLeave updateLeave(Long id, AddLeave updatedLeave);
@@ -16,6 +16,7 @@ public interface AddLeaveService {
 
 	void deleteLeaveById(Long id);
 
-	
-	
+	// Update only status
+	AddLeave updateLeaveStatus(Long id, long status);
+
 }

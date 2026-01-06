@@ -13,43 +13,43 @@ import com.backend.Service.HolidayService;
 @Service
 public class HolidayServiceImpl implements HolidayService {
 
-    @Autowired
-    private HolidayRepo holidayRepo;
+	@Autowired
+	private HolidayRepo holidayRepo;
 
-    @Override
-    public Holiday saveHoliday(Holiday holiday) {
-        return holidayRepo.save(holiday);
-    }
+	@Override
+	public Holiday saveHoliday(Holiday holiday) {
+		return holidayRepo.save(holiday);
+	}
 
-    @Override
-    public List<Holiday> getAllHolidays() {
-        return holidayRepo.findAll();
-    }
+	@Override
+	public List<Holiday> getAllHolidays() {
+		return holidayRepo.findAll();
+	}
 
-    @Override
-    public Holiday updateHoliday(Long id, Holiday updatedHoliday) {
-        Optional<Holiday> existingHoliday = holidayRepo.findById(id);
-        if (existingHoliday.isPresent()) {
-            Holiday holiday = existingHoliday.get();
-            holiday.setName(updatedHoliday.getName());
-            holiday.setStartDate(updatedHoliday.getStartDate());
-            holiday.setEndDate(updatedHoliday.getEndDate());
-            holiday.setBusinessLocation(updatedHoliday.getBusinessLocation());
-            holiday.setNote(updatedHoliday.getNote());
-            return holidayRepo.save(holiday);
-        } else {
-            return null; // or throw an exception
-        }
-    }
+	@Override
+	public Holiday updateHoliday(Long id, Holiday updatedHoliday) {
+		Optional<Holiday> existingHoliday = holidayRepo.findById(id);
+		if (existingHoliday.isPresent()) {
+			Holiday holiday = existingHoliday.get();
+			holiday.setName(updatedHoliday.getName());
+			holiday.setStartDate(updatedHoliday.getStartDate());
+			holiday.setEndDate(updatedHoliday.getEndDate());
+			holiday.setBusinessLocationId(updatedHoliday.getBusinessLocationId());
+			holiday.setNote(updatedHoliday.getNote());
+			return holidayRepo.save(holiday);
+		} else {
+			return null; // or throw an exception
+		}
+	}
 
-    @Override
-    public Holiday getHolidayById(Long id) {
-        Optional<Holiday> holiday = holidayRepo.findById(id);
-        return holiday.orElse(null);  // Returns null if holiday not found
-    }
+	@Override
+	public Holiday getHolidayById(Long id) {
+		Optional<Holiday> holiday = holidayRepo.findById(id);
+		return holiday.orElse(null); // Returns null if holiday not found
+	}
 
-    @Override
-    public void deleteHolidayById(Long id) {
-        holidayRepo.deleteById(id);
-    }
+	@Override
+	public void deleteHolidayById(Long id) {
+		holidayRepo.deleteById(id);
+	}
 }

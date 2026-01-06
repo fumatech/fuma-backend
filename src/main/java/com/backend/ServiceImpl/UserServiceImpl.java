@@ -107,6 +107,7 @@ public class UserServiceImpl implements UserService {
 			existingUser.setDepartmentId(user.getDepartmentId());
 			existingUser.setDesignationId(user.getDesignationId());
 			existingUser.setPrimaryWorkLocation(user.getPrimaryWorkLocation());
+			existingUser.setPrimaryWorkLocationId(user.getPrimaryWorkLocationId());
 			existingUser.setBasicSalary(user.getBasicSalary());
 			existingUser.setSalaryIn(user.getSalaryIn());
 			existingUser.setPayComponentId(user.getPayComponentId());
