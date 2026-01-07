@@ -49,6 +49,7 @@ C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Contr
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\SaleSoOrderController.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\SellReportController.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\ShiftController.java
+C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\SignatureUploadController.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\StockAdjustmentController.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\StockReportController.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\StockTransactionController.java
@@ -65,7 +66,13 @@ C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Contr
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\VendorController.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\VendorWarrantyClaimController.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\WarrantyClaimController.java
+C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\DTO\AmountDTO.java
+C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\DTO\EmployeePayrollDTO.java
+C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\DTO\EmployeePayrollViewDTO.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\DTO\PayComponentBulkRequest.java
+C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\DTO\PayrollEmployeeResponseDTO.java
+C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\DTO\PayrollResponseDTO.java
+C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\DTO\PayrollSaveRequest.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\AddExpenses.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\AddLeave.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\AllOrdersResponse.java
@@ -110,6 +117,9 @@ C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entit
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\PaymentAccount.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\PaymentMethod.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\PayRoll.java
+C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\PayrollDeduction.java
+C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\PayrollEarning.java
+C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\PayrollEmployee.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\Permission.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\Product.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\ProductPurchaseReportDTO.java
@@ -148,6 +158,7 @@ C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entit
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\ShippingPoDetails.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\ShippingSaleDIDetails.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\ShippingSoDetails.java
+C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\SignatureImage.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\StockAdjustment.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\StockAdjustmentItems.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\StockReportDTO.java
@@ -195,7 +206,11 @@ C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repos
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\PayComponentRepo.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\PaymentAccountRepo.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\PaymentMethodRepo.java
+C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\PayrollDeductionRepository.java
+C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\PayrollEarningRepository.java
+C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\PayrollEmployeeRepository.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\PayRollRepo.java
+C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\PayrollRepository.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\PermissionRepo.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\ProductRepo.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\ProductStockRepo.java
@@ -220,6 +235,7 @@ C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repos
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\SaleSoOrderRepo.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\ShiftRepo.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\ShippingDetailsRepo.java
+C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\SignatureImageRepository.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\StockAdjustmentItemsRepo.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\StockAdjustmentRepo.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\StockTransactionRepo.java
@@ -281,6 +297,7 @@ C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Servi
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\SaleSoOrderService.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\SellReportService.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\ShiftService.java
+C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\SignatureImageService.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\StockAdjustmentService.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\StockTransactionService.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\StockTransferService.java
@@ -340,6 +357,7 @@ C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Servi
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\SaleServiceImpl.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\SaleSoOrderServiceImpl.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\ShiftServiceImpl.java
+C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\SignatureImageServiceImpl.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\StockAdjustmentServiceImpl.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\StockReportService.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\StockTransactionServiceImpl.java

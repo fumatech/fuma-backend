@@ -1,66 +1,58 @@
 package com.backend.Controller;
 
-import com.backend.Entity.PayRoll;
-import com.backend.Service.PayRollService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.backend.DTO.EmployeePayrollViewDTO;
+import com.backend.DTO.PayrollResponseDTO;
+import com.backend.DTO.PayrollSaveRequest;
+import com.backend.Service.PayRollService;
 
 @RestController
 @RequestMapping("/payroll")
-@CrossOrigin(
-	    origins = {
-	      "http://localhost:3000",
-	      "http://fusionmastertech.com",
-	      "https://fusionmastertech.com",
-	      "http://www.fusionmastertech.com",
-	      "https://www.fusionmastertech.com"
-	    },
-	    allowCredentials = "true"
-	)
+@CrossOrigin(origins = { "http://localhost:3000", "http://fusionmastertech.com", "https://fusionmastertech.com",
+		"http://www.fusionmastertech.com", "https://www.fusionmastertech.com" }, allowCredentials = "true")
 public class PayRollController {
 
-    @Autowired
-    private PayRollService payRollService;
+	@Autowired
+	private PayRollService payRollService;
 
-    @PostMapping("/add")
-    public ResponseEntity<PayRoll> savePayRoll(@RequestBody PayRoll payRoll) {
-        PayRoll savedPayRoll = payRollService.savePayRoll(payRoll);
-        return new ResponseEntity<>(savedPayRoll, HttpStatus.CREATED);
-    }
+	@PostMapping("/save")
+	public ResponseEntity<PayrollResponseDTO> savePayroll(@RequestBody PayrollSaveRequest request) {
+		return ResponseEntity.ok(payRollService.savePayroll(request));
+	}
 
-    @GetMapping("/getall")
-    public ResponseEntity<List<PayRoll>> getAllPayRolls() {
-        List<PayRoll> payRolls = payRollService.getAllPayRolls();
-        return new ResponseEntity<>(payRolls, HttpStatus.OK);
-    }
+	@GetMapping("/full/{id}")
+	public ResponseEntity<PayrollResponseDTO> getPayrollFull(@PathVariable Long id) {
+		return ResponseEntity.ok(payRollService.getPayrollFullById(id));
+	}
 
-    @GetMapping("/get/{id}")
-    public ResponseEntity<PayRoll> getPayRollById(@PathVariable Long id) {
-        PayRoll payRoll = payRollService.getPayRollById(id);
-        if (payRoll != null) {
-            return new ResponseEntity<>(payRoll, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
+	@GetMapping("/all-full")
+	public ResponseEntity<List<PayrollResponseDTO>> getAllPayrollFull() {
+		return ResponseEntity.ok(payRollService.getAllPayrollFull());
+	}
 
-    @PutMapping("/update/{id}")
-    public ResponseEntity<PayRoll> updatePayRoll(@PathVariable Long id, @RequestBody PayRoll updatedPayRoll) {
-        PayRoll updated = payRollService.updatePayRoll(id, updatedPayRoll);
-        if (updated != null) {
-            return new ResponseEntity<>(updated, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
+	// DELETE
+	@DeleteMapping("/{id}")
+	public ResponseEntity<String> delete(@PathVariable Long id) {
+		payRollService.deletePayroll(id);
+		return ResponseEntity.ok("Payroll deleted successfully");
+	}
 
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Void> deletePayRoll(@PathVariable Long id) {
-        payRollService.deletePayRollById(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
+	@GetMapping("/employee-wise")
+	public ResponseEntity<List<EmployeePayrollViewDTO>> getEmployeeWise() {
+
+		return ResponseEntity.ok(payRollService.getEmployeeWiseList());
+	}
+
 }

@@ -2,18 +2,20 @@ package com.backend.Service;
 
 import java.util.List;
 
-import com.backend.Entity.PayRoll;
+import com.backend.DTO.EmployeePayrollViewDTO;
+import com.backend.DTO.PayrollResponseDTO;
+import com.backend.DTO.PayrollSaveRequest;
 
 public interface PayRollService {
-	
-	PayRoll savePayRoll(PayRoll payRoll);
-	
-	List<PayRoll> getAllPayRolls();
 
-	PayRoll updatePayRoll(Long id, PayRoll updatedPayRoll);
+	PayrollResponseDTO savePayroll(PayrollSaveRequest request); // return full payroll
 
-	PayRoll getPayRollById(Long id);
+	PayrollResponseDTO getPayrollFullById(Long id);
 
-	void deletePayRollById(Long id);
+	List<PayrollResponseDTO> getAllPayrollFull();
+
+	void deletePayroll(Long id);
+
+	List<EmployeePayrollViewDTO> getEmployeeWiseList();
 
 }

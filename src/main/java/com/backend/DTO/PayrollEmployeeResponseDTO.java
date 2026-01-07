@@ -1,0 +1,80 @@
+package com.backend.DTO;
+
+import java.util.List;
+
+public class PayrollEmployeeResponseDTO {
+	private Long employeeId;
+	private Double workDuration;
+	private String unit;
+	private Double amountPerUnit;
+	private Double total;
+	private String note;
+
+	private List<AmountDTO> earnings;
+	private List<AmountDTO> deductions;
+
+	public Long getEmployeeId() {
+		return employeeId;
+	}
+
+	public void setEmployeeId(Long employeeId) {
+		this.employeeId = employeeId;
+	}
+
+	public Double getWorkDuration() {
+		return workDuration;
+	}
+
+	public void setWorkDuration(Double workDuration) {
+		this.workDuration = workDuration;
+	}
+
+	public String getUnit() {
+		return unit;
+	}
+
+	public void setUnit(String unit) {
+		this.unit = unit;
+	}
+
+	public Double getAmountPerUnit() {
+		return amountPerUnit;
+	}
+
+	public void setAmountPerUnit(Double amountPerUnit) {
+		this.amountPerUnit = amountPerUnit;
+	}
+
+	public Double getTotal() {
+		return total;
+	}
+
+	public void setTotal(Double total) {
+		this.total = total;
+	}
+
+	public String getNote() {
+		return note;
+	}
+
+	public void setNote(String note) {
+		this.note = note;
+	}
+
+	public List<AmountDTO> getEarnings() {
+		return earnings;
+	}
+
+	public void setEarnings(List<AmountDTO> earnings) {
+		this.earnings = earnings;
+	}
+
+	public List<AmountDTO> getDeductions() {
+		return deductions;
+	}
+
+	public void setDeductions(List<AmountDTO> deductions) {
+		this.deductions = deductions;
+	}
+
+}

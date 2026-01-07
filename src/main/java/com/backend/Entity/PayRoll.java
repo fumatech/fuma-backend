@@ -1,25 +1,23 @@
 package com.backend.Entity;
 
-import java.util.ArrayList;
-import java.util.List;
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+
 @Entity
 public class PayRoll {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    
-    private String location;
-    private String monthYear;
-    private Long status; // 0=draft, 1=final
-    
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<EmployeePayroll> employeePayrolls = new ArrayList<>();
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+
+	private String payrollName;
+
+	private Long location;
+	private Integer month;
+	private Integer year;
+	private Long status;
 
 	public Long getId() {
 		return id;
@@ -29,20 +27,36 @@ public class PayRoll {
 		this.id = id;
 	}
 
-	public String getLocation() {
+	public String getPayrollName() {
+		return payrollName;
+	}
+
+	public void setPayrollName(String payrollName) {
+		this.payrollName = payrollName;
+	}
+
+	public Long getLocation() {
 		return location;
 	}
 
-	public void setLocation(String location) {
+	public void setLocation(Long location) {
 		this.location = location;
 	}
 
-	public String getMonthYear() {
-		return monthYear;
+	public Integer getMonth() {
+		return month;
 	}
 
-	public void setMonthYear(String monthYear) {
-		this.monthYear = monthYear;
+	public void setMonth(Integer month) {
+		this.month = month;
+	}
+
+	public Integer getYear() {
+		return year;
+	}
+
+	public void setYear(Integer year) {
+		this.year = year;
 	}
 
 	public Long getStatus() {
@@ -53,14 +67,4 @@ public class PayRoll {
 		this.status = status;
 	}
 
-	public List<EmployeePayroll> getEmployeePayrolls() {
-		return employeePayrolls;
-	}
-
-	public void setEmployeePayrolls(List<EmployeePayroll> employeePayrolls) {
-		this.employeePayrolls = employeePayrolls;
-	}
-    
-    
-    
 }
