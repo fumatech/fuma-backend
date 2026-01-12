@@ -1,5 +1,6 @@
 package com.backend.DTO;
 
+import java.sql.Date;
 import java.util.List;
 
 public class PayrollResponseDTO {
@@ -8,6 +9,8 @@ public class PayrollResponseDTO {
 	private Long location;
 	private int month;
 	private int year;
+	private String addedBy;
+	private Date createdAt;
 	private Integer status;
 	private List<PayrollEmployeeResponseDTO> employees;
 
@@ -53,6 +56,22 @@ public class PayrollResponseDTO {
 
 	public Integer getStatus() {
 		return status;
+	}
+
+	public String getAddedBy() {
+		return addedBy;
+	}
+
+	public void setAddedBy(String addedBy) {
+		this.addedBy = addedBy;
+	}
+
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
 	}
 
 	public void setStatus(Integer status) {

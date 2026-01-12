@@ -2,7 +2,9 @@ package com.backend.Entity;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,7 +23,8 @@ public class PayComponent {
 	private BigDecimal amount;
 	private LocalDateTime applicableDate;
 
-	private Long employeeId;
+	@ElementCollection
+	private List<Long> employeeId;;
 
 	public Long getId() {
 		return id;
@@ -71,11 +74,11 @@ public class PayComponent {
 		this.applicableDate = applicableDate;
 	}
 
-	public Long getEmployeeId() {
+	public List<Long> getEmployeeId() {
 		return employeeId;
 	}
 
-	public void setEmployeeId(Long employeeId) {
+	public void setEmployeeId(List<Long> employeeId) {
 		this.employeeId = employeeId;
 	}
 

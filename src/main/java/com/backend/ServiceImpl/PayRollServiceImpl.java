@@ -46,16 +46,54 @@ public class PayRollServiceImpl implements PayRollService {
 		// Parse Month / Year (01/2026)
 		YearMonth ym = YearMonth.parse(request.getMonthYear(), java.time.format.DateTimeFormatter.ofPattern("MM/yyyy"));
 
-		PayRoll payroll = new PayRoll();
-		payroll.setPayrollName("Payroll for " + ym.getMonth() + " " + ym.getYear());
-		payroll.setLocation(Long.parseLong(request.getLocation()));
-		payroll.setMonth(ym.getMonthValue());
-		payroll.setYear(ym.getYear());
-		payroll.setStatus(request.getStatus());
+		PayRoll payroll;
+
+		// ==========================
+		// ✅ EDIT MODE
+		// ==========================
+		if (request.getPayrollId() != null) {
+
+			payroll = payrollRepository.findById(request.getPayrollId())
+					.orElseThrow(() -> new RuntimeException("Payroll not found"));
+
+			payroll.setLocation(Long.parseLong(request.getLocation()));
+			payroll.setMonth(ym.getMonthValue());
+			payroll.setYear(ym.getYear());
+			payroll.setAddedBy(request.getAddedBy());
+			payroll.setStatus(request.getStatus());
+
+			// ❗ Do NOT change createdAt during edit
+
+			// 🔥 Delete old employees data
+			List<PayrollEmployee> oldEmployees = payrollEmployeeRepository.findByPayrollId(payroll.getId());
+
+			for (PayrollEmployee emp : oldEmployees) {
+				payrollEarningRepository.deleteByPayrollEmployeeId(emp.getId());
+				payrollDeductionRepository.deleteByPayrollEmployeeId(emp.getId());
+			}
+
+			payrollEmployeeRepository.deleteByPayrollId(payroll.getId());
+		}
+		// ==========================
+		// ✅ CREATE MODE
+		// ==========================
+		else {
+			payroll = new PayRoll();
+			payroll.setPayrollName("Payroll for " + ym.getMonth() + " " + ym.getYear());
+			payroll.setLocation(Long.parseLong(request.getLocation()));
+			payroll.setMonth(ym.getMonthValue());
+			payroll.setYear(ym.getYear());
+			payroll.setAddedBy(request.getAddedBy());
+			payroll.setCreatedAt(request.getCreatedAt() != null ? request.getCreatedAt()
+					: new java.sql.Date(System.currentTimeMillis()));
+			payroll.setStatus(request.getStatus());
+		}
 
 		payroll = payrollRepository.save(payroll);
 
-		// Save Employees
+		// ==========================
+		// SAVE EMPLOYEES AGAIN
+		// ==========================
 		for (EmployeePayrollDTO empDto : request.getEmployeePayrolls()) {
 
 			PayrollEmployee emp = new PayrollEmployee();
@@ -64,6 +102,7 @@ public class PayRollServiceImpl implements PayRollService {
 			emp.setWorkDuration(empDto.getWorkDuration());
 			emp.setUnit(empDto.getUnit());
 			emp.setAmountPerUnit(empDto.getAmountPerUnit());
+			emp.setBasic(empDto.getBasic());
 			emp.setTotal(empDto.getTotal());
 			emp.setNote(empDto.getNote());
 
@@ -94,7 +133,7 @@ public class PayRollServiceImpl implements PayRollService {
 			}
 		}
 
-		return getPayrollFullById(payroll.getId()); // return full payroll with employees
+		return getPayrollFullById(payroll.getId());
 	}
 
 	@Override
@@ -106,6 +145,8 @@ public class PayRollServiceImpl implements PayRollService {
 		response.setId(payroll.getId());
 		response.setPayrollName(payroll.getPayrollName());
 		response.setLocation(payroll.getLocation());
+		response.setAddedBy(payroll.getAddedBy());
+		response.setCreatedAt(payroll.getCreatedAt());
 		response.setMonth(payroll.getMonth());
 		response.setYear(payroll.getYear());
 		response.setStatus(payroll.getStatus() != null ? payroll.getStatus().intValue() : null);
@@ -119,6 +160,7 @@ public class PayRollServiceImpl implements PayRollService {
 			empDto.setWorkDuration(emp.getWorkDuration());
 			empDto.setUnit(emp.getUnit() != null ? emp.getUnit().toString() : null);
 			empDto.setAmountPerUnit(emp.getAmountPerUnit());
+			empDto.setBasic(emp.getBasic());
 			empDto.setTotal(emp.getTotal());
 			empDto.setNote(emp.getNote());
 
@@ -181,10 +223,11 @@ public class PayRollServiceImpl implements PayRollService {
 				view.setYear(payroll.getYear());
 				view.setTotal(emp.getTotal());
 				view.setNote(emp.getNote());
+				view.setBasic(emp.getBasic());
 				view.setEarnings(emp.getEarnings());
 				view.setDeductions(emp.getDeductions());
 
-				employeeWiseList.add(view); // add every employee-payroll entry
+				employeeWiseList.add(view);
 			}
 		}
 

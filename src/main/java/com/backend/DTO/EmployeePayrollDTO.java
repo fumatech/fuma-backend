@@ -7,6 +7,7 @@ public class EmployeePayrollDTO {
 	private Double workDuration;
 	private Double unit;
 	private Double amountPerUnit;
+	private Double basic;
 	private Double total;
 	private String note;
 	private List<AmountDTO> earnings;
@@ -42,6 +43,14 @@ public class EmployeePayrollDTO {
 
 	public void setAmountPerUnit(Double amountPerUnit) {
 		this.amountPerUnit = amountPerUnit;
+	}
+
+	public Double getBasic() {
+		return basic;
+	}
+
+	public void setBasic(Double basic) {
+		this.basic = basic;
 	}
 
 	public Double getTotal() {

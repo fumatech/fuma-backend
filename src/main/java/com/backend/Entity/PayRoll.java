@@ -1,5 +1,7 @@
 package com.backend.Entity;
 
+import java.sql.Date;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,12 +13,12 @@ public class PayRoll {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
 	private String payrollName;
-
 	private Long location;
 	private Integer month;
 	private Integer year;
+	private String addedBy;
+	private Date createdAt;
 	private Long status;
 
 	public Long getId() {
@@ -57,6 +59,22 @@ public class PayRoll {
 
 	public void setYear(Integer year) {
 		this.year = year;
+	}
+
+	public String getAddedBy() {
+		return addedBy;
+	}
+
+	public void setAddedBy(String addedBy) {
+		this.addedBy = addedBy;
+	}
+
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
 	}
 
 	public Long getStatus() {

@@ -1,13 +1,17 @@
 package com.backend.DTO;
 
+import java.sql.Date;
 import java.util.List;
 
 public class EmployeePayrollViewDTO {
 	private Long employeeId;
 	private String payrollName;
+	private String addedBy;
+	private Date createdAt;
 	private Long payrollId;
 	private int month;
 	private int year;
+	private Double basic;
 	private Double total;
 	private String note;
 	private List<AmountDTO> earnings;
@@ -27,6 +31,22 @@ public class EmployeePayrollViewDTO {
 
 	public void setPayrollName(String payrollName) {
 		this.payrollName = payrollName;
+	}
+
+	public String getAddedBy() {
+		return addedBy;
+	}
+
+	public void setAddedBy(String addedBy) {
+		this.addedBy = addedBy;
+	}
+
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
 	}
 
 	public Long getPayrollId() {
@@ -51,6 +71,14 @@ public class EmployeePayrollViewDTO {
 
 	public void setYear(int year) {
 		this.year = year;
+	}
+
+	public Double getBasic() {
+		return basic;
+	}
+
+	public void setBasic(Double basic) {
+		this.basic = basic;
 	}
 
 	public Double getTotal() {

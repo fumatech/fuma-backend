@@ -13,12 +13,14 @@ public class PayrollEmployee {
 
 	private Long payrollId;
 	private Long employeeId;
-
 	private Double workDuration;
 	private Double unit;
 	private Double amountPerUnit;
+	private Double basic;
 	private Double total;
-
+	private Long leaves;
+	private Double workHour;
+	private Long attendance;
 	private String note;
 
 	public Long getId() {
@@ -67,6 +69,38 @@ public class PayrollEmployee {
 
 	public void setAmountPerUnit(Double amountPerUnit) {
 		this.amountPerUnit = amountPerUnit;
+	}
+
+	public Long getLeaves() {
+		return leaves;
+	}
+
+	public void setLeaves(Long leaves) {
+		this.leaves = leaves;
+	}
+
+	public Double getWorkHour() {
+		return workHour;
+	}
+
+	public void setWorkHour(Double workHour) {
+		this.workHour = workHour;
+	}
+
+	public Long getAttendance() {
+		return attendance;
+	}
+
+	public void setAttendance(Long attendance) {
+		this.attendance = attendance;
+	}
+
+	public Double getBasic() {
+		return basic;
+	}
+
+	public void setBasic(Double basic) {
+		this.basic = basic;
 	}
 
 	public Double getTotal() {

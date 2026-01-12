@@ -10,4 +10,7 @@ import com.backend.Entity.PayrollEarning;
 @Repository
 public interface PayrollEarningRepository extends JpaRepository<PayrollEarning, Long> {
 	List<PayrollEarning> findByPayrollEmployeeId(Long payrollEmployeeId);
+
+	void deleteByPayrollEmployeeId(Long payrollEmployeeId);
+
 }

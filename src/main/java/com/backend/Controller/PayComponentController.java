@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.backend.DTO.PayComponentBulkRequest;
 import com.backend.Entity.PayComponent;
 import com.backend.Service.PayComponentService;
 
@@ -28,57 +27,32 @@ public class PayComponentController {
 	@Autowired
 	private PayComponentService payComponentService;
 
-	// API to get all pay components
 	@GetMapping("/all")
 	public ResponseEntity<List<PayComponent>> getAllPayComponents() {
-		List<PayComponent> payComponents = payComponentService.getAllPayComponents();
-		return new ResponseEntity<>(payComponents, HttpStatus.OK);
+		return ResponseEntity.ok(payComponentService.getAllPayComponents());
 	}
 
-	// API to get a pay component by ID
 	@GetMapping("/{id}")
-	public ResponseEntity<PayComponent> getPayComponentById(@PathVariable Long id) {
-		PayComponent payComponent = payComponentService.getPayComponentById(id);
-		if (payComponent != null) {
-			return new ResponseEntity<>(payComponent, HttpStatus.OK);
-		} else {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}
+	public ResponseEntity<PayComponent> getById(@PathVariable Long id) {
+		PayComponent pc = payComponentService.getPayComponentById(id);
+		return pc != null ? ResponseEntity.ok(pc) : ResponseEntity.notFound().build();
 	}
 
-	// API to save a new pay component
 	@PostMapping("/add")
-	public ResponseEntity<PayComponent> savePayComponent(@RequestBody PayComponent payComponent) {
-		PayComponent savedPayComponent = payComponentService.savePayComponent(payComponent);
-		return new ResponseEntity<>(savedPayComponent, HttpStatus.CREATED);
+	public ResponseEntity<PayComponent> save(@RequestBody PayComponent payComponent) {
+		return ResponseEntity.status(HttpStatus.CREATED).body(payComponentService.savePayComponent(payComponent));
 	}
 
-	// API to update an existing pay component
 	@PutMapping("/{id}")
-	public ResponseEntity<PayComponent> updatePayComponent(@PathVariable Long id,
-			@RequestBody PayComponent updatedPayComponent) {
+	public ResponseEntity<PayComponent> update(@PathVariable Long id, @RequestBody PayComponent payComponent) {
 
-		PayComponent updated = payComponentService.updatePayComponent(id, updatedPayComponent);
-
-		if (updated != null) {
-			return new ResponseEntity<>(updated, HttpStatus.OK);
-		} else {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}
+		PayComponent updated = payComponentService.updatePayComponent(id, payComponent);
+		return updated != null ? ResponseEntity.ok(updated) : ResponseEntity.notFound().build();
 	}
 
-	// API to delete a pay component by ID
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Void> deletePayComponent(@PathVariable Long id) {
+	public ResponseEntity<Void> delete(@PathVariable Long id) {
 		payComponentService.deletePayComponentById(id);
-		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		return ResponseEntity.noContent().build();
 	}
-
-	@PostMapping("/bulk")
-	public ResponseEntity<String> addBulkPayComponent(@RequestBody PayComponentBulkRequest request) {
-
-		payComponentService.saveBulk(request);
-		return ResponseEntity.ok("Pay components added successfully");
-	}
-
 }

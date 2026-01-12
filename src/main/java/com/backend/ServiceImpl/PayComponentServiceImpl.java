@@ -1,13 +1,10 @@
 package com.backend.ServiceImpl;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.backend.DTO.PayComponentBulkRequest;
 import com.backend.Entity.PayComponent;
 import com.backend.Repository.PayComponentRepo;
 import com.backend.Service.PayComponentService;
@@ -20,30 +17,12 @@ public class PayComponentServiceImpl implements PayComponentService {
 
 	@Override
 	public PayComponent savePayComponent(PayComponent payComponent) {
-		return payComponentRepo.save(payComponent); // Saves the pay component to the database
+		return payComponentRepo.save(payComponent);
 	}
 
 	@Override
 	public List<PayComponent> getAllPayComponents() {
-		return payComponentRepo.findAll(); // Fetch all pay components from the database
-	}
-
-	@Override
-	public PayComponent updatePayComponent(Long id, PayComponent updatedPayComponent) {
-		Optional<PayComponent> existingPayComponent = payComponentRepo.findById(id);
-
-		if (existingPayComponent.isPresent()) {
-			PayComponent payComponent = existingPayComponent.get();
-			payComponent.setDescription(updatedPayComponent.getDescription());
-			payComponent.setType(updatedPayComponent.getType());
-			payComponent.setAmountType(updatedPayComponent.getAmountType());
-			payComponent.setAmount(updatedPayComponent.getAmount());
-			payComponent.setApplicableDate(updatedPayComponent.getApplicableDate());
-
-			return payComponentRepo.save(payComponent);
-		}
-
-		return null;
+		return payComponentRepo.findAll();
 	}
 
 	@Override
@@ -52,28 +31,20 @@ public class PayComponentServiceImpl implements PayComponentService {
 	}
 
 	@Override
-	public void deletePayComponentById(Long id) {
-		payComponentRepo.deleteById(id); // Delete the pay component with the given ID
+	public PayComponent updatePayComponent(Long id, PayComponent updated) {
+		return payComponentRepo.findById(id).map(pc -> {
+			pc.setDescription(updated.getDescription());
+			pc.setType(updated.getType());
+			pc.setAmountType(updated.getAmountType());
+			pc.setAmount(updated.getAmount());
+			pc.setApplicableDate(updated.getApplicableDate());
+			pc.setEmployeeId(updated.getEmployeeId());
+			return payComponentRepo.save(pc);
+		}).orElse(null);
 	}
 
 	@Override
-	public void saveBulk(PayComponentBulkRequest request) {
-
-		List<PayComponent> list = new ArrayList<>();
-
-		for (Long empId : request.getEmployeeIds()) {
-
-			PayComponent pc = new PayComponent();
-			pc.setEmployeeId(empId);
-			pc.setDescription(request.getDescription());
-			pc.setType(request.getType());
-			pc.setAmountType(request.getAmountType());
-			pc.setAmount(request.getAmount());
-			pc.setApplicableDate(request.getApplicableDate());
-
-			list.add(pc);
-		}
-
-		payComponentRepo.saveAll(list);
+	public void deletePayComponentById(Long id) {
+		payComponentRepo.deleteById(id);
 	}
 }
