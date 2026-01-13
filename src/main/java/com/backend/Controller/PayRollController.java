@@ -13,10 +13,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.backend.DTO.BulkPayrollTransactionRequest;
 import com.backend.DTO.EmployeePayrollViewDTO;
 import com.backend.DTO.PayrollResponseDTO;
 import com.backend.DTO.PayrollSaveRequest;
+import com.backend.Entity.Transaction;
 import com.backend.Service.PayRollService;
+import com.backend.ServiceImpl.PayRollServiceImpl;
 
 @RestController
 @RequestMapping("/payroll")
@@ -26,6 +29,23 @@ public class PayRollController {
 
 	@Autowired
 	private PayRollService payRollService;
+
+	@Autowired
+	private PayRollServiceImpl payRollServiceImpl;
+
+	@PostMapping("/payroll-employee/bulk-transaction/{accountId}")
+	public ResponseEntity<List<Transaction>> createBulkEmployeeSalaryTransactions(@PathVariable Long accountId,
+			@RequestBody List<BulkPayrollTransactionRequest> requests) {
+
+		return ResponseEntity.ok(payRollServiceImpl.createBulkPayrollEmployeeTransactions(accountId, requests));
+	}
+
+	@PostMapping("/payroll-employee/bulk-transaction")
+	public ResponseEntity<List<Transaction>> createBulkEmployeeSalaryTransactions(
+			@RequestBody List<BulkPayrollTransactionRequest> requests) {
+
+		return ResponseEntity.ok(payRollServiceImpl.createBulkPayrollEmployeeTransactions(requests));
+	}
 
 	@PostMapping("/save")
 	public ResponseEntity<PayrollResponseDTO> savePayroll(@RequestBody PayrollSaveRequest request) {

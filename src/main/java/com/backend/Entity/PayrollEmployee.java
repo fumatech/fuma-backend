@@ -1,9 +1,14 @@
 package com.backend.Entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class PayrollEmployee {
@@ -22,6 +27,9 @@ public class PayrollEmployee {
 	private Double workHour;
 	private Long attendance;
 	private String note;
+
+	@OneToMany(mappedBy = "payrollEmployee", cascade = CascadeType.ALL)
+	private List<Transaction> transactions = new ArrayList<>();
 
 	public Long getId() {
 		return id;

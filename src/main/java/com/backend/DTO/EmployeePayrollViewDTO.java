@@ -16,6 +16,7 @@ public class EmployeePayrollViewDTO {
 	private String note;
 	private List<AmountDTO> earnings;
 	private List<AmountDTO> deductions;
+	private List<PayrollSalaryTransactionDTO> transactions;
 
 	public Long getEmployeeId() {
 		return employeeId;
@@ -23,6 +24,14 @@ public class EmployeePayrollViewDTO {
 
 	public void setEmployeeId(Long employeeId) {
 		this.employeeId = employeeId;
+	}
+
+	public List<PayrollSalaryTransactionDTO> getTransactions() {
+		return transactions;
+	}
+
+	public void setTransactions(List<PayrollSalaryTransactionDTO> transactions) {
+		this.transactions = transactions;
 	}
 
 	public String getPayrollName() {

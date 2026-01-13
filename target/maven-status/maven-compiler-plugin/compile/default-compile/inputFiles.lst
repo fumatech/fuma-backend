@@ -67,11 +67,13 @@ C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Contr
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\VendorWarrantyClaimController.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\WarrantyClaimController.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\DTO\AmountDTO.java
+C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\DTO\BulkPayrollTransactionRequest.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\DTO\EmployeePayrollDTO.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\DTO\EmployeePayrollViewDTO.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\DTO\PayComponentBulkRequest.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\DTO\PayrollEmployeeResponseDTO.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\DTO\PayrollResponseDTO.java
+C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\DTO\PayrollSalaryTransactionDTO.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\DTO\PayrollSaveRequest.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\AddExpenses.java
 C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\AddLeave.java

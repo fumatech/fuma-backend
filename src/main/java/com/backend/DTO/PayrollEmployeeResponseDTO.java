@@ -13,6 +13,7 @@ public class PayrollEmployeeResponseDTO {
 
 	private List<AmountDTO> earnings;
 	private List<AmountDTO> deductions;
+	private List<PayrollSalaryTransactionDTO> transactions;
 
 	public Long getEmployeeId() {
 		return employeeId;
@@ -84,6 +85,14 @@ public class PayrollEmployeeResponseDTO {
 
 	public void setDeductions(List<AmountDTO> deductions) {
 		this.deductions = deductions;
+	}
+
+	public List<PayrollSalaryTransactionDTO> getTransactions() {
+		return transactions;
+	}
+
+	public void setTransactions(List<PayrollSalaryTransactionDTO> transactions) {
+		this.transactions = transactions;
 	}
 
 }

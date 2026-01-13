@@ -33,4 +33,6 @@ public interface TransactionRepo extends JpaRepository<Transaction, Long> {
 	@Query("SELECT t FROM Transaction t WHERE LOWER(t.transactionType) = LOWER(:type)")
 	List<Transaction> findByType(String type);
 
+	List<Transaction> findByPayrollEmployee_Id(Long payrollEmployeeId);
+
 }

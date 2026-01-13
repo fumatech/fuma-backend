@@ -45,6 +45,14 @@ public class Transaction {
 
 	private String cashDetails;
 
+	@Transient
+	private Long payrollEmployeeId;
+
+	@ManyToOne
+	@JoinColumn(name = "payroll_employee_id", nullable = false)
+	@JsonIgnore
+	private PayrollEmployee payrollEmployee;
+
 	@ManyToOne
 	@JoinColumn(name = "add_Expenses_id")
 	@JsonBackReference
@@ -95,32 +103,51 @@ public class Transaction {
 	public void setPaymentAccountId(Long paymentAccountId) {
 		this.paymentAccountId = paymentAccountId;
 	}
+
 	@Transient
 	public BigDecimal getDebit() {
-	    if (transactionType == null) return BigDecimal.ZERO;
+		if (transactionType == null)
+			return BigDecimal.ZERO;
 
-	    switch (transactionType.toLowerCase()) {
-	        case "opening_balance":
-	        case "deposit":
-	        case "credit note":
-	            return amount != null ? amount : BigDecimal.ZERO;
-	        default:
-	            return BigDecimal.ZERO;
-	    }
+		switch (transactionType.toLowerCase()) {
+		case "opening_balance":
+		case "deposit":
+		case "credit note":
+			return amount != null ? amount : BigDecimal.ZERO;
+		default:
+			return BigDecimal.ZERO;
+		}
 	}
 
 	@Transient
 	public BigDecimal getCredit() {
-	    if (transactionType == null) return BigDecimal.ZERO;
+		if (transactionType == null)
+			return BigDecimal.ZERO;
 
-	    switch (transactionType.toLowerCase()) {
-	        case "sale":
-	        case "payment":
-	        case "expense":
-	            return amount != null ? amount : BigDecimal.ZERO;
-	        default:
-	            return BigDecimal.ZERO;
-	    }
+		switch (transactionType.toLowerCase()) {
+		case "sale":
+		case "payment":
+		case "expense":
+			return amount != null ? amount : BigDecimal.ZERO;
+		default:
+			return BigDecimal.ZERO;
+		}
+	}
+
+	public Long getPayrollEmployeeId() {
+		return payrollEmployeeId;
+	}
+
+	public void setPayrollEmployeeId(Long payrollEmployeeId) {
+		this.payrollEmployeeId = payrollEmployeeId;
+	}
+
+	public PayrollEmployee getPayrollEmployee() {
+		return payrollEmployee;
+	}
+
+	public void setPayrollEmployee(PayrollEmployee payrollEmployee) {
+		this.payrollEmployee = payrollEmployee;
 	}
 
 	// Getters and setters
