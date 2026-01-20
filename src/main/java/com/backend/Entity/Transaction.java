@@ -49,7 +49,7 @@ public class Transaction {
 	private Long payrollEmployeeId;
 
 	@ManyToOne
-	@JoinColumn(name = "payroll_employee_id", nullable = false)
+	@JoinColumn(name = "payroll_employee_id")
 	@JsonIgnore
 	private PayrollEmployee payrollEmployee;
 
