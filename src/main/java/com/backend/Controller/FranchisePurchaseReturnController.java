@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.backend.Entity.FranchisePurchaseReturn;
 import com.backend.Entity.PurchaseOrder;
+import com.backend.Entity.Transaction;
 import com.backend.Service.FranchisePurchaseReturnService;
 
 @RestController
@@ -29,6 +30,24 @@ public class FranchisePurchaseReturnController {
 
 	@Autowired
 	private FranchisePurchaseReturnService service;
+
+	// 🔹 Make payment for Franchise Purchase Return (MULTIPLE TIMES)
+	@PostMapping("/payment")
+	public ResponseEntity<Transaction> makePayment(@RequestBody Transaction transaction) {
+		return new ResponseEntity<>(service.saveTransaction(transaction), HttpStatus.CREATED);
+	}
+
+	// 🔹 Get all payments for a return
+	@GetMapping("/franchise-purchase-return/{returnId}")
+	public ResponseEntity<List<Transaction>> getPayments(@PathVariable Long returnId) {
+		return ResponseEntity.ok(service.getTransactionsByReturnId(returnId));
+	}
+
+	// 🔹 Total paid amount
+	@GetMapping("/franchise-purchase-return/{returnId}/total-paid")
+	public ResponseEntity<BigDecimal> getTotalPaid(@PathVariable Long returnId) {
+		return ResponseEntity.ok(service.getTotalPaidAmount(returnId));
+	}
 
 	@PostMapping("/save")
 	public ResponseEntity<FranchisePurchaseReturn> save(@RequestBody FranchisePurchaseReturn pr) {

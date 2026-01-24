@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.backend.Entity.FranchisePurchaseReturn;
+import com.backend.Entity.Transaction;
 
 public interface FranchisePurchaseReturnService {
 	FranchisePurchaseReturn saveFranchisePurchaseReturn(FranchisePurchaseReturn purchaseReturn);
@@ -38,4 +39,10 @@ public interface FranchisePurchaseReturnService {
 	List<FranchisePurchaseReturn> getReturnsByFranchiseIdAndStatus(String franchiseId, Long status);
 
 	BigDecimal getTotalReturnAmountByFranchise(String franchiseId);
+
+	Transaction saveTransaction(Transaction transaction);
+
+	List<Transaction> getTransactionsByReturnId(Long returnId);
+
+	BigDecimal getTotalPaidAmount(Long returnId);
 }

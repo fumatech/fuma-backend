@@ -28,6 +28,8 @@ public class FranchisePurchaseReturn {
 
 	private Long customerId;
 
+	private String customer;
+
 	private String vendor;
 
 	private String addedBy;
@@ -55,8 +57,11 @@ public class FranchisePurchaseReturn {
 	@OneToMany(mappedBy = "franchisePurchaseReturn", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<FranchisePurchaseReturnItems> franchisePurchaseReturnItems;
 
-	@OneToMany(mappedBy = "franchisePurchaseReturn", cascade = CascadeType.ALL, orphanRemoval = false)
+	@OneToMany(mappedBy = "franchisePurchaseReturn", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<StockTransaction> stockTransactions;
+
+	@OneToMany(mappedBy = "franchisePurchaseReturn", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Transaction> transactions;
 
 	@Transient
 	private com.backend.Service.IdGenerator idGenerator;
@@ -81,6 +86,14 @@ public class FranchisePurchaseReturn {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(String customer) {
+		this.customer = customer;
 	}
 
 	public String getFranchisePurchaseReturnId() {
@@ -225,6 +238,14 @@ public class FranchisePurchaseReturn {
 
 	public void setInvoiceNumber(String invoiceNumber) {
 		this.invoiceNumber = invoiceNumber;
+	}
+
+	public List<Transaction> getTransactions() {
+		return transactions;
+	}
+
+	public void setTransactions(List<Transaction> transactions) {
+		this.transactions = transactions;
 	}
 
 }

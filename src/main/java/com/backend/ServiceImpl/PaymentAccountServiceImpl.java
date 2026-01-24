@@ -185,8 +185,14 @@ public class PaymentAccountServiceImpl implements PaymentAccountService {
 			case "sale":
 				balance = balance.add(trans.getAmount());
 				break;
+			case "purchase_return":
+				balance = balance.add(trans.getAmount());
+				break;
 
 			case "purchase":
+				balance = balance.subtract(trans.getAmount());
+				break;
+			case "sale_return":
 				balance = balance.subtract(trans.getAmount());
 				break;
 			case "refund":
@@ -222,12 +228,14 @@ public class PaymentAccountServiceImpl implements PaymentAccountService {
 		switch (existingTransaction.getTransactionType().toLowerCase()) {
 		case "deposit":
 		case "sale":
+		case "purchase_return":
 		case "refund":
 		case "credit note":
 		case "opening_balance":
 			previousBalance = previousBalance.subtract(existingTransaction.getAmount());
 			break;
 		case "purchase":
+		case "sale_return":
 		case "payment":
 		case "expense":
 			previousBalance = previousBalance.add(existingTransaction.getAmount());
@@ -250,10 +258,12 @@ public class PaymentAccountServiceImpl implements PaymentAccountService {
 		switch (transactionType.toLowerCase()) {
 		case "deposit":
 		case "sale":
+		case "purchase_return":
 		case "opening_balance":
 			updatedBalance = previousBalance.add(amount);
 			break;
 		case "purchase":
+		case "sale_return":
 		case "expense":
 		case "refund":
 		case "credit note":

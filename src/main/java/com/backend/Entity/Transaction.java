@@ -48,6 +48,15 @@ public class Transaction {
 	@Transient
 	private Long payrollEmployeeId;
 
+	@Transient
+	private Long franchisePurchaseReturnId;
+
+	@ManyToOne
+	@JoinColumn(name = "franchise_purchase_return_id")
+	@JsonBackReference
+	@JsonIgnore
+	private FranchisePurchaseReturn franchisePurchaseReturn;
+
 	@ManyToOne
 	@JoinColumn(name = "payroll_employee_id")
 	@JsonIgnore
@@ -56,6 +65,7 @@ public class Transaction {
 	@ManyToOne
 	@JoinColumn(name = "add_Expenses_id")
 	@JsonBackReference
+	@JsonIgnore
 	private AddExpenses addExpenses;
 
 	@ManyToOne
@@ -112,6 +122,9 @@ public class Transaction {
 		switch (transactionType.toLowerCase()) {
 		case "opening_balance":
 		case "deposit":
+		case "sale_return":
+		case "purchase":
+		case "refund":
 		case "credit note":
 			return amount != null ? amount : BigDecimal.ZERO;
 		default:
@@ -127,6 +140,7 @@ public class Transaction {
 		switch (transactionType.toLowerCase()) {
 		case "sale":
 		case "payment":
+		case "purchase_return":
 		case "expense":
 			return amount != null ? amount : BigDecimal.ZERO;
 		default:
@@ -140,6 +154,22 @@ public class Transaction {
 
 	public void setPayrollEmployeeId(Long payrollEmployeeId) {
 		this.payrollEmployeeId = payrollEmployeeId;
+	}
+
+	public Long getFranchisePurchaseReturnId() {
+		return franchisePurchaseReturnId;
+	}
+
+	public void setFranchisePurchaseReturnId(Long franchisePurchaseReturnId) {
+		this.franchisePurchaseReturnId = franchisePurchaseReturnId;
+	}
+
+	public FranchisePurchaseReturn getFranchisePurchaseReturn() {
+		return franchisePurchaseReturn;
+	}
+
+	public void setFranchisePurchaseReturn(FranchisePurchaseReturn franchisePurchaseReturn) {
+		this.franchisePurchaseReturn = franchisePurchaseReturn;
 	}
 
 	public PayrollEmployee getPayrollEmployee() {

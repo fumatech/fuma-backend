@@ -1,6 +1,7 @@
 package com.backend.ServiceImpl;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -11,7 +12,10 @@ import org.springframework.stereotype.Service;
 import com.backend.Entity.FranchisePurchaseReturn;
 import com.backend.Entity.FranchisePurchaseReturnItems;
 import com.backend.Entity.StockTransaction;
+import com.backend.Entity.Transaction;
 import com.backend.Repository.FranchisePurchaseReturnRepo;
+import com.backend.Repository.PaymentAccountRepo;
+import com.backend.Repository.TransactionRepo;
 import com.backend.Service.FranchisePurchaseReturnService;
 import com.backend.Service.IdGenerator;
 
@@ -23,6 +27,47 @@ public class FranchisePurchaseReturnServiceImpl implements FranchisePurchaseRetu
 
 	@Autowired
 	private IdGenerator idGenerator;
+
+	@Autowired
+	private TransactionRepo transactionRepo;
+
+	@Autowired
+	private FranchisePurchaseReturnRepo returnRepo;
+
+	@Autowired
+	private PaymentAccountRepo paymentAccountRepo;
+
+	@Override
+	public Transaction saveTransaction(Transaction transaction) {
+
+		// 🔹 Link Franchise Purchase Return
+		if (transaction.getFranchisePurchaseReturnId() != null) {
+			FranchisePurchaseReturn pr = returnRepo.findById(transaction.getFranchisePurchaseReturnId())
+					.orElseThrow(() -> new RuntimeException("Return not found"));
+
+			transaction.setFranchisePurchaseReturn(pr);
+		}
+
+		// 🔹 Link Payment Account
+		if (transaction.getPaymentAccountId() != null) {
+			transaction.setPaymentAccount(paymentAccountRepo.findById(transaction.getPaymentAccountId())
+					.orElseThrow(() -> new RuntimeException("Payment account not found")));
+		}
+
+		transaction.setDate(LocalDateTime.now());
+
+		return transactionRepo.save(transaction);
+	}
+
+	@Override
+	public List<Transaction> getTransactionsByReturnId(Long returnId) {
+		return transactionRepo.findByFranchisePurchaseReturn_Id(returnId);
+	}
+
+	@Override
+	public BigDecimal getTotalPaidAmount(Long returnId) {
+		return transactionRepo.totalPaidAmount(returnId);
+	}
 
 	@Override
 	public FranchisePurchaseReturn saveFranchisePurchaseReturn(FranchisePurchaseReturn returnOrder) {
@@ -70,6 +115,7 @@ public class FranchisePurchaseReturnServiceImpl implements FranchisePurchaseRetu
 
 			// Update simple fields
 			existing.setVendor(updatedReturn.getVendor());
+			existing.setFranchisePurchaseReturnId(updatedReturn.getFranchisePurchaseReturnId());
 			existing.setStatus(updatedReturn.getStatus());
 			existing.setPaymentStatus(updatedReturn.getPaymentStatus());
 			existing.setAddedBy(updatedReturn.getAddedBy());
@@ -77,8 +123,10 @@ public class FranchisePurchaseReturnServiceImpl implements FranchisePurchaseRetu
 			existing.setOrderDate(updatedReturn.getOrderDate());
 			existing.setLocation(updatedReturn.getLocation());
 			existing.setFile(updatedReturn.getFile());
-			existing.setInvoiceNumber(updatedReturn.getInvoiceNumber());
+			existing.setCustomer(updatedReturn.getCustomer());
 			existing.setFranchiseId(updatedReturn.getFranchiseId());
+			existing.setInvoiceNumber(updatedReturn.getInvoiceNumber());
+			existing.setCustomerId(updatedReturn.getCustomerId());
 			existing.setTotalItems(updatedReturn.getTotalItems());
 			existing.setCustomerId(updatedReturn.getCustomerId());
 			existing.setNetTotalAmount(updatedReturn.getNetTotalAmount());

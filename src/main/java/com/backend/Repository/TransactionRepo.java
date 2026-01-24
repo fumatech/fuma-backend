@@ -35,4 +35,9 @@ public interface TransactionRepo extends JpaRepository<Transaction, Long> {
 
 	List<Transaction> findByPayrollEmployee_Id(Long payrollEmployeeId);
 
+	List<Transaction> findByFranchisePurchaseReturn_Id(Long id);
+
+	@Query("SELECT COALESCE(SUM(t.amount),0) FROM Transaction t WHERE t.franchisePurchaseReturn.id = :returnId")
+	BigDecimal totalPaidAmount(Long returnId);
+
 }

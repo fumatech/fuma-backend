@@ -158,8 +158,8 @@ public class PayRollServiceImpl implements PayRollService {
 			payroll.setYear(ym.getYear());
 			payroll.setAddedBy(request.getAddedBy());
 			payroll.setStatus(request.getStatus());
-
-			// ❗ Do NOT change createdAt during edit
+			payroll.setCreatedAt(request.getCreatedAt() != null ? request.getCreatedAt()
+					: new java.sql.Date(System.currentTimeMillis()));
 
 			// 🔥 Delete old employees data
 			List<PayrollEmployee> oldEmployees = payrollEmployeeRepository.findByPayrollId(payroll.getId());
@@ -255,6 +255,7 @@ public class PayRollServiceImpl implements PayRollService {
 		for (PayrollEmployee emp : employees) {
 
 			PayrollEmployeeResponseDTO empDto = new PayrollEmployeeResponseDTO();
+			empDto.setPayrollEmployeeId(emp.getId());
 			empDto.setEmployeeId(emp.getEmployeeId());
 			empDto.setWorkDuration(emp.getWorkDuration());
 			empDto.setUnit(emp.getUnit() != null ? emp.getUnit().toString() : null);

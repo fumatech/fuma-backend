@@ -3,6 +3,7 @@ package com.backend.DTO;
 import java.util.List;
 
 public class PayrollEmployeeResponseDTO {
+	private Long payrollEmployeeId;
 	private Long employeeId;
 	private Double workDuration;
 	private String unit;
@@ -14,6 +15,14 @@ public class PayrollEmployeeResponseDTO {
 	private List<AmountDTO> earnings;
 	private List<AmountDTO> deductions;
 	private List<PayrollSalaryTransactionDTO> transactions;
+
+	public Long getPayrollEmployeeId() {
+		return payrollEmployeeId;
+	}
+
+	public void setPayrollEmployeeId(Long payrollEmployeeId) {
+		this.payrollEmployeeId = payrollEmployeeId;
+	}
 
 	public Long getEmployeeId() {
 		return employeeId;
