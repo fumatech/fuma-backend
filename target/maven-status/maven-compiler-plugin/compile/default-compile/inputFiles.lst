@@ -1,381 +1,378 @@
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\AddExpensesController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\AddLeaveController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\AllOrdersController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\AttendanceController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\BrandsController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\BusinessCategoryController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\BusinessDetailsController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\BusinessLocationController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\CampaignController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\CategoriesController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\ClientLedgerController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\CombinedPurchaseOrderController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\CombinedSaleOrderController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\ContactLoginController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\CustomerController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\DatabaseController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\DepartmentController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\DesignationController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\ExpensesController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\FileController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\FileDownloadController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\FollowUpsController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\FranchisePurchaseOrderController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\FranchisePurchaseReturnController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\FranchiseWarrantyClaimController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\HolidayController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\ItemReportController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\LeadController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\LeaveController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\PayComponentController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\PaymentAccountController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\PaymentMethodController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\PayRollController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\PermissionController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\ProductController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\ProductPurchaseReportController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\ProductStockController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\PurchaseController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\PurchaseDIOrderController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\PurchaseOrderController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\PurchasePoOrderController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\PurchaseReturnController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\PurchaseSaleSummaryController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\ReportController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\RoleController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\SaleController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\SaleDIOrderController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\SaleReturnController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\SaleSoOrderController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\SellReportController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\ShiftController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\SignatureUploadController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\StockAdjustmentController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\StockReportController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\StockTransactionController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\StockTransferController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\TargetController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\TaxController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\TaxGroupController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\TaxRateController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\TrailBalanceController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\TransactionController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\UnitsController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\UserController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\VariationsController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\VendorController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\VendorWarrantyClaimController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Controller\WarrantyClaimController.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\DTO\AmountDTO.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\DTO\BulkPayrollTransactionRequest.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\DTO\EmployeePayrollDTO.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\DTO\EmployeePayrollViewDTO.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\DTO\PayComponentBulkRequest.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\DTO\PayrollEmployeeResponseDTO.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\DTO\PayrollResponseDTO.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\DTO\PayrollSalaryTransactionDTO.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\DTO\PayrollSaveRequest.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\AddExpenses.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\AddLeave.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\AllOrdersResponse.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\Attendance.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\AttendanceBulkRequest.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\AttendanceRequest.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\AttendanceStatus.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\Brands.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\BrandWiseReportDTO.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\BusinessCategory.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\BusinessDetails.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\BusinessLocation.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\Campaign.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\Categories.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\CategoryWiseReportDTO.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\ClientLedgerDTO.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\ContactLogin.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\Customer.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\DatabaseRequest.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\Deduction.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\Department.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\Designation.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\Earning.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\EmployeePayroll.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\Expenses.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\FollowUps.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\FranchiseOrderItems.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\FranchisePurchaseOrder.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\FranchisePurchaseReturn.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\FranchisePurchaseReturnItems.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\FranchiseWarrantyClaim.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\FranchiseWarrantyClaimItems.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\GroupedDateReportDTO.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\Holiday.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\ItemReportDTO.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\JournalEntry.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\Lead.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\Leave.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\LoginRequest.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\OrderItems.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\PayComponent.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\PaymentAccount.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\PaymentMethod.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\PayRoll.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\PayrollDeduction.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\PayrollEarning.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\PayrollEmployee.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\Permission.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\Product.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\ProductPurchaseReportDTO.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\ProductStock.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\ProductVariations.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\Purchase.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\PurchaseDIItem.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\PurchaseDIOrder.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\PurchaseDIPaymentMethod.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\PurchaseItem.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\PurchaseOrder.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\PurchasePaymentMethod.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\PurchasePoItem.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\PurchasePoOrder.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\PurchasePoPaymentMethod.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\PurchaseReturn.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\PurchaseReturnItems.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\PurchaseSaleSummaryDTO.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\PurchaseTaxReportDTO.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\Response.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\Role.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\Sale.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\SaleDIItem.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\SaleDIOrder.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\SaleDIPaymentMethod.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\SalePaymentMethod.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\SaleReturn.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\SaleReturnItems.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\SaleSoItem.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\SaleSoOrder.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\SaleSoPaymentMethod.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\SellReportDTO.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\Shift.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\ShippingDetails.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\ShippingDIDetails.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\ShippingPoDetails.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\ShippingSaleDIDetails.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\ShippingSoDetails.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\SignatureImage.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\StockAdjustment.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\StockAdjustmentItems.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\StockReportDTO.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\StockTransaction.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\StockTransfer.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\StockTransferItems.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\Target.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\Tax.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\TaxGroup.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\TaxRate.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\Transaction.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\Units.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\UploadedImage.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\User.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\Variations.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\Vendor.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\VendorWarrantyClaim.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\VendorWarrantyClaimItems.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\WarrantyClaim.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Entity\WarrantyClaimItems.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ErpSolutionApplication.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\AddExpensesRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\AddLeaveRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\AttendanceRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\BrandRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\BusinessCategoryRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\BusinessDetailsRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\BusinessLocationRepository.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\CampaignRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\CategoriesRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\ContactLoginRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\CustomerRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\DepartmentRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\DesignationRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\ExpensesRepository.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\FollowUpsRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\FranchisePurchaseOrderRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\FranchisePurchaseReturnRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\FranchiseWarrantyClaimRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\HolidayRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\ItemReportRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\LeadRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\LeaveRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\OrderItemsRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\PayComponentRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\PaymentAccountRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\PaymentMethodRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\PayrollDeductionRepository.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\PayrollEarningRepository.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\PayrollEmployeeRepository.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\PayRollRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\PayrollRepository.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\PermissionRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\ProductRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\ProductStockRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\ProductVariationsRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\PurchaseDIItemRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\PurchaseDIOrderRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\PurchaseItemRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\PurchaseOrderRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\PurchasePaymentMethodRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\PurchasePoItemRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\PurchasePoOrderRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\PurchaseRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\PurchaseReturnRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\ReportRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\RoleRepository.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\SaleDIItemRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\SaleDIOrderRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\SalePaymentMethodRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\SaleRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\SaleReturnRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\SaleSoItemRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\SaleSoOrderRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\ShiftRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\ShippingDetailsRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\SignatureImageRepository.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\StockAdjustmentItemsRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\StockAdjustmentRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\StockTransactionRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\StockTransferRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\TargetRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\TaxGroupRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\TaxRateRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\TaxRepository.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\TransactionRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\UnitRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\UploadedImageRepository.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\UserRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\VariationsRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\VendorRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\VendorWarrantyClaimRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Repository\WarrantyClaimRepo.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\AddExpensesService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\AddLeaveService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\AttendanceService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\BrandsService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\BusinessCategoryService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\BusinessDetailsService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\BusinessLocationService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\CampaignService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\CategoriesService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\ContactLoginService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\CustomerService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\DepartmentService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\DesignationService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\ExpensesService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\FollowUpsService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\FranchisePurchaseOrderService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\FranchisePurchaseReturnService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\FranchiseWarrantyClaimService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\HolidayService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\IdGenerator.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\ImageUploadService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\ItemReportService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\LeadService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\LeaveService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\PayComponentService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\PaymentAccountService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\PaymentMethodService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\PayRollService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\PermissionService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\ProductPurchaseReportService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\ProductService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\ProductStockService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\PurchaseDIOrderService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\PurchaseOrderService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\PurchasePoOrderService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\PurchaseReturnService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\PurchaseService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\ReportService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\RoleService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\SaleDIOrderService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\SaleReturnService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\SaleService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\SaleSoOrderService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\SellReportService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\ShiftService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\SignatureImageService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\StockAdjustmentService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\StockTransactionService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\StockTransferService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\TargetService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\TaxGroupService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\TaxRateService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\TaxService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\UnitsService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\UserService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\VariationsService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\VendorService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\VendorWarrantyClaimService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Service\WarrantyClaimService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\AddExpensesServiceImpl.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\AddLeaveServiceImpl.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\AttendanceServiceImpl.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\BrandsServiceImpl.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\BusinessCategoryServiceImpl.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\BusinessDetailsServiceImpl.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\BusinessLocationServiceImpl.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\CampaignServiceImpl.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\CategoriesServiceImpl.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\ClientLedgerService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\CombinedPurchaseOrderService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\CombinedSaleOrderService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\ContactLoginServiceImpl.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\CustomerImpl.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\DatabaseService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\DepartmentServiceImpl.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\DesignationServiceImpl.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\ExpensesServiceImpl.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\FollowUpsServiceImpl.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\FranchisePurchaseOrderServiceImpl.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\FranchisePurchaseReturnServiceImpl.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\FranchiseWarrantyClaimServiceImpl.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\HolidayServiceImpl.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\ImageUploadServiceImpl.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\LeadServiceImpl.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\LeaveServiceImpl.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\PayComponentServiceImpl.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\PaymentAccountServiceImpl.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\PaymentMethodServiceImpl.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\PayRollServiceImpl.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\PermissionServiceImpl.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\ProductServiceImpl.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\ProductStockServiceImpl.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\PurchaseDIOrderServiceImpl.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\PurchaseOrderServiceImpl.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\PurchasePoOrderServiceImpl.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\PurchaseReturnServiceImpl.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\PurchaseSaleSummaryService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\PurchaseServiceImpl.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\ReportServiceImpl.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\RoleServiceImpl.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\SaleDIOrderServiceImpl.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\SaleReturnServiceImpl.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\SaleServiceImpl.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\SaleSoOrderServiceImpl.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\ShiftServiceImpl.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\SignatureImageServiceImpl.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\StockAdjustmentServiceImpl.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\StockReportService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\StockTransactionServiceImpl.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\StockTransferServiceImpl.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\TargetServiceImpl.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\TaxGroupServiceImpl.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\TaxRateServiceImpl.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\TaxServiceImpl.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\TrailBalanceService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\TransactionService.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\UnitsServiceImpl.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\UserServiceImpl.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\VariationsServiceImpl.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\VendorServiceImpl.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\VendorWarrantyClaimServiceImpl.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\ServiceImpl\WarrantyClaimServiceImpl.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\com\backend\Util\FileUploadUtil.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\Configuration\WebConfig.java
-C:\Users\dell\Desktop\Fuma Projects\fuma-backend\src\main\java\Exceptions\ResourceNotFoundException.java
+D:\fuma-backend\src\main\java\com\backend\Controller\AddExpensesController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\AddLeaveController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\AllOrdersController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\AttendanceController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\BrandsController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\BusinessCategoryController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\BusinessDetailsController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\BusinessLocationController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\CampaignController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\CategoriesController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\ClientLedgerController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\CombinedPurchaseOrderController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\CombinedSaleOrderController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\ContactLoginController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\CustomerController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\DatabaseController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\DepartmentController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\DesignationController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\ExpensesController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\FileController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\FileDownloadController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\FollowUpsController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\FranchisePurchaseOrderController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\FranchisePurchaseReturnController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\FranchiseWarrantyClaimController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\HolidayController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\ItemReportController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\LeadController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\LeaveController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\PayComponentController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\PaymentAccountController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\PaymentMethodController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\PayRollController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\PermissionController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\ProductController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\ProductPurchaseReportController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\ProductStockController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\PurchaseController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\PurchaseDIOrderController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\PurchaseOrderController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\PurchasePoOrderController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\PurchaseReturnController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\PurchaseSaleSummaryController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\ReportController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\RoleController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\SaleController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\SaleDIOrderController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\SaleReturnController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\SaleSoOrderController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\SellReportController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\ShiftController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\SignatureUploadController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\StockAdjustmentController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\StockReportController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\StockTransactionController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\StockTransferController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\TargetController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\TaxController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\TaxGroupController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\TaxRateController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\TrailBalanceController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\TransactionController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\UnitsController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\UserController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\VariationsController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\VendorController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\VendorWarrantyClaimController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\WarrantyClaimController.java
+D:\fuma-backend\src\main\java\com\backend\DTO\AmountDTO.java
+D:\fuma-backend\src\main\java\com\backend\DTO\BulkPayrollTransactionRequest.java
+D:\fuma-backend\src\main\java\com\backend\DTO\EmployeePayrollDTO.java
+D:\fuma-backend\src\main\java\com\backend\DTO\EmployeePayrollViewDTO.java
+D:\fuma-backend\src\main\java\com\backend\DTO\PayComponentBulkRequest.java
+D:\fuma-backend\src\main\java\com\backend\DTO\PayrollEmployeeResponseDTO.java
+D:\fuma-backend\src\main\java\com\backend\DTO\PayrollResponseDTO.java
+D:\fuma-backend\src\main\java\com\backend\DTO\PayrollSalaryTransactionDTO.java
+D:\fuma-backend\src\main\java\com\backend\DTO\PayrollSaveRequest.java
+D:\fuma-backend\src\main\java\com\backend\Entity\AddExpenses.java
+D:\fuma-backend\src\main\java\com\backend\Entity\AddLeave.java
+D:\fuma-backend\src\main\java\com\backend\Entity\AllOrdersResponse.java
+D:\fuma-backend\src\main\java\com\backend\Entity\Attendance.java
+D:\fuma-backend\src\main\java\com\backend\Entity\AttendanceBulkRequest.java
+D:\fuma-backend\src\main\java\com\backend\Entity\AttendanceRequest.java
+D:\fuma-backend\src\main\java\com\backend\Entity\AttendanceStatus.java
+D:\fuma-backend\src\main\java\com\backend\Entity\Brands.java
+D:\fuma-backend\src\main\java\com\backend\Entity\BrandWiseReportDTO.java
+D:\fuma-backend\src\main\java\com\backend\Entity\BusinessCategory.java
+D:\fuma-backend\src\main\java\com\backend\Entity\BusinessDetails.java
+D:\fuma-backend\src\main\java\com\backend\Entity\BusinessLocation.java
+D:\fuma-backend\src\main\java\com\backend\Entity\Campaign.java
+D:\fuma-backend\src\main\java\com\backend\Entity\Categories.java
+D:\fuma-backend\src\main\java\com\backend\Entity\CategoryWiseReportDTO.java
+D:\fuma-backend\src\main\java\com\backend\Entity\ClientLedgerDTO.java
+D:\fuma-backend\src\main\java\com\backend\Entity\ContactLogin.java
+D:\fuma-backend\src\main\java\com\backend\Entity\Customer.java
+D:\fuma-backend\src\main\java\com\backend\Entity\DatabaseRequest.java
+D:\fuma-backend\src\main\java\com\backend\Entity\Department.java
+D:\fuma-backend\src\main\java\com\backend\Entity\Designation.java
+D:\fuma-backend\src\main\java\com\backend\Entity\Expenses.java
+D:\fuma-backend\src\main\java\com\backend\Entity\FollowUps.java
+D:\fuma-backend\src\main\java\com\backend\Entity\FranchiseOrderItems.java
+D:\fuma-backend\src\main\java\com\backend\Entity\FranchisePurchaseOrder.java
+D:\fuma-backend\src\main\java\com\backend\Entity\FranchisePurchaseReturn.java
+D:\fuma-backend\src\main\java\com\backend\Entity\FranchisePurchaseReturnItems.java
+D:\fuma-backend\src\main\java\com\backend\Entity\FranchiseWarrantyClaim.java
+D:\fuma-backend\src\main\java\com\backend\Entity\FranchiseWarrantyClaimItems.java
+D:\fuma-backend\src\main\java\com\backend\Entity\GroupedDateReportDTO.java
+D:\fuma-backend\src\main\java\com\backend\Entity\Holiday.java
+D:\fuma-backend\src\main\java\com\backend\Entity\ItemReportDTO.java
+D:\fuma-backend\src\main\java\com\backend\Entity\JournalEntry.java
+D:\fuma-backend\src\main\java\com\backend\Entity\Lead.java
+D:\fuma-backend\src\main\java\com\backend\Entity\Leave.java
+D:\fuma-backend\src\main\java\com\backend\Entity\LoginRequest.java
+D:\fuma-backend\src\main\java\com\backend\Entity\OrderItems.java
+D:\fuma-backend\src\main\java\com\backend\Entity\PayComponent.java
+D:\fuma-backend\src\main\java\com\backend\Entity\PaymentAccount.java
+D:\fuma-backend\src\main\java\com\backend\Entity\PaymentMethod.java
+D:\fuma-backend\src\main\java\com\backend\Entity\PayRoll.java
+D:\fuma-backend\src\main\java\com\backend\Entity\PayrollDeduction.java
+D:\fuma-backend\src\main\java\com\backend\Entity\PayrollEarning.java
+D:\fuma-backend\src\main\java\com\backend\Entity\PayrollEmployee.java
+D:\fuma-backend\src\main\java\com\backend\Entity\Permission.java
+D:\fuma-backend\src\main\java\com\backend\Entity\Product.java
+D:\fuma-backend\src\main\java\com\backend\Entity\ProductPurchaseReportDTO.java
+D:\fuma-backend\src\main\java\com\backend\Entity\ProductStock.java
+D:\fuma-backend\src\main\java\com\backend\Entity\ProductVariations.java
+D:\fuma-backend\src\main\java\com\backend\Entity\Purchase.java
+D:\fuma-backend\src\main\java\com\backend\Entity\PurchaseDIItem.java
+D:\fuma-backend\src\main\java\com\backend\Entity\PurchaseDIOrder.java
+D:\fuma-backend\src\main\java\com\backend\Entity\PurchaseDIPaymentMethod.java
+D:\fuma-backend\src\main\java\com\backend\Entity\PurchaseItem.java
+D:\fuma-backend\src\main\java\com\backend\Entity\PurchaseOrder.java
+D:\fuma-backend\src\main\java\com\backend\Entity\PurchasePaymentMethod.java
+D:\fuma-backend\src\main\java\com\backend\Entity\PurchasePoItem.java
+D:\fuma-backend\src\main\java\com\backend\Entity\PurchasePoOrder.java
+D:\fuma-backend\src\main\java\com\backend\Entity\PurchasePoPaymentMethod.java
+D:\fuma-backend\src\main\java\com\backend\Entity\PurchaseReturn.java
+D:\fuma-backend\src\main\java\com\backend\Entity\PurchaseReturnItems.java
+D:\fuma-backend\src\main\java\com\backend\Entity\PurchaseSaleSummaryDTO.java
+D:\fuma-backend\src\main\java\com\backend\Entity\PurchaseTaxReportDTO.java
+D:\fuma-backend\src\main\java\com\backend\Entity\Response.java
+D:\fuma-backend\src\main\java\com\backend\Entity\Role.java
+D:\fuma-backend\src\main\java\com\backend\Entity\Sale.java
+D:\fuma-backend\src\main\java\com\backend\Entity\SaleDIItem.java
+D:\fuma-backend\src\main\java\com\backend\Entity\SaleDIOrder.java
+D:\fuma-backend\src\main\java\com\backend\Entity\SaleDIPaymentMethod.java
+D:\fuma-backend\src\main\java\com\backend\Entity\SalePaymentMethod.java
+D:\fuma-backend\src\main\java\com\backend\Entity\SaleReturn.java
+D:\fuma-backend\src\main\java\com\backend\Entity\SaleReturnItems.java
+D:\fuma-backend\src\main\java\com\backend\Entity\SaleSoItem.java
+D:\fuma-backend\src\main\java\com\backend\Entity\SaleSoOrder.java
+D:\fuma-backend\src\main\java\com\backend\Entity\SaleSoPaymentMethod.java
+D:\fuma-backend\src\main\java\com\backend\Entity\SellReportDTO.java
+D:\fuma-backend\src\main\java\com\backend\Entity\Shift.java
+D:\fuma-backend\src\main\java\com\backend\Entity\ShippingDetails.java
+D:\fuma-backend\src\main\java\com\backend\Entity\ShippingDIDetails.java
+D:\fuma-backend\src\main\java\com\backend\Entity\ShippingPoDetails.java
+D:\fuma-backend\src\main\java\com\backend\Entity\ShippingSaleDIDetails.java
+D:\fuma-backend\src\main\java\com\backend\Entity\ShippingSoDetails.java
+D:\fuma-backend\src\main\java\com\backend\Entity\SignatureImage.java
+D:\fuma-backend\src\main\java\com\backend\Entity\StockAdjustment.java
+D:\fuma-backend\src\main\java\com\backend\Entity\StockAdjustmentItems.java
+D:\fuma-backend\src\main\java\com\backend\Entity\StockReportDTO.java
+D:\fuma-backend\src\main\java\com\backend\Entity\StockTransaction.java
+D:\fuma-backend\src\main\java\com\backend\Entity\StockTransfer.java
+D:\fuma-backend\src\main\java\com\backend\Entity\StockTransferItems.java
+D:\fuma-backend\src\main\java\com\backend\Entity\Target.java
+D:\fuma-backend\src\main\java\com\backend\Entity\Tax.java
+D:\fuma-backend\src\main\java\com\backend\Entity\TaxGroup.java
+D:\fuma-backend\src\main\java\com\backend\Entity\TaxRate.java
+D:\fuma-backend\src\main\java\com\backend\Entity\Transaction.java
+D:\fuma-backend\src\main\java\com\backend\Entity\Units.java
+D:\fuma-backend\src\main\java\com\backend\Entity\UploadedImage.java
+D:\fuma-backend\src\main\java\com\backend\Entity\User.java
+D:\fuma-backend\src\main\java\com\backend\Entity\Variations.java
+D:\fuma-backend\src\main\java\com\backend\Entity\Vendor.java
+D:\fuma-backend\src\main\java\com\backend\Entity\VendorWarrantyClaim.java
+D:\fuma-backend\src\main\java\com\backend\Entity\VendorWarrantyClaimItems.java
+D:\fuma-backend\src\main\java\com\backend\Entity\WarrantyClaim.java
+D:\fuma-backend\src\main\java\com\backend\Entity\WarrantyClaimItems.java
+D:\fuma-backend\src\main\java\com\backend\ErpSolutionApplication.java
+D:\fuma-backend\src\main\java\com\backend\Repository\AddExpensesRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\AddLeaveRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\AttendanceRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\BrandRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\BusinessCategoryRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\BusinessDetailsRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\BusinessLocationRepository.java
+D:\fuma-backend\src\main\java\com\backend\Repository\CampaignRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\CategoriesRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\ContactLoginRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\CustomerRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\DepartmentRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\DesignationRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\ExpensesRepository.java
+D:\fuma-backend\src\main\java\com\backend\Repository\FollowUpsRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\FranchisePurchaseOrderRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\FranchisePurchaseReturnRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\FranchiseWarrantyClaimRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\HolidayRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\ItemReportRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\LeadRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\LeaveRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\OrderItemsRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\PayComponentRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\PaymentAccountRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\PaymentMethodRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\PayrollDeductionRepository.java
+D:\fuma-backend\src\main\java\com\backend\Repository\PayrollEarningRepository.java
+D:\fuma-backend\src\main\java\com\backend\Repository\PayrollEmployeeRepository.java
+D:\fuma-backend\src\main\java\com\backend\Repository\PayRollRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\PayrollRepository.java
+D:\fuma-backend\src\main\java\com\backend\Repository\PermissionRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\ProductRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\ProductStockRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\ProductVariationsRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\PurchaseDIItemRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\PurchaseDIOrderRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\PurchaseItemRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\PurchaseOrderRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\PurchasePaymentMethodRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\PurchasePoItemRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\PurchasePoOrderRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\PurchaseRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\PurchaseReturnRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\ReportRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\RoleRepository.java
+D:\fuma-backend\src\main\java\com\backend\Repository\SaleDIItemRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\SaleDIOrderRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\SalePaymentMethodRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\SaleRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\SaleReturnRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\SaleSoItemRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\SaleSoOrderRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\ShiftRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\ShippingDetailsRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\SignatureImageRepository.java
+D:\fuma-backend\src\main\java\com\backend\Repository\StockAdjustmentItemsRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\StockAdjustmentRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\StockTransactionRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\StockTransferRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\TargetRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\TaxGroupRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\TaxRateRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\TaxRepository.java
+D:\fuma-backend\src\main\java\com\backend\Repository\TransactionRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\UnitRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\UploadedImageRepository.java
+D:\fuma-backend\src\main\java\com\backend\Repository\UserRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\VariationsRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\VendorRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\VendorWarrantyClaimRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\WarrantyClaimRepo.java
+D:\fuma-backend\src\main\java\com\backend\Service\AddExpensesService.java
+D:\fuma-backend\src\main\java\com\backend\Service\AddLeaveService.java
+D:\fuma-backend\src\main\java\com\backend\Service\AttendanceService.java
+D:\fuma-backend\src\main\java\com\backend\Service\BrandsService.java
+D:\fuma-backend\src\main\java\com\backend\Service\BusinessCategoryService.java
+D:\fuma-backend\src\main\java\com\backend\Service\BusinessDetailsService.java
+D:\fuma-backend\src\main\java\com\backend\Service\BusinessLocationService.java
+D:\fuma-backend\src\main\java\com\backend\Service\CampaignService.java
+D:\fuma-backend\src\main\java\com\backend\Service\CategoriesService.java
+D:\fuma-backend\src\main\java\com\backend\Service\ContactLoginService.java
+D:\fuma-backend\src\main\java\com\backend\Service\CustomerService.java
+D:\fuma-backend\src\main\java\com\backend\Service\DepartmentService.java
+D:\fuma-backend\src\main\java\com\backend\Service\DesignationService.java
+D:\fuma-backend\src\main\java\com\backend\Service\ExpensesService.java
+D:\fuma-backend\src\main\java\com\backend\Service\FollowUpsService.java
+D:\fuma-backend\src\main\java\com\backend\Service\FranchisePurchaseOrderService.java
+D:\fuma-backend\src\main\java\com\backend\Service\FranchisePurchaseReturnService.java
+D:\fuma-backend\src\main\java\com\backend\Service\FranchiseWarrantyClaimService.java
+D:\fuma-backend\src\main\java\com\backend\Service\HolidayService.java
+D:\fuma-backend\src\main\java\com\backend\Service\IdGenerator.java
+D:\fuma-backend\src\main\java\com\backend\Service\ImageUploadService.java
+D:\fuma-backend\src\main\java\com\backend\Service\ItemReportService.java
+D:\fuma-backend\src\main\java\com\backend\Service\LeadService.java
+D:\fuma-backend\src\main\java\com\backend\Service\LeaveService.java
+D:\fuma-backend\src\main\java\com\backend\Service\PayComponentService.java
+D:\fuma-backend\src\main\java\com\backend\Service\PaymentAccountService.java
+D:\fuma-backend\src\main\java\com\backend\Service\PaymentMethodService.java
+D:\fuma-backend\src\main\java\com\backend\Service\PayRollService.java
+D:\fuma-backend\src\main\java\com\backend\Service\PermissionService.java
+D:\fuma-backend\src\main\java\com\backend\Service\ProductPurchaseReportService.java
+D:\fuma-backend\src\main\java\com\backend\Service\ProductService.java
+D:\fuma-backend\src\main\java\com\backend\Service\ProductStockService.java
+D:\fuma-backend\src\main\java\com\backend\Service\PurchaseDIOrderService.java
+D:\fuma-backend\src\main\java\com\backend\Service\PurchaseOrderService.java
+D:\fuma-backend\src\main\java\com\backend\Service\PurchasePoOrderService.java
+D:\fuma-backend\src\main\java\com\backend\Service\PurchaseReturnService.java
+D:\fuma-backend\src\main\java\com\backend\Service\PurchaseService.java
+D:\fuma-backend\src\main\java\com\backend\Service\ReportService.java
+D:\fuma-backend\src\main\java\com\backend\Service\RoleService.java
+D:\fuma-backend\src\main\java\com\backend\Service\SaleDIOrderService.java
+D:\fuma-backend\src\main\java\com\backend\Service\SaleReturnService.java
+D:\fuma-backend\src\main\java\com\backend\Service\SaleService.java
+D:\fuma-backend\src\main\java\com\backend\Service\SaleSoOrderService.java
+D:\fuma-backend\src\main\java\com\backend\Service\SellReportService.java
+D:\fuma-backend\src\main\java\com\backend\Service\ShiftService.java
+D:\fuma-backend\src\main\java\com\backend\Service\SignatureImageService.java
+D:\fuma-backend\src\main\java\com\backend\Service\StockAdjustmentService.java
+D:\fuma-backend\src\main\java\com\backend\Service\StockTransactionService.java
+D:\fuma-backend\src\main\java\com\backend\Service\StockTransferService.java
+D:\fuma-backend\src\main\java\com\backend\Service\TargetService.java
+D:\fuma-backend\src\main\java\com\backend\Service\TaxGroupService.java
+D:\fuma-backend\src\main\java\com\backend\Service\TaxRateService.java
+D:\fuma-backend\src\main\java\com\backend\Service\TaxService.java
+D:\fuma-backend\src\main\java\com\backend\Service\UnitsService.java
+D:\fuma-backend\src\main\java\com\backend\Service\UserService.java
+D:\fuma-backend\src\main\java\com\backend\Service\VariationsService.java
+D:\fuma-backend\src\main\java\com\backend\Service\VendorService.java
+D:\fuma-backend\src\main\java\com\backend\Service\VendorWarrantyClaimService.java
+D:\fuma-backend\src\main\java\com\backend\Service\WarrantyClaimService.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\AddExpensesServiceImpl.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\AddLeaveServiceImpl.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\AttendanceServiceImpl.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\BrandsServiceImpl.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\BusinessCategoryServiceImpl.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\BusinessDetailsServiceImpl.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\BusinessLocationServiceImpl.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\CampaignServiceImpl.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\CategoriesServiceImpl.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\ClientLedgerService.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\CombinedPurchaseOrderService.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\CombinedSaleOrderService.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\ContactLoginServiceImpl.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\CustomerImpl.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\DatabaseService.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\DepartmentServiceImpl.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\DesignationServiceImpl.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\ExpensesServiceImpl.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\FollowUpsServiceImpl.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\FranchisePurchaseOrderServiceImpl.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\FranchisePurchaseReturnServiceImpl.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\FranchiseWarrantyClaimServiceImpl.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\HolidayServiceImpl.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\ImageUploadServiceImpl.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\LeadServiceImpl.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\LeaveServiceImpl.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\PayComponentServiceImpl.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\PaymentAccountServiceImpl.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\PaymentMethodServiceImpl.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\PayRollServiceImpl.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\PermissionServiceImpl.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\ProductServiceImpl.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\ProductStockServiceImpl.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\PurchaseDIOrderServiceImpl.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\PurchaseOrderServiceImpl.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\PurchasePoOrderServiceImpl.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\PurchaseReturnServiceImpl.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\PurchaseSaleSummaryService.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\PurchaseServiceImpl.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\ReportServiceImpl.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\RoleServiceImpl.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\SaleDIOrderServiceImpl.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\SaleReturnServiceImpl.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\SaleServiceImpl.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\SaleSoOrderServiceImpl.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\ShiftServiceImpl.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\SignatureImageServiceImpl.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\StockAdjustmentServiceImpl.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\StockReportService.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\StockTransactionServiceImpl.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\StockTransferServiceImpl.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\TargetServiceImpl.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\TaxGroupServiceImpl.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\TaxRateServiceImpl.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\TaxServiceImpl.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\TrailBalanceService.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\TransactionService.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\UnitsServiceImpl.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\UserServiceImpl.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\VariationsServiceImpl.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\VendorServiceImpl.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\VendorWarrantyClaimServiceImpl.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\WarrantyClaimServiceImpl.java
+D:\fuma-backend\src\main\java\com\backend\Util\FileUploadUtil.java
+D:\fuma-backend\src\main\java\Configuration\WebConfig.java
+D:\fuma-backend\src\main\java\Exceptions\ResourceNotFoundException.java
