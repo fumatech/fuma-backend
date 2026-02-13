@@ -17,6 +17,7 @@ public class WebConfig implements WebMvcConfigurer {
 	                "http://www.fusionmastertech.com",
 	                "https://www.fusionmastertech.com",
 	                "http://localhost:3000",
+					"http://localhost:3002",
 	                "http://localhost:3001"
 	            )	            .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") // Add OPTIONS
 	            .allowedHeaders("*")

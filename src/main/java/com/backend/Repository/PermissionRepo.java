@@ -9,4 +9,6 @@ import java.util.List;
 @Repository
 public interface PermissionRepo extends JpaRepository<Permission, Long> {
 	List<Permission> findAllById(Iterable<Long> ids);
+
+	Permission findByName(String name);
 }

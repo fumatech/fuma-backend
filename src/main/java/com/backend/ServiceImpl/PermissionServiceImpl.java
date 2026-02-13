@@ -22,6 +22,10 @@ public class PermissionServiceImpl implements PermissionService {
 
 	@Override
 	public Permission savePermission(Permission permission) {
+		Permission existingPermission = permissionRepo.findByName(permission.getName());
+		if (existingPermission != null) {
+			return existingPermission;
+		}
 		return permissionRepo.save(permission);
 	}
 

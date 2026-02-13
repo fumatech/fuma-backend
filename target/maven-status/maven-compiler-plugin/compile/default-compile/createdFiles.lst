@@ -76,7 +76,6 @@ com\backend\Entity\Brands.class
 com\backend\ServiceImpl\SaleSoOrderServiceImpl.class
 com\backend\DTO\PayrollSalaryTransactionDTO.class
 com\backend\Entity\OrderItems.class
-com\backend\Entity\EmployeePayroll.class
 com\backend\Controller\ProductController.class
 com\backend\ErpSolutionApplication.class
 com\backend\Service\ContactLoginService.class
@@ -155,7 +154,6 @@ com\backend\Entity\GroupedDateReportDTO.class
 com\backend\Controller\RoleController.class
 com\backend\Controller\SellReportController.class
 com\backend\ServiceImpl\StockTransferServiceImpl.class
-com\backend\Entity\Deduction.class
 com\backend\Repository\SaleDIItemRepo.class
 com\backend\Repository\PayrollEmployeeRepository.class
 com\backend\Repository\TaxGroupRepo.class
@@ -245,7 +243,6 @@ com\backend\Controller\PurchaseSaleSummaryController.class
 com\backend\Repository\SalePaymentMethodRepo.class
 com\backend\Service\LeaveService.class
 com\backend\ServiceImpl\PurchaseOrderServiceImpl.class
-com\backend\Entity\Earning.class
 com\backend\DTO\BulkPayrollTransactionRequest.class
 com\backend\Service\StockTransferService.class
 com\backend\ServiceImpl\ClientLedgerService.class
