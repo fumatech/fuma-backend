@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.backend.Entity.StockTransaction;
 import com.backend.Repository.StockTransactionRepo;
@@ -15,8 +16,44 @@ public class StockTransactionServiceImpl implements StockTransactionService {
 	@Autowired
 	private StockTransactionRepo stockTransactionRepo;
 
+	@Override
+	@Transactional
 	public List<StockTransaction> saveStockTransactions(List<StockTransaction> stockTransactions) {
+		validateStockTransactions(stockTransactions);
 		return stockTransactionRepo.saveAll(stockTransactions);
+	}
+
+	@Override
+	public void validateStockTransactions(List<StockTransaction> stockTransactions) {
+		if (stockTransactions != null) {
+			for (StockTransaction transaction : stockTransactions) {
+				// Only validate for OUT transactions
+				if (isOutTransaction(transaction.getTransactionType())) {
+
+					int currentStock = getCurrentStock(
+							transaction.getProductId(),
+							transaction.getVariationId());
+
+					if (currentStock < transaction.getQuantity()) {
+						throw new RuntimeException(
+								"Insufficient Stock for Product ID: "
+										+ transaction.getProductId()
+										+ " | Available: " + currentStock);
+					}
+				}
+			}
+		}
+	}
+
+	private boolean isOutTransaction(String type) {
+		if (type == null)
+			return false;
+		return type.equals("di_sale") ||
+				type.equals("so_sale") ||
+				type.equals("transfer_out") ||
+				type.equals("purchase_return") ||
+				type.equals("product_replaced") ||
+				type.equals("adjustment");
 	}
 
 	@Override
@@ -47,43 +84,22 @@ public class StockTransactionServiceImpl implements StockTransactionService {
 		for (StockTransaction transaction : transactions) {
 			// Add or subtract quantities based on the transaction type
 			switch (transaction.getTransactionType()) {
-			case "po_purchase":
-				currentStock += transaction.getQuantity();
-				break;
-			case "di_purchase":
-				currentStock += transaction.getQuantity();
-				break;
-			case "open_stock":
-				currentStock += transaction.getQuantity();
-				break;
-			case "di_sale":
-				currentStock -= transaction.getQuantity();
-				break;
-			case "so_sale":
-				currentStock -= transaction.getQuantity();
-				break;
-			case "transfer_in":
-				currentStock += transaction.getQuantity();
-				break;
-			case "transfer_out":
-				currentStock -= transaction.getQuantity();
-				break;
-			case "purchase_return":
-				currentStock -= transaction.getQuantity();
-				break;
-			case "sale_return":
-				currentStock += transaction.getQuantity();
-				break;
-			case "product_claimed":
-				currentStock += transaction.getQuantity();
-				break;
-			case "product_replaced":
-				currentStock -= transaction.getQuantity();
-				break;
-
-			case "adjustment":
-				currentStock -= transaction.getQuantity();
-				break;
+				case "po_purchase":
+				case "di_purchase":
+				case "open_stock":
+				case "transfer_in":
+				case "sale_return":
+				case "product_claimed":
+					currentStock += transaction.getQuantity();
+					break;
+				case "di_sale":
+				case "so_sale":
+				case "transfer_out":
+				case "purchase_return":
+				case "product_replaced":
+				case "adjustment":
+					currentStock -= transaction.getQuantity();
+					break;
 			}
 		}
 		return currentStock;
@@ -97,43 +113,22 @@ public class StockTransactionServiceImpl implements StockTransactionService {
 		for (StockTransaction transaction : transactions) {
 			// Add or subtract quantities based on the transaction type
 			switch (transaction.getTransactionType()) {
-			case "po_purchase":
-				currentStock += transaction.getQuantity();
-				break;
-			case "di_purchase":
-				currentStock += transaction.getQuantity();
-				break;
-			case "open_stock":
-				currentStock += transaction.getQuantity();
-				break;
-			case "di_sale":
-				currentStock -= transaction.getQuantity();
-				break;
-			case "transfer_in":
-				currentStock += transaction.getQuantity();
-				break;
-			case "transfer_out":
-				currentStock -= transaction.getQuantity();
-				break;
-			case "so_sale":
-				currentStock -= transaction.getQuantity();
-				break;
-			case "purchase_return":
-				currentStock -= transaction.getQuantity();
-				break;
-			case "sale_return":
-				currentStock += transaction.getQuantity();
-				break;
-			case "product_claimed":
-				currentStock += transaction.getQuantity();
-				break;
-			case "product_replaced":
-				currentStock -= transaction.getQuantity();
-				break;
-			case "adjustment":
-				currentStock -= transaction.getQuantity();
-				break;
-
+				case "po_purchase":
+				case "di_purchase":
+				case "open_stock":
+				case "transfer_in":
+				case "sale_return":
+				case "product_claimed":
+					currentStock += transaction.getQuantity();
+					break;
+				case "di_sale":
+				case "transfer_out":
+				case "so_sale":
+				case "purchase_return":
+				case "product_replaced":
+				case "adjustment":
+					currentStock -= transaction.getQuantity();
+					break;
 			}
 		}
 		return currentStock;
@@ -148,43 +143,22 @@ public class StockTransactionServiceImpl implements StockTransactionService {
 		for (StockTransaction transaction : transactions) {
 			// Add or subtract quantities based on the transaction type
 			switch (transaction.getTransactionType()) {
-			case "po_purchase":
-				currentStock += transaction.getQuantity();
-				break;
-			case "di_purchase":
-				currentStock += transaction.getQuantity();
-				break;
-			case "open_stock":
-				currentStock += transaction.getQuantity();
-				break;
-			case "di_sale":
-				currentStock -= transaction.getQuantity();
-				break;
-			case "so_sale":
-				currentStock -= transaction.getQuantity();
-				break;
-			case "transfer_in":
-				currentStock += transaction.getQuantity();
-				break;
-			case "transfer_out":
-				currentStock -= transaction.getQuantity();
-				break;
-			case "purchase_return":
-				currentStock -= transaction.getQuantity();
-				break;
-			case "sale_return":
-				currentStock += transaction.getQuantity();
-				break;
-			case "product_claimed":
-				currentStock += transaction.getQuantity();
-				break;
-			case "product_replaced":
-				currentStock -= transaction.getQuantity();
-				break;
-			case "adjustment":
-				currentStock -= transaction.getQuantity();
-				break;
-
+				case "po_purchase":
+				case "di_purchase":
+				case "open_stock":
+				case "transfer_in":
+				case "sale_return":
+				case "product_claimed":
+					currentStock += transaction.getQuantity();
+					break;
+				case "di_sale":
+				case "so_sale":
+				case "transfer_out":
+				case "purchase_return":
+				case "product_replaced":
+				case "adjustment":
+					currentStock -= transaction.getQuantity();
+					break;
 			}
 		}
 		return currentStock;
