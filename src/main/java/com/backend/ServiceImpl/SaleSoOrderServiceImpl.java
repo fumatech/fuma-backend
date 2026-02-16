@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.backend.Entity.SaleSoItem;
 import com.backend.Entity.SaleSoOrder;
@@ -13,18 +14,19 @@ import com.backend.Entity.ShippingSoDetails;
 import com.backend.Entity.StockTransaction;
 import com.backend.Repository.SaleSoOrderRepo;
 import com.backend.Service.SaleSoOrderService;
-
-import jakarta.transaction.Transactional;
+import com.backend.Service.StockTransactionService;
 
 @Service
 public class SaleSoOrderServiceImpl implements SaleSoOrderService {
-	@Autowired
-	SaleSoOrderRepo saleSoOrderRepo;
 
-//	@Autowired
-//	private PaymentAccountRepo paymentAccountRepo;
+	@Autowired
+	private SaleSoOrderRepo saleSoOrderRepo;
+
+	@Autowired
+	private StockTransactionService stockTransactionService;
 
 	@Override
+	@Transactional
 	public SaleSoOrder saveSaleSooOrder(SaleSoOrder saleSoOrder) {
 		if (saleSoOrder.getSaleSoItem() != null) {
 			for (SaleSoItem item : saleSoOrder.getSaleSoItem()) {
@@ -42,24 +44,24 @@ public class SaleSoOrderServiceImpl implements SaleSoOrderService {
 			for (StockTransaction stock : saleSoOrder.getStockTransactions()) {
 				stock.setSaleSoOrder(saleSoOrder);
 			}
+			// Validate stock before saving
+			stockTransactionService.validateStockTransactions(saleSoOrder.getStockTransactions());
 		}
 		return saleSoOrderRepo.save(saleSoOrder);
 	}
 
 	@Override
 	public List<SaleSoOrder> getAllSaleSoOrders() {
-		// TODO Auto-generated method stub
 		return saleSoOrderRepo.findAll();
 	}
 
 	@Override
 	public Optional<SaleSoOrder> getSaleSoOrderById(Long id) {
-		// TODO Auto-generated method stub
 		return saleSoOrderRepo.findById(id);
 	}
 
-	@Transactional
 	@Override
+	@Transactional
 	public SaleSoOrder updateSaleSoOrder(Long id, SaleSoOrder updatedSaleSoOrder) {
 		Optional<SaleSoOrder> existingOrderOptional = saleSoOrderRepo.findById(id);
 
@@ -113,17 +115,18 @@ public class SaleSoOrderServiceImpl implements SaleSoOrderService {
 					stock.setSaleSoOrder(existingOrder);
 					existingOrder.getStockTransactions().add(stock);
 				}
+				// Validate stock before updating
+				stockTransactionService.validateStockTransactions(existingOrder.getStockTransactions());
 			}
 
 			return saleSoOrderRepo.save(existingOrder);
+
 		}
 		return null;
 	}
 
 	@Override
 	public void deleteSaleSoOrder(Long id) {
-
-		// TODO Auto-generated method stub
 		if (saleSoOrderRepo.existsById(id)) {
 			saleSoOrderRepo.deleteById(id);
 		}
@@ -131,7 +134,6 @@ public class SaleSoOrderServiceImpl implements SaleSoOrderService {
 
 	@Override
 	public List<String> getAllOrderIds() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

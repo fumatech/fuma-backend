@@ -50,6 +50,25 @@ public class FranchisePurchaseOrderServiceImpl implements FranchisePurchaseOrder
 
 		if (existingOrder.isPresent()) {
 			FranchisePurchaseOrder order = existingOrder.get();
+
+			// Server-side validation: Ensure shipping quantity does not exceed ordered
+			// quantity
+			if (updatedOrder.getFranchiseOrderItems() != null) {
+				for (FranchiseOrderItems updatedItem : updatedOrder.getFranchiseOrderItems()) {
+					if (updatedItem.getUpdatedQuantity() != null && updatedItem.getQuantity() != null) {
+						if (updatedItem.getUpdatedQuantity() > updatedItem.getQuantity()) {
+							throw new RuntimeException("Shipping quantity (" + updatedItem.getUpdatedQuantity()
+									+ ") cannot exceed ordered quantity (" + updatedItem.getQuantity()
+									+ ") for product: " + updatedItem.getProductName());
+						}
+					}
+					if (updatedItem.getUpdatedQuantity() != null && updatedItem.getUpdatedQuantity() < 0) {
+						throw new RuntimeException(
+								"Shipping quantity cannot be negative for product: " + updatedItem.getProductName());
+					}
+				}
+			}
+
 			order.setVendor(updatedOrder.getVendor());
 			order.setStatus(updatedOrder.getStatus());
 			order.setAddedBy(updatedOrder.getAddedBy());

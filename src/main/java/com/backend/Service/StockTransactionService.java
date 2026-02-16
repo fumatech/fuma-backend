@@ -16,14 +16,15 @@ public interface StockTransactionService {
 
     // Method to get the history of all transactions (optional)
     List<StockTransaction> getAllTransactions();
-    
-    int getCurrentStock(Long productId, Long variationId); 
-    
-    int getCurrentStockByProduct(Long productId); 
+
+    int getCurrentStock(Long productId, Long variationId);
+
+    int getCurrentStockByProduct(Long productId);
 
     int getCurrentStockByvariation(Long variationId);
-    
-    List<StockTransaction> getTransactionsByProductAndVariation(Long productId , Long variationId );
 
+    List<StockTransaction> getTransactionsByProductAndVariation(Long productId, Long variationId);
+
+    void validateStockTransactions(List<StockTransaction> stockTransactions);
 
 }
