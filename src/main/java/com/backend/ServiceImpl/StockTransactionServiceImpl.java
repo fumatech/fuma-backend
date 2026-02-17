@@ -82,6 +82,7 @@ public class StockTransactionServiceImpl implements StockTransactionService {
 				variationId);
 		int currentStock = 0;
 		for (StockTransaction transaction : transactions) {
+			
 			// Add or subtract quantities based on the transaction type
 			switch (transaction.getTransactionType()) {
 				case "po_purchase":
