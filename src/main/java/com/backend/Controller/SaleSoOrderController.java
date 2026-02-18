@@ -1,4 +1,3 @@
-
 package com.backend.Controller;
 
 import java.util.List;
@@ -17,65 +16,75 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.backend.DTO.SaleSoOrderListDTO;
 import com.backend.Entity.SaleSoOrder;
 import com.backend.Service.SaleSoOrderService;
 
 @RestController
 @RequestMapping("/sale-so-order")
 @CrossOrigin(origins = { "http://localhost:3000", "http://fusionmastertech.com", "https://fusionmastertech.com",
-		"http://www.fusionmastertech.com", "https://www.fusionmastertech.com" }, allowCredentials = "true")
+        "http://www.fusionmastertech.com", "https://www.fusionmastertech.com" }, allowCredentials = "true")
 public class SaleSoOrderController {
 
-	@Autowired
-	private SaleSoOrderService saleSoOrderService;
+    @Autowired
+    private SaleSoOrderService saleSoOrderService;
 
-	@PostMapping("/save")
-	public ResponseEntity<SaleSoOrder> createSale(@RequestBody SaleSoOrder saleSoOrder) {
-		SaleSoOrder savedOrderSale = saleSoOrderService.saveSaleSooOrder(saleSoOrder);
-		return new ResponseEntity<>(savedOrderSale, HttpStatus.CREATED);
-	}
+    @PostMapping("/save")
+    public ResponseEntity<?> createSale(@RequestBody SaleSoOrder saleSoOrder) {
+        try {
+            SaleSoOrder savedOrderSale = saleSoOrderService.saveSaleSooOrder(saleSoOrder);
+            return new ResponseEntity<>(savedOrderSale, HttpStatus.CREATED);
+        } catch (RuntimeException e) {
+            return new ResponseEntity<>(java.util.Map.of("message", e.getMessage()), HttpStatus.CONFLICT);
+        }
+    }
 
-	@GetMapping("/getall")
-	public ResponseEntity<List<SaleSoOrder>> getAllSales() {
-		List<SaleSoOrder> orders = saleSoOrderService.getAllSaleSoOrders();
-		return new ResponseEntity<>(orders, HttpStatus.OK);
-	}
+    @GetMapping("/getall")
+    public ResponseEntity<List<SaleSoOrder>> getAllSales() {
+        List<SaleSoOrder> orders = saleSoOrderService.getAllSaleSoOrders();
+        return new ResponseEntity<>(orders, HttpStatus.OK);
+    }
 
-	@GetMapping("/get/{id}")
-	public ResponseEntity<Optional<SaleSoOrder>> getSaleOrderById(@PathVariable Long id) {
-		Optional<SaleSoOrder> orders = saleSoOrderService.getSaleSoOrderById(id);
-		return orders.isPresent() ? new ResponseEntity<>(orders, HttpStatus.OK)
-				: new ResponseEntity<>(HttpStatus.NOT_FOUND);
-	}
+    @GetMapping("/getall-summary")
+    public ResponseEntity<List<SaleSoOrderListDTO>> getAllSalesSummary() {
+        List<SaleSoOrderListDTO> orders = saleSoOrderService.getAllSaleSoOrderSummaries();
+        return new ResponseEntity<>(orders, HttpStatus.OK);
+    }
 
-	@PutMapping("/update/{id}")
-	public ResponseEntity<SaleSoOrder> updateSaleSoOrder(@PathVariable Long id, @RequestBody SaleSoOrder saleSoOrder) {
+    @GetMapping("/get/{id}")
+    public ResponseEntity<Optional<SaleSoOrder>> getSaleOrderById(@PathVariable Long id) {
+        Optional<SaleSoOrder> orders = saleSoOrderService.getSaleSoOrderById(id);
+        return orders.isPresent() ? new ResponseEntity<>(orders, HttpStatus.OK)
+                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
 
-		SaleSoOrder updatedOrder = saleSoOrderService.updateSaleSoOrder(id, saleSoOrder);
+    @PutMapping("/update/{id}")
+    public ResponseEntity<SaleSoOrder> updateSaleSoOrder(@PathVariable Long id, @RequestBody SaleSoOrder saleSoOrder) {
 
-		if (updatedOrder != null) {
-			return ResponseEntity.ok(updatedOrder); // Return updated PO Order
-		} else {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null); // Handle not found case
-		}
-	}
+        SaleSoOrder updatedOrder = saleSoOrderService.updateSaleSoOrder(id, saleSoOrder);
 
-	@DeleteMapping("/delete/{id}")
-	public ResponseEntity<Void> deletePurchaseOrder(@PathVariable Long id) {
-		saleSoOrderService.deleteSaleSoOrder(id);
-		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-	}
+        if (updatedOrder != null) {
+            return ResponseEntity.ok(updatedOrder); // Return updated PO Order
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null); // Handle not found case
+        }
+    }
 
-	@GetMapping("/getAllOrderIds")
-	public ResponseEntity<List<String>> getAllOrderIds() {
-		List<String> orderIds = saleSoOrderService.getAllOrderIds();
-		return new ResponseEntity<>(orderIds, HttpStatus.OK);
-	}
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Void> deletePurchaseOrder(@PathVariable Long id) {
+        saleSoOrderService.deleteSaleSoOrder(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 
-	@GetMapping("/next-reference-number")
-	public ResponseEntity<String> getNextReferenceNumber() {
-		String nextRef = saleSoOrderService.getNextReferenceNumber();
-		return new ResponseEntity<>(nextRef, HttpStatus.OK);
-	}
+    @GetMapping("/getAllOrderIds")
+    public ResponseEntity<List<String>> getAllOrderIds() {
+        List<String> orderIds = saleSoOrderService.getAllOrderIds();
+        return new ResponseEntity<>(orderIds, HttpStatus.OK);
+    }
 
+    @GetMapping("/next-reference-number")
+    public ResponseEntity<String> getNextReferenceNumber() {
+        String nextRef = saleSoOrderService.getNextReferenceNumber();
+        return new ResponseEntity<>(nextRef, HttpStatus.OK);
+    }
 }

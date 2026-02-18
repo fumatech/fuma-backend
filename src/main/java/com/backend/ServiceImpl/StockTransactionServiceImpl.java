@@ -30,9 +30,11 @@ public class StockTransactionServiceImpl implements StockTransactionService {
 				// Only validate for OUT transactions
 				if (isOutTransaction(transaction.getTransactionType())) {
 
-					int currentStock = getCurrentStock(
-							transaction.getProductId(),
-							transaction.getVariationId());
+					Long productId = transaction.getProductId();
+					Long variationId = transaction.getVariationId();
+					int currentStock = (variationId != null && variationId > 0)
+							? getCurrentStock(productId, variationId)
+							: getCurrentStockByProduct(productId);
 
 					if (currentStock < transaction.getQuantity()) {
 						throw new RuntimeException(
@@ -78,90 +80,35 @@ public class StockTransactionServiceImpl implements StockTransactionService {
 
 	@Override
 	public int getCurrentStock(Long productId, Long variationId) {
-		List<StockTransaction> transactions = stockTransactionRepo.findByProductIdAndVariationId(productId,
-				variationId);
-		int currentStock = 0;
-		for (StockTransaction transaction : transactions) {
-			
-			// Add or subtract quantities based on the transaction type
-			switch (transaction.getTransactionType()) {
-				case "po_purchase":
-				case "di_purchase":
-				case "open_stock":
-				case "transfer_in":
-				case "sale_return":
-				case "product_claimed":
-					currentStock += transaction.getQuantity();
-					break;
-				case "di_sale":
-				case "so_sale":
-				case "transfer_out":
-				case "purchase_return":
-				case "product_replaced":
-				case "adjustment":
-					currentStock -= transaction.getQuantity();
-					break;
-			}
+		if (variationId == null || variationId <= 0) {
+			return stockTransactionRepo.calculateCurrentStockByProduct(productId);
 		}
-		return currentStock;
+		return stockTransactionRepo.calculateCurrentStock(productId, variationId);
 	}
 
 	@Override
 	public int getCurrentStockByProduct(Long productId) {
-
-		List<StockTransaction> transactions = stockTransactionRepo.findByProductId(productId);
-		int currentStock = 0;
-		for (StockTransaction transaction : transactions) {
-			// Add or subtract quantities based on the transaction type
-			switch (transaction.getTransactionType()) {
-				case "po_purchase":
-				case "di_purchase":
-				case "open_stock":
-				case "transfer_in":
-				case "sale_return":
-				case "product_claimed":
-					currentStock += transaction.getQuantity();
-					break;
-				case "di_sale":
-				case "transfer_out":
-				case "so_sale":
-				case "purchase_return":
-				case "product_replaced":
-				case "adjustment":
-					currentStock -= transaction.getQuantity();
-					break;
-			}
-		}
-		return currentStock;
-
+		return stockTransactionRepo.calculateCurrentStockByProduct(productId);
 	}
 
 	@Override
 	public int getCurrentStockByvariation(Long variationId) {
+		return stockTransactionRepo.calculateCurrentStockByVariation(variationId);
+	}
 
-		List<StockTransaction> transactions = stockTransactionRepo.findByVariationId(variationId);
-		int currentStock = 0;
-		for (StockTransaction transaction : transactions) {
-			// Add or subtract quantities based on the transaction type
-			switch (transaction.getTransactionType()) {
-				case "po_purchase":
-				case "di_purchase":
-				case "open_stock":
-				case "transfer_in":
-				case "sale_return":
-				case "product_claimed":
-					currentStock += transaction.getQuantity();
-					break;
-				case "di_sale":
-				case "so_sale":
-				case "transfer_out":
-				case "purchase_return":
-				case "product_replaced":
-				case "adjustment":
-					currentStock -= transaction.getQuantity();
-					break;
+	@Override
+	public java.util.Map<String, Integer> getBulkCurrentStock(java.util.List<java.util.Map<String, Long>> requests) {
+		java.util.Map<String, Integer> result = new java.util.LinkedHashMap<>();
+		for (java.util.Map<String, Long> req : requests) {
+			Long productId = req.get("productId");
+			Long variationId = req.get("variationId");
+			String key = productId + "_" + (variationId != null ? variationId : "null");
+			if (variationId != null && variationId > 0) {
+				result.put(key, stockTransactionRepo.calculateCurrentStock(productId, variationId));
+			} else {
+				result.put(key, stockTransactionRepo.calculateCurrentStockByProduct(productId));
 			}
 		}
-		return currentStock;
+		return result;
 	}
 }

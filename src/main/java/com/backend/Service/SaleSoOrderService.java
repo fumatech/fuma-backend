@@ -4,12 +4,15 @@ import java.util.List;
 import java.util.Optional;
 
 import com.backend.Entity.SaleSoOrder;
+import com.backend.DTO.SaleSoOrderListDTO;
 
 public interface SaleSoOrderService {
 
 	SaleSoOrder saveSaleSooOrder(SaleSoOrder saleSoOrder);
 
 	List<SaleSoOrder> getAllSaleSoOrders();
+
+    List<SaleSoOrderListDTO> getAllSaleSoOrderSummaries();
 
 	Optional<SaleSoOrder> getSaleSoOrderById(Long id);
 

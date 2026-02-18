@@ -27,4 +27,6 @@ public interface StockTransactionService {
 
     void validateStockTransactions(List<StockTransaction> stockTransactions);
 
+    java.util.Map<String, Integer> getBulkCurrentStock(List<java.util.Map<String, Long>> requests);
+
 }

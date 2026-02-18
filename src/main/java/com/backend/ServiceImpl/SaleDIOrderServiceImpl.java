@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.backend.Entity.SaleDIItem;
 import com.backend.Entity.SaleDIOrder;
@@ -23,7 +24,11 @@ public class SaleDIOrderServiceImpl implements SaleDIOrderService {
 	@Autowired
 	private com.backend.Service.IdGenerator idGenerator;
 
+	@Autowired
+	private com.backend.Service.StockTransactionService stockTransactionService;
+
 	@Override
+	@Transactional
 	public SaleDIOrder saveSaleDIOrder(SaleDIOrder saleDIOrder) {
 
 		saleDIOrder.setIdGenerator(idGenerator);
@@ -44,6 +49,8 @@ public class SaleDIOrderServiceImpl implements SaleDIOrderService {
 			for (StockTransaction stock : saleDIOrder.getStockTransactions()) {
 				stock.setSaleDIOrder(saleDIOrder);
 			}
+			// Keep stock validation consistent with SO sale flow.
+			stockTransactionService.validateStockTransactions(saleDIOrder.getStockTransactions());
 		}
 		return saleDIOrderRepo.save(saleDIOrder);
 	}
@@ -75,6 +82,7 @@ public class SaleDIOrderServiceImpl implements SaleDIOrderService {
 	}
 
 	@Override
+	@Transactional
 	public SaleDIOrder updateSaleDIOrder(Long id, SaleDIOrder saleDIOrder) {
 		Optional<SaleDIOrder> existingOrderOpt = saleDIOrderRepo.findById(id);
 
@@ -121,6 +129,7 @@ public class SaleDIOrderServiceImpl implements SaleDIOrderService {
 				for (StockTransaction stock : saleDIOrder.getStockTransactions()) {
 					stock.setSaleDIOrder(existingOrder); // Add this setter if missing in entity
 				}
+				stockTransactionService.validateStockTransactions(saleDIOrder.getStockTransactions());
 				existingOrder.getStockTransactions().addAll(saleDIOrder.getStockTransactions());
 			}
 
