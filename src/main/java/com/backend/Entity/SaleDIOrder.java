@@ -6,12 +6,15 @@ import java.util.List;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 public class SaleDIOrder {
@@ -58,7 +61,8 @@ public class SaleDIOrder {
 	@OneToMany(mappedBy = "saleDIOrder", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<ShippingSaleDIDetails> shippingSaleDIDetails;
 
-	@OneToMany(mappedBy = "saleDIOrder", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "saleDIOrder", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private List<StockTransaction> stockTransactions;
 
 	@Transient

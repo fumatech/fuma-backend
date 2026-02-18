@@ -119,4 +119,12 @@ public class StockTransactionController {
 		}
 		return new ResponseEntity<>(transactions, HttpStatus.OK);
 	}
+
+	// Bulk endpoint to get current stock for multiple products/variations at once
+	@PostMapping("/current-stock/bulk")
+	public ResponseEntity<java.util.Map<String, Integer>> getBulkCurrentStock(
+			@RequestBody java.util.List<java.util.Map<String, Long>> requests) {
+		java.util.Map<String, Integer> stocks = stockTransactionService.getBulkCurrentStock(requests);
+		return new ResponseEntity<>(stocks, HttpStatus.OK);
+	}
 }

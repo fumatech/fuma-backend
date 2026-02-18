@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import com.backend.Entity.SaleSoOrder;
+import com.backend.DTO.SaleSoOrderListDTO;
 
 public interface SaleSoOrderRepo extends JpaRepository<SaleSoOrder, Long> {
 
@@ -29,6 +30,39 @@ public interface SaleSoOrderRepo extends JpaRepository<SaleSoOrder, Long> {
 			""")
 	List<SaleSoOrder> findAllWithSaleTax();
 
+	@Query("""
+			SELECT new com.backend.DTO.SaleSoOrderListDTO(
+				s.id,
+				s.orderId,
+				s.orderRefernceNumber,
+				s.franchise,
+				s.franchiseId,
+				s.customerId,
+				s.referenceNumber,
+				s.orderedBy,
+				s.addedBy,
+				s.orderDate,
+				s.saleDate,
+				s.payTermNumber,
+				s.payTermType,
+				s.location,
+				s.totalItems,
+				s.totalSaleItems,
+				s.netTotalAmount,
+				s.discountType,
+				s.discountAmount,
+				s.purchaseTax,
+				s.taxAmount,
+				s.additionalNotes,
+				c.franchiseName,
+				c.city,
+				c.state
+			)
+			FROM SaleSoOrder s
+			LEFT JOIN Customer c ON c.id = s.customerId
+			ORDER BY s.id DESC
+			""")
+	List<SaleSoOrderListDTO> findAllListRows();
 	boolean existsByOrderId(String orderId);
 
 }

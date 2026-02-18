@@ -6,10 +6,13 @@ import java.util.List;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 public class SaleSoOrder {
@@ -61,18 +64,20 @@ public class SaleSoOrder {
 	private String additionalNotes;
 
 	// List of product items (one-to-many relationship)
-	@OneToMany(mappedBy = "saleSoOrder", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "saleSoOrder", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 	private List<SaleSoItem> saleSoItem;
 
-//	// List of product items (one-to-many relationship)
-//	@OneToMany(mappedBy = "saleSoOrder", cascade = CascadeType.ALL, orphanRemoval = true)
-//	private List<Transaction> transaction;
+	// // List of product items (one-to-many relationship)
+	// @OneToMany(mappedBy = "saleSoOrder", cascade = CascadeType.ALL, orphanRemoval
+	// = true)
+	// private List<Transaction> transaction;
 
 	// List of product items (one-to-many relationship)
-	@OneToMany(mappedBy = "saleSoOrder", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "saleSoOrder", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 	private List<ShippingSoDetails> shippingSoDetails;
 
-	@OneToMany(mappedBy = "saleSoOrder", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "saleSoOrder", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private List<StockTransaction> stockTransactions;
 
 	public Long getId() {

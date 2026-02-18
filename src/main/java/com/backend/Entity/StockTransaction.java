@@ -6,8 +6,8 @@ import java.sql.Date;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -33,74 +33,74 @@ public class StockTransaction {
 	private String note;
 
 	// Many-to-one relationship with PurchasePoOrder
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "purchase_po_order_id")
 	@JsonBackReference
 	@JsonIgnore
 	private PurchasePoOrder purchasePoOrder;
 
 	// Many-to-one relationship with PurchasePoOrder
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "purchase_di_order_id")
 	@JsonBackReference
 	@JsonIgnore
 	private PurchaseDIOrder purchaseDIOrder;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "purchase_return_id")
 	@JsonBackReference
 	@JsonIgnore
 	private PurchaseReturn purchaseReturn;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "sale_So_Order_id")
 	@JsonBackReference
 	@JsonIgnore
 	private SaleSoOrder saleSoOrder;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "sale_DI_Order_id")
 	@JsonBackReference
 	@JsonIgnore
 	private SaleDIOrder saleDIOrder;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "stock_Adjustment_id")
 	@JsonBackReference
 	@JsonIgnore
 	private StockAdjustment stockAdjustment;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "sale_return_id")
 	@JsonBackReference
 	@JsonIgnore
 	private SaleReturn saleReturn;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "franchise_purchase_return_id")
 	@JsonBackReference
 	@JsonIgnore
 	private FranchisePurchaseReturn franchisePurchaseReturn;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "warranty_claim_id")
 	@JsonBackReference
 	@JsonIgnore
 	private WarrantyClaim warrantyClaim;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "vendor_warranty_claim_id")
 	@JsonBackReference
 	@JsonIgnore
 	private VendorWarrantyClaim vendorWarrantyClaim;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "franchise_warranty_claim_id")
 	@JsonBackReference
 	@JsonIgnore
 	private FranchiseWarrantyClaim franchiseWarrantyClaim;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "stock_transfer_id")
 	@JsonBackReference
 	@JsonIgnore
