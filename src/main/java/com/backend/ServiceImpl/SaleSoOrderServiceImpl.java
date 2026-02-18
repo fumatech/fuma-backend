@@ -13,6 +13,7 @@ import com.backend.Entity.SaleSoOrder;
 import com.backend.Entity.ShippingSoDetails;
 import com.backend.Entity.StockTransaction;
 import com.backend.Repository.SaleSoOrderRepo;
+import com.backend.Service.FranchisePurchaseOrderService;
 import com.backend.Service.SaleSoOrderService;
 import com.backend.Service.StockTransactionService;
 
@@ -24,6 +25,9 @@ public class SaleSoOrderServiceImpl implements SaleSoOrderService {
 
 	@Autowired
 	private StockTransactionService stockTransactionService;
+
+	@Autowired
+	private FranchisePurchaseOrderService franchisePurchaseOrderService;
 
 	@Override
 	@Transactional
@@ -47,7 +51,25 @@ public class SaleSoOrderServiceImpl implements SaleSoOrderService {
 			// Validate stock before saving
 			stockTransactionService.validateStockTransactions(saleSoOrder.getStockTransactions());
 		}
-		return saleSoOrderRepo.save(saleSoOrder);
+
+		// Prevent duplicate sales for same orderId
+		if (saleSoOrder.getOrderId() != null && !saleSoOrder.getOrderId().isEmpty()) {
+			if (saleSoOrderRepo.existsByOrderId(saleSoOrder.getOrderId())) {
+				throw new RuntimeException("Sale already exists for Order ID: " + saleSoOrder.getOrderId());
+			}
+		}
+
+		SaleSoOrder savedSale = saleSoOrderRepo.save(saleSoOrder);
+
+		// Update FranchisePurchaseOrder status to 4 (Converted to Sale)
+		if (savedSale.getOrderId() != null && !savedSale.getOrderId().isEmpty()) {
+			franchisePurchaseOrderService.getPurchaseOrderByPoId(savedSale.getOrderId()).ifPresent(order -> {
+				order.setStatus(4L);
+				franchisePurchaseOrderService.savePurchaseOrder(order);
+			});
+		}
+
+		return savedSale;
 	}
 
 	@Override
@@ -126,9 +148,22 @@ public class SaleSoOrderServiceImpl implements SaleSoOrderService {
 	}
 
 	@Override
+	@Transactional
 	public void deleteSaleSoOrder(Long id) {
-		if (saleSoOrderRepo.existsById(id)) {
-			saleSoOrderRepo.deleteById(id);
+		Optional<SaleSoOrder> saleOrderOptional = saleSoOrderRepo.findById(id);
+		if (saleOrderOptional.isPresent()) {
+			SaleSoOrder saleOrder = saleOrderOptional.get();
+			String orderId = saleOrder.getOrderId();
+
+			saleSoOrderRepo.delete(saleOrder);
+
+			// Revert FranchisePurchaseOrder status to 3 (Shipped) so it can be re-converted
+			if (orderId != null && !orderId.isEmpty()) {
+				franchisePurchaseOrderService.getPurchaseOrderByPoId(orderId).ifPresent(order -> {
+					order.setStatus(3L);
+					franchisePurchaseOrderService.savePurchaseOrder(order);
+				});
+			}
 		}
 	}
 

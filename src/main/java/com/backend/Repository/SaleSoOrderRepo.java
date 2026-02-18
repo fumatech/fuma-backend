@@ -29,4 +29,6 @@ public interface SaleSoOrderRepo extends JpaRepository<SaleSoOrder, Long> {
 			""")
 	List<SaleSoOrder> findAllWithSaleTax();
 
+	boolean existsByOrderId(String orderId);
+
 }

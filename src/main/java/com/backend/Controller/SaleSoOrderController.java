@@ -30,9 +30,13 @@ public class SaleSoOrderController {
 	private SaleSoOrderService saleSoOrderService;
 
 	@PostMapping("/save")
-	public ResponseEntity<SaleSoOrder> createSale(@RequestBody SaleSoOrder saleSoOrder) {
-		SaleSoOrder savedOrderSale = saleSoOrderService.saveSaleSooOrder(saleSoOrder);
-		return new ResponseEntity<>(savedOrderSale, HttpStatus.CREATED);
+	public ResponseEntity<?> createSale(@RequestBody SaleSoOrder saleSoOrder) {
+		try {
+			SaleSoOrder savedOrderSale = saleSoOrderService.saveSaleSooOrder(saleSoOrder);
+			return new ResponseEntity<>(savedOrderSale, HttpStatus.CREATED);
+		} catch (RuntimeException e) {
+			return new ResponseEntity<>(java.util.Map.of("message", e.getMessage()), HttpStatus.CONFLICT);
+		}
 	}
 
 	@GetMapping("/getall")
