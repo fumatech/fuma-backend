@@ -13,12 +13,14 @@ import com.backend.DTO.SaleSoOrderListDTO;
 public interface SaleSoOrderRepo extends JpaRepository<SaleSoOrder, Long> {
 
 	@Query("SELECT p FROM SaleSoOrder p WHERE p.franchise LIKE CONCAT('%', :franchise, '%')")
+	
 	List<SaleSoOrder> findByFranchise(String franchise);
 
 	@Query("SELECT s FROM SaleSoOrder s WHERE s.referenceNumber LIKE 'FUMASL%' ORDER BY LENGTH(s.referenceNumber) DESC, s.referenceNumber DESC")
 	List<SaleSoOrder> findTopOrderByReferenceNumber(Pageable pageable);
 
 	@Query("SELECT COALESCE(SUM(s.netTotalAmount - s.taxAmount), 0) FROM SaleSoOrder s")
+
 	BigDecimal totalSaleSo();
 
 	@Query("SELECT COALESCE(SUM(s.netTotalAmount),0) FROM SaleSoOrder s")
@@ -57,6 +59,9 @@ public interface SaleSoOrderRepo extends JpaRepository<SaleSoOrder, Long> {
 				c.franchiseName,
 				c.city,
 				c.state
+				
+				
+				
 			)
 			FROM SaleSoOrder s
 			LEFT JOIN Customer c ON c.id = s.customerId
