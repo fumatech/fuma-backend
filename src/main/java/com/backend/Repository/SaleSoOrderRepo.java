@@ -13,7 +13,7 @@ import com.backend.DTO.SaleSoOrderListDTO;
 public interface SaleSoOrderRepo extends JpaRepository<SaleSoOrder, Long> {
 
 	@Query("SELECT p FROM SaleSoOrder p WHERE p.franchise LIKE CONCAT('%', :franchise, '%')")
-	
+
 	List<SaleSoOrder> findByFranchise(String franchise);
 
 	@Query("SELECT s FROM SaleSoOrder s WHERE s.referenceNumber LIKE 'FUMASL%' ORDER BY LENGTH(s.referenceNumber) DESC, s.referenceNumber DESC")
