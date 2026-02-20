@@ -43,6 +43,7 @@ public class StockTransactionController {
 		}
 	}
 
+
 	// Add an update endpoint
 	@PutMapping("/update/{id}")
 	public ResponseEntity<StockTransaction> updateStockTransaction(@PathVariable Long id,

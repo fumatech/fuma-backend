@@ -99,16 +99,26 @@ public class StockTransactionServiceImpl implements StockTransactionService {
 	@Override
 	public java.util.Map<String, Integer> getBulkCurrentStock(java.util.List<java.util.Map<String, Long>> requests) {
 		java.util.Map<String, Integer> result = new java.util.LinkedHashMap<>();
+
 		for (java.util.Map<String, Long> req : requests) {
+
 			Long productId = req.get("productId");
+
 			Long variationId = req.get("variationId");
+
 			String key = productId + "_" + (variationId != null ? variationId : "null");
+
 			if (variationId != null && variationId > 0) {
+
 				result.put(key, stockTransactionRepo.calculateCurrentStock(productId, variationId));
-			} else {
+			}
+			else
+			{
 				result.put(key, stockTransactionRepo.calculateCurrentStockByProduct(productId));
+
 			}
 		}
+
 		return result;
 	}
 }

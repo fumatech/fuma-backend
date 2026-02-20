@@ -178,7 +178,7 @@ public class ProductController {
 		}
 
 		product.setStatus(status);
-		productService.updateProductStatus(product); // ✅ FIXED
+		productService.updateProductStatus(product); //
 
 		Map<String, Object> response = new HashMap<>();
 		response.put("message", "Product status updated successfully");
