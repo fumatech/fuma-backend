@@ -1,14 +1,14 @@
 package com.backend.ServiceImpl;
 
-import com.backend.Entity.StockTransaction;
-import com.backend.Repository.StockTransactionRepo;
-import com.backend.Service.StockTransactionService;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-
+import com.backend.Entity.StockTransaction;
+import com.backend.Repository.StockTransactionRepo;
+import com.backend.Service.StockTransactionService;
 
 @Service
 public class StockTransactionServiceImpl implements StockTransactionService {
@@ -29,7 +29,6 @@ public class StockTransactionServiceImpl implements StockTransactionService {
             for (StockTransaction transaction : stockTransactions) {
                 // Only validate for OUT transactions
                 if (isOutTransaction(transaction.getTransactionType())) {
-
                     Long productId = transaction.getProductId();
                     Long variationId = transaction.getVariationId();
                     int currentStock = (variationId != null && variationId > 0) ? getCurrentStock(productId, variationId) : getCurrentStockByProduct(productId);
@@ -43,49 +42,69 @@ public class StockTransactionServiceImpl implements StockTransactionService {
     }
 
     private boolean isOutTransaction(String type) {
-        if (type == null) return false;
+
+        if (type == null) {
+            return false;
+        }
         return type.equals("di_sale") || type.equals("so_sale") || type.equals("transfer_out") || type.equals("purchase_return") || type.equals("product_replaced") || type.equals("adjustment");
     }
 
     @Override
     public List<StockTransaction> getTransactionsByProduct(Long productId) {
+
         return stockTransactionRepo.findByProductId(productId);
+
     }
 
     @Override
     public List<StockTransaction> getTransactionsByVariation(Long variationId) {
+
         return stockTransactionRepo.findByVariationId(variationId);
+
     }
 
     @Override
     public List<StockTransaction> getAllTransactions() {
+
         return stockTransactionRepo.findAll();
+
     }
 
     @Override
     public List<StockTransaction> getTransactionsByProductAndVariation(Long productId, Long variationId) {
+
         return stockTransactionRepo.findByProductIdAndVariationId(productId, variationId);
+
     }
 
     @Override
     public int getCurrentStock(Long productId, Long variationId) {
+
         if (variationId == null || variationId <= 0) {
             return stockTransactionRepo.calculateCurrentStockByProduct(productId);
+
         }
+
         return stockTransactionRepo.calculateCurrentStock(productId, variationId);
+
     }
 
     @Override
     public int getCurrentStockByProduct(Long productId) {
+
         return stockTransactionRepo.calculateCurrentStockByProduct(productId);
+
     }
 
     @Override
     public int getCurrentStockByvariation(Long variationId) {
+
         return stockTransactionRepo.calculateCurrentStockByVariation(variationId);
+
     }
 
     @Override
+
     public java.util.Map<String, Integer> getBulkCurrentStock(
             java.util.List<java.util.Map<String, Long>> requests) {
 
@@ -103,13 +122,12 @@ public class StockTransactionServiceImpl implements StockTransactionService {
 
             // Create unique key using productId and variationId
             // Format: productId_variationId (example: 101_5 or 101_null)
-            String key = productId + "_" +
-                    (variationId != null ? variationId : "null");
+            String key = productId + "_"
+                    + (variationId != null ? variationId : "null");
 
             // If variationId is present and greater than 0
             // then calculate stock based on product + variation
             if (variationId != null && variationId > 0) {
-
                 result.put(
                         key,
                         stockTransactionRepo.calculateCurrentStock(productId, variationId)
