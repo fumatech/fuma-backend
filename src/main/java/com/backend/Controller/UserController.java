@@ -25,88 +25,101 @@ import jakarta.servlet.http.HttpSession;
 
 @RestController
 @RequestMapping("/user")
-@CrossOrigin(origins = { "http://localhost:3000", "http://fusionmastertech.com", "https://fusionmastertech.com",
-		"http://www.fusionmastertech.com", "https://www.fusionmastertech.com" }, allowCredentials = "true")
+@CrossOrigin(origins = {"http://localhost:3000", "http://fusionmastertech.com", "https://fusionmastertech.com",
+    "http://www.fusionmastertech.com", "https://www.fusionmastertech.com"}, allowCredentials = "true")
 public class UserController {
 
-	@Autowired
-	private UserService userservice;
+    @Autowired
+    private UserService userservice;
 
-	@PostMapping("/save")
-	public ResponseEntity<User> saveUser(@RequestBody User user) {
-		User savedUser = userservice.saveUser(user);
-		return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
-	}
+    @PostMapping("/save")
+    public ResponseEntity<User> saveUser(@RequestBody User user) {
+        User savedUser = userservice.saveUser(user);
+        return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
+    }
 
-	@PostMapping("/login")
-	public ResponseEntity<String> login(@RequestBody LoginRequest request, HttpSession session) {
-		boolean isAuthenticated = userservice.authenticate(request.getEmail(), request.getPassword());
+    @PostMapping("/login")
+    public ResponseEntity<String> login(@RequestBody LoginRequest request, HttpSession session) {
+        boolean isAuthenticated = userservice.authenticate(request.getEmail(), request.getPassword());
 
-		if (isAuthenticated) {
-			// Create or get the session
-			session.setAttribute("userEmail", request.getEmail());
-			return new ResponseEntity<>("Login successful", HttpStatus.OK);
-		} else {
-			return new ResponseEntity<>("Invalid credentials or account inactive", HttpStatus.UNAUTHORIZED);
-		}
-	}
+        if (isAuthenticated) {
+            // Create or get the session
+            session.setAttribute("userEmail", request.getEmail());
+            return new ResponseEntity<>("Login successful", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Invalid credentials or account inactive", HttpStatus.UNAUTHORIZED);
+        }
+    }
 
-	@PostMapping("/logout")
-	public ResponseEntity<String> logout(HttpSession session) {
-		session.invalidate(); // Invalidate the session
-		return new ResponseEntity<>("Logout successful", HttpStatus.OK);
-	}
+    @PostMapping("/logout")
+    public ResponseEntity<String> logout(HttpSession session) {
+        session.invalidate(); // Invalidate the session
+        return new ResponseEntity<>("Logout successful", HttpStatus.OK);
+    }
 
-	@GetMapping("/getall")
-	public ResponseEntity<List<User>> getAllUsers() {
-		List<User> users = userservice.getallusers();
-		return new ResponseEntity<>(users, HttpStatus.OK);
-	}
+    @GetMapping("/getall")
+    public ResponseEntity<List<User>> getAllUsers() {
+        List<User> users = userservice.getallusers();
+        return new ResponseEntity<>(users, HttpStatus.OK);
+    }
 
-	@GetMapping("/{id}")
-	public ResponseEntity<User> getUserById(@PathVariable Long id) {
-		return userservice.findById(id).map(user -> new ResponseEntity<>(user, HttpStatus.OK))
-				.orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
-	}
+    @GetMapping("/getall-names")
+    public ResponseEntity<List<java.util.Map<String, Object>>> getAllUserNames() {
+        List<Object[]> results = userservice.getAllUserNames();
+        List<java.util.Map<String, Object>> users = results.stream().map(row -> {
+            java.util.Map<String, Object> map = new java.util.HashMap<>();
+            map.put("id", row[0]);
+            map.put("firstname", row[1]);
+            map.put("lastname", row[2]);
+            return map;
+        }).collect(java.util.stream.Collectors.toList());
+        return new ResponseEntity<>(users, HttpStatus.OK);
+    }
 
-	@PutMapping("/update/{id}")
-	public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user) {
-		return userservice.updateUser(id, user).map(updatedUser -> new ResponseEntity<>(updatedUser, HttpStatus.OK))
-				.orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
-	}
+    @GetMapping("/{id}")
+    public ResponseEntity<User> getUserById(@PathVariable Long id) {
+        return userservice.findById(id).map(user -> new ResponseEntity<>(user, HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
 
-	@DeleteMapping("/delete/{id}")
-	public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
-		boolean isDeleted = userservice.deleteUser(id);
-		return isDeleted ? new ResponseEntity<>(HttpStatus.NO_CONTENT) : new ResponseEntity<>(HttpStatus.NOT_FOUND);
-	}
+    @PutMapping("/update/{id}")
+    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user) {
+        return userservice.updateUser(id, user).map(updatedUser -> new ResponseEntity<>(updatedUser, HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
 
-	@GetMapping("/email/{email}")
-	public ResponseEntity<User> getUserWithRolesAndPermissions(@PathVariable String email) {
-		try {
-			User user = userservice.getUserWithRolesAndPermissions(email);
-			return user != null ? new ResponseEntity<>(user, HttpStatus.OK)
-					: new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		} catch (IllegalStateException e) {
-			// Handle multiple results error
-			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-	}
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
+        boolean isDeleted = userservice.deleteUser(id);
+        return isDeleted ? new ResponseEntity<>(HttpStatus.NO_CONTENT) : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
 
-	@GetMapping("/check-email")
-	public ResponseEntity<String> checkEmail(@RequestParam String email) {
-		Optional<User> exists = userservice.findByEmail(email);
+    @GetMapping("/email/{email}")
+    public ResponseEntity<User> getUserWithRolesAndPermissions(@PathVariable String email) {
+        try {
+            User user = userservice.getUserWithRolesAndPermissions(email);
+            return user != null ? new ResponseEntity<>(user, HttpStatus.OK)
+                    : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } catch (IllegalStateException e) {
+            // Handle multiple results error
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
-		if (exists.isPresent()) {
-			return ResponseEntity.status(HttpStatus.OK).body("Email exists");
-		} else {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Email does not exist");
-		}
-	}
+    @GetMapping("/check-email")
+    public ResponseEntity<String> checkEmail(@RequestParam String email) {
+        Optional<User> exists = userservice.findByEmail(email);
 
-	@GetMapping("/username")
-	public Optional<String> getUsername(@RequestParam String email) {
-		return userservice.getUserName(email);
-	}
+        if (exists.isPresent()) {
+            return ResponseEntity.status(HttpStatus.OK).body("Email exists");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Email does not exist");
+        }
+    }
+
+    @GetMapping("/username")
+    public Optional<String> getUsername(@RequestParam String email) {
+        return userservice.getUserName(email);
+    }
 
 }

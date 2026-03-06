@@ -12,12 +12,15 @@ import com.backend.Entity.User;
 @Repository
 public interface UserRepo extends JpaRepository<User, Long> {
 
-	Optional<User> findByEmail(String email);
+    Optional<User> findByEmail(String email);
 
-	@Query("SELECT u FROM User u LEFT JOIN FETCH u.roles r LEFT JOIN FETCH r.permissions WHERE u.email = :email")
-	List<User> findByEmailItsPermissions(String email);
+    @Query("SELECT u FROM User u LEFT JOIN FETCH u.roles r LEFT JOIN FETCH r.permissions WHERE u.email = :email")
+    List<User> findByEmailItsPermissions(String email);
 
-	@Query("SELECT u.username FROM User u WHERE u.email = :email")
-	Optional<String> getUsernameByEmail(String email);
+    @Query("SELECT u.username FROM User u WHERE u.email = :email")
+    Optional<String> getUsernameByEmail(String email);
+
+    @Query("SELECT u.id, u.firstname, u.lastname FROM User u")
+    List<Object[]> findAllIdAndName();
 
 }

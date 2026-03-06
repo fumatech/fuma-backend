@@ -1,10 +1,12 @@
 package com.backend.Service;
 
-import com.backend.Entity.User;
 import java.util.List;
 import java.util.Optional;
 
+import com.backend.Entity.User;
+
 public interface UserService {
+
     User saveUser(User user);
 
     boolean isActiveUser(String email);
@@ -23,7 +25,8 @@ public interface UserService {
 
     // Add the following method to the interface
     User getUserWithRolesAndPermissions(String email);
-    
-    
+
     Optional<String> getUserName(String email);
+
+    List<Object[]> getAllUserNames();
 }
