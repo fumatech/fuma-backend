@@ -4,122 +4,132 @@ import java.sql.Date;
 import java.util.List;
 
 public class EmployeePayrollViewDTO {
-	private Long employeeId;
-	private String payrollName;
-	private String addedBy;
-	private Date createdAt;
-	private Long payrollId;
-	private int month;
-	private int year;
-	private Double basic;
-	private Double total;
-	private String note;
-	private List<AmountDTO> earnings;
-	private List<AmountDTO> deductions;
-	private List<PayrollSalaryTransactionDTO> transactions;
 
-	public Long getEmployeeId() {
-		return employeeId;
-	}
+    private Long payrollEmployeeId;
+    private Long employeeId;
+    private String payrollName;
+    private String addedBy;
+    private Date createdAt;
+    private Long payrollId;
+    private int month;
+    private int year;
+    private Double basic;
+    private Double total;
+    private String note;
+    private List<AmountDTO> earnings;
+    private List<AmountDTO> deductions;
+    private List<PayrollSalaryTransactionDTO> transactions;
 
-	public void setEmployeeId(Long employeeId) {
-		this.employeeId = employeeId;
-	}
+    public Long getPayrollEmployeeId() {
+        return payrollEmployeeId;
+    }
 
-	public List<PayrollSalaryTransactionDTO> getTransactions() {
-		return transactions;
-	}
+    public void setPayrollEmployeeId(Long payrollEmployeeId) {
+        this.payrollEmployeeId = payrollEmployeeId;
+    }
 
-	public void setTransactions(List<PayrollSalaryTransactionDTO> transactions) {
-		this.transactions = transactions;
-	}
+    public Long getEmployeeId() {
+        return employeeId;
+    }
 
-	public String getPayrollName() {
-		return payrollName;
-	}
+    public void setEmployeeId(Long employeeId) {
+        this.employeeId = employeeId;
+    }
 
-	public void setPayrollName(String payrollName) {
-		this.payrollName = payrollName;
-	}
+    public List<PayrollSalaryTransactionDTO> getTransactions() {
+        return transactions;
+    }
 
-	public String getAddedBy() {
-		return addedBy;
-	}
+    public void setTransactions(List<PayrollSalaryTransactionDTO> transactions) {
+        this.transactions = transactions;
+    }
 
-	public void setAddedBy(String addedBy) {
-		this.addedBy = addedBy;
-	}
+    public String getPayrollName() {
+        return payrollName;
+    }
 
-	public Date getCreatedAt() {
-		return createdAt;
-	}
+    public void setPayrollName(String payrollName) {
+        this.payrollName = payrollName;
+    }
 
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
-	}
+    public String getAddedBy() {
+        return addedBy;
+    }
 
-	public Long getPayrollId() {
-		return payrollId;
-	}
+    public void setAddedBy(String addedBy) {
+        this.addedBy = addedBy;
+    }
 
-	public void setPayrollId(Long payrollId) {
-		this.payrollId = payrollId;
-	}
+    public Date getCreatedAt() {
+        return createdAt;
+    }
 
-	public int getMonth() {
-		return month;
-	}
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
 
-	public void setMonth(int month) {
-		this.month = month;
-	}
+    public Long getPayrollId() {
+        return payrollId;
+    }
 
-	public int getYear() {
-		return year;
-	}
+    public void setPayrollId(Long payrollId) {
+        this.payrollId = payrollId;
+    }
 
-	public void setYear(int year) {
-		this.year = year;
-	}
+    public int getMonth() {
+        return month;
+    }
 
-	public Double getBasic() {
-		return basic;
-	}
+    public void setMonth(int month) {
+        this.month = month;
+    }
 
-	public void setBasic(Double basic) {
-		this.basic = basic;
-	}
+    public int getYear() {
+        return year;
+    }
 
-	public Double getTotal() {
-		return total;
-	}
+    public void setYear(int year) {
+        this.year = year;
+    }
 
-	public void setTotal(Double total) {
-		this.total = total;
-	}
+    public Double getBasic() {
+        return basic;
+    }
 
-	public String getNote() {
-		return note;
-	}
+    public void setBasic(Double basic) {
+        this.basic = basic;
+    }
 
-	public void setNote(String note) {
-		this.note = note;
-	}
+    public Double getTotal() {
+        return total;
+    }
 
-	public List<AmountDTO> getEarnings() {
-		return earnings;
-	}
+    public void setTotal(Double total) {
+        this.total = total;
+    }
 
-	public void setEarnings(List<AmountDTO> earnings) {
-		this.earnings = earnings;
-	}
+    public String getNote() {
+        return note;
+    }
 
-	public List<AmountDTO> getDeductions() {
-		return deductions;
-	}
+    public void setNote(String note) {
+        this.note = note;
+    }
 
-	public void setDeductions(List<AmountDTO> deductions) {
-		this.deductions = deductions;
-	}
+    public List<AmountDTO> getEarnings() {
+        return earnings;
+    }
+
+    public void setEarnings(List<AmountDTO> earnings) {
+        this.earnings = earnings;
+    }
+
+    public List<AmountDTO> getDeductions() {
+        return deductions;
+    }
+
+    public void setDeductions(List<AmountDTO> deductions) {
+        this.deductions = deductions;
+    }
 
 }

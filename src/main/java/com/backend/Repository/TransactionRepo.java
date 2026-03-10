@@ -10,34 +10,36 @@ import com.backend.Entity.Transaction;
 
 public interface TransactionRepo extends JpaRepository<Transaction, Long> {
 
-	@Query("SELECT p FROM Transaction p WHERE p.vendor LIKE CONCAT('%', :vendor, '%')")
-	List<Transaction> findByVendorName(String vendor);
+    @Query("SELECT p FROM Transaction p WHERE p.vendor LIKE CONCAT('%', :vendor, '%')")
+    List<Transaction> findByVendorName(String vendor);
 
-	@Query("SELECT p FROM Transaction p WHERE p.franchiseName LIKE CONCAT('%', :franchiseName, '%')")
-	List<Transaction> findByfranchiseName(String franchiseName);
+    @Query("SELECT p FROM Transaction p WHERE p.franchiseName LIKE CONCAT('%', :franchiseName, '%')")
+    List<Transaction> findByfranchiseName(String franchiseName);
 
-	@Query("""
+    @Query("""
 			SELECT COALESCE(SUM(t.amount), 0)
 			FROM Transaction t
 			WHERE LOWER(t.transactionType) IN ('purchase')
 			""")
-	BigDecimal totalPurchasePaid();
+    BigDecimal totalPurchasePaid();
 
-	@Query("""
+    @Query("""
 			SELECT COALESCE(SUM(t.amount), 0)
 			FROM Transaction t
 			WHERE LOWER(t.transactionType) IN ('sale')
 			""")
-	BigDecimal totalSaleReceived();
+    BigDecimal totalSaleReceived();
 
-	@Query("SELECT t FROM Transaction t WHERE LOWER(t.transactionType) = LOWER(:type)")
-	List<Transaction> findByType(String type);
+    @Query("SELECT t FROM Transaction t WHERE LOWER(t.transactionType) = LOWER(:type)")
+    List<Transaction> findByType(String type);
 
-	List<Transaction> findByPayrollEmployee_Id(Long payrollEmployeeId);
+    List<Transaction> findByPayrollEmployee_Id(Long payrollEmployeeId);
 
-	List<Transaction> findByFranchisePurchaseReturn_Id(Long id);
+    List<Transaction> findByPayrollEmployee_IdIn(List<Long> payrollEmployeeIds);
 
-	@Query("SELECT COALESCE(SUM(t.amount),0) FROM Transaction t WHERE t.franchisePurchaseReturn.id = :returnId")
-	BigDecimal totalPaidAmount(Long returnId);
+    List<Transaction> findByFranchisePurchaseReturn_Id(Long id);
+
+    @Query("SELECT COALESCE(SUM(t.amount),0) FROM Transaction t WHERE t.franchisePurchaseReturn.id = :returnId")
+    BigDecimal totalPaidAmount(Long returnId);
 
 }

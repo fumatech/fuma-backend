@@ -13,103 +13,122 @@ import jakarta.persistence.Id;
 @Entity
 public class Attendance {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	private Long employeeId;
-	private Long shiftId;
+    private Long employeeId;
+    private Long shiftId;
 
-	private LocalDate attendanceDate;
+    private LocalDate attendanceDate;
 
-	private LocalDateTime inTime;
-	private LocalDateTime outTime;
+    private LocalDateTime inTime;
+    private LocalDateTime outTime;
 
-	private String ipAddress;
-	private String inNote;
-	private String outNote;
+    private String ipAddress;
+    private String inNote;
+    private String outNote;
 
-	@Enumerated(EnumType.STRING)
-	private AttendanceStatus status;
+    @Enumerated(EnumType.STRING)
+    private AttendanceStatus status;
 
-	public Long getId() {
-		return id;
-	}
+    private String loginMethod; // FACE_SCAN, MANUAL
+    private Double totalWorkingHours;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public Long getEmployeeId() {
-		return employeeId;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setEmployeeId(Long employeeId) {
-		this.employeeId = employeeId;
-	}
+    public Long getEmployeeId() {
+        return employeeId;
+    }
 
-	public Long getShiftId() {
-		return shiftId;
-	}
+    public void setEmployeeId(Long employeeId) {
+        this.employeeId = employeeId;
+    }
 
-	public void setShiftId(Long shiftId) {
-		this.shiftId = shiftId;
-	}
+    public Long getShiftId() {
+        return shiftId;
+    }
 
-	public LocalDate getAttendanceDate() {
-		return attendanceDate;
-	}
+    public void setShiftId(Long shiftId) {
+        this.shiftId = shiftId;
+    }
 
-	public void setAttendanceDate(LocalDate attendanceDate) {
-		this.attendanceDate = attendanceDate;
-	}
+    public LocalDate getAttendanceDate() {
+        return attendanceDate;
+    }
 
-	public LocalDateTime getInTime() {
-		return inTime;
-	}
+    public void setAttendanceDate(LocalDate attendanceDate) {
+        this.attendanceDate = attendanceDate;
+    }
 
-	public void setInTime(LocalDateTime inTime) {
-		this.inTime = inTime;
-	}
+    public LocalDateTime getInTime() {
+        return inTime;
+    }
 
-	public LocalDateTime getOutTime() {
-		return outTime;
-	}
+    public void setInTime(LocalDateTime inTime) {
+        this.inTime = inTime;
+    }
 
-	public void setOutTime(LocalDateTime outTime) {
-		this.outTime = outTime;
-	}
+    public LocalDateTime getOutTime() {
+        return outTime;
+    }
 
-	public String getIpAddress() {
-		return ipAddress;
-	}
+    public void setOutTime(LocalDateTime outTime) {
+        this.outTime = outTime;
+    }
 
-	public void setIpAddress(String ipAddress) {
-		this.ipAddress = ipAddress;
-	}
+    public String getIpAddress() {
+        return ipAddress;
+    }
 
-	public String getInNote() {
-		return inNote;
-	}
+    public void setIpAddress(String ipAddress) {
+        this.ipAddress = ipAddress;
+    }
 
-	public void setInNote(String inNote) {
-		this.inNote = inNote;
-	}
+    public String getInNote() {
+        return inNote;
+    }
 
-	public String getOutNote() {
-		return outNote;
-	}
+    public void setInNote(String inNote) {
+        this.inNote = inNote;
+    }
 
-	public void setOutNote(String outNote) {
-		this.outNote = outNote;
-	}
+    public String getOutNote() {
+        return outNote;
+    }
 
-	public AttendanceStatus getStatus() {
-		return status;
-	}
+    public void setOutNote(String outNote) {
+        this.outNote = outNote;
+    }
 
-	public void setStatus(AttendanceStatus status) {
-		this.status = status;
-	}
+    public AttendanceStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(AttendanceStatus status) {
+        this.status = status;
+    }
+
+    public String getLoginMethod() {
+        return loginMethod;
+    }
+
+    public void setLoginMethod(String loginMethod) {
+        this.loginMethod = loginMethod;
+    }
+
+    public Double getTotalWorkingHours() {
+        return totalWorkingHours;
+    }
+
+    public void setTotalWorkingHours(Double totalWorkingHours) {
+        this.totalWorkingHours = totalWorkingHours;
+    }
 
 }

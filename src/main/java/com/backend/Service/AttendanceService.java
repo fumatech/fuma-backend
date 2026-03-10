@@ -1,25 +1,38 @@
 package com.backend.Service;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 import com.backend.Entity.Attendance;
 import com.backend.Entity.AttendanceBulkRequest;
 
 public interface AttendanceService {
-	Attendance saveAttendance(Attendance attendance);
 
-	void saveBulkAttendance(AttendanceBulkRequest request);
+    Attendance saveAttendance(Attendance attendance);
 
-	List<Attendance> getAllAttendance();
+    void saveBulkAttendance(AttendanceBulkRequest request);
 
-	Attendance getAttendanceById(Long id);
+    List<Attendance> getAllAttendance();
 
-	Attendance updateAttendance(Long id, Attendance attendance);
+    Attendance getAttendanceById(Long id);
 
-	void deleteAttendance(Long id);
+    Attendance updateAttendance(Long id, Attendance attendance);
 
-	void deleteAllAttendance();
+    void deleteAttendance(Long id);
 
-	Attendance getTodayAttendance(Long employeeId);
+    void deleteAllAttendance();
+
+    Attendance getTodayAttendance(Long employeeId);
+
+    List<Attendance> getMonthlyAttendance(Long employeeId, int month, int year);
+
+    Map<String, Object> getMonthlyWorkingSummary(Long employeeId, int month, int year);
+
+    List<Map<String, Object>> getAllEmployeesMonthlyWorkingSummary(int month, int year);
+
+    List<Attendance> getAttendanceByDate(LocalDate date);
+
+    List<Attendance> getTodayFaceScans();
 
 }

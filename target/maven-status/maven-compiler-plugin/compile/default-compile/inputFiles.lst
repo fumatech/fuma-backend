@@ -16,7 +16,9 @@ D:\fuma-backend\src\main\java\com\backend\Controller\CustomerController.java
 D:\fuma-backend\src\main\java\com\backend\Controller\DatabaseController.java
 D:\fuma-backend\src\main\java\com\backend\Controller\DepartmentController.java
 D:\fuma-backend\src\main\java\com\backend\Controller\DesignationController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\EmployeeGrievanceController.java
 D:\fuma-backend\src\main\java\com\backend\Controller\ExpensesController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\FaceEncodingController.java
 D:\fuma-backend\src\main\java\com\backend\Controller\FileController.java
 D:\fuma-backend\src\main\java\com\backend\Controller\FileDownloadController.java
 D:\fuma-backend\src\main\java\com\backend\Controller\FollowUpsController.java
@@ -24,6 +26,7 @@ D:\fuma-backend\src\main\java\com\backend\Controller\FranchisePurchaseOrderContr
 D:\fuma-backend\src\main\java\com\backend\Controller\FranchisePurchaseReturnController.java
 D:\fuma-backend\src\main\java\com\backend\Controller\FranchiseWarrantyClaimController.java
 D:\fuma-backend\src\main\java\com\backend\Controller\HolidayController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\HRMDashboardController.java
 D:\fuma-backend\src\main\java\com\backend\Controller\ItemReportController.java
 D:\fuma-backend\src\main\java\com\backend\Controller\LeadController.java
 D:\fuma-backend\src\main\java\com\backend\Controller\LeaveController.java
@@ -31,6 +34,8 @@ D:\fuma-backend\src\main\java\com\backend\Controller\PayComponentController.java
 D:\fuma-backend\src\main\java\com\backend\Controller\PaymentAccountController.java
 D:\fuma-backend\src\main\java\com\backend\Controller\PaymentMethodController.java
 D:\fuma-backend\src\main\java\com\backend\Controller\PayRollController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\PerformanceFeedbackController.java
+D:\fuma-backend\src\main\java\com\backend\Controller\PerformanceKPIController.java
 D:\fuma-backend\src\main\java\com\backend\Controller\PermissionController.java
 D:\fuma-backend\src\main\java\com\backend\Controller\ProductController.java
 D:\fuma-backend\src\main\java\com\backend\Controller\ProductPurchaseReportController.java
@@ -75,6 +80,7 @@ D:\fuma-backend\src\main\java\com\backend\DTO\PayrollEmployeeResponseDTO.java
 D:\fuma-backend\src\main\java\com\backend\DTO\PayrollResponseDTO.java
 D:\fuma-backend\src\main\java\com\backend\DTO\PayrollSalaryTransactionDTO.java
 D:\fuma-backend\src\main\java\com\backend\DTO\PayrollSaveRequest.java
+D:\fuma-backend\src\main\java\com\backend\DTO\SaleSoOrderListDTO.java
 D:\fuma-backend\src\main\java\com\backend\Entity\AddExpenses.java
 D:\fuma-backend\src\main\java\com\backend\Entity\AddLeave.java
 D:\fuma-backend\src\main\java\com\backend\Entity\AllOrdersResponse.java
@@ -96,7 +102,9 @@ D:\fuma-backend\src\main\java\com\backend\Entity\Customer.java
 D:\fuma-backend\src\main\java\com\backend\Entity\DatabaseRequest.java
 D:\fuma-backend\src\main\java\com\backend\Entity\Department.java
 D:\fuma-backend\src\main\java\com\backend\Entity\Designation.java
+D:\fuma-backend\src\main\java\com\backend\Entity\EmployeeGrievance.java
 D:\fuma-backend\src\main\java\com\backend\Entity\Expenses.java
+D:\fuma-backend\src\main\java\com\backend\Entity\FaceEncoding.java
 D:\fuma-backend\src\main\java\com\backend\Entity\FollowUps.java
 D:\fuma-backend\src\main\java\com\backend\Entity\FranchiseOrderItems.java
 D:\fuma-backend\src\main\java\com\backend\Entity\FranchisePurchaseOrder.java
@@ -119,6 +127,8 @@ D:\fuma-backend\src\main\java\com\backend\Entity\PayRoll.java
 D:\fuma-backend\src\main\java\com\backend\Entity\PayrollDeduction.java
 D:\fuma-backend\src\main\java\com\backend\Entity\PayrollEarning.java
 D:\fuma-backend\src\main\java\com\backend\Entity\PayrollEmployee.java
+D:\fuma-backend\src\main\java\com\backend\Entity\PerformanceFeedback.java
+D:\fuma-backend\src\main\java\com\backend\Entity\PerformanceKPI.java
 D:\fuma-backend\src\main\java\com\backend\Entity\Permission.java
 D:\fuma-backend\src\main\java\com\backend\Entity\Product.java
 D:\fuma-backend\src\main\java\com\backend\Entity\ProductPurchaseReportDTO.java
@@ -192,7 +202,9 @@ D:\fuma-backend\src\main\java\com\backend\Repository\ContactLoginRepo.java
 D:\fuma-backend\src\main\java\com\backend\Repository\CustomerRepo.java
 D:\fuma-backend\src\main\java\com\backend\Repository\DepartmentRepo.java
 D:\fuma-backend\src\main\java\com\backend\Repository\DesignationRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\EmployeeGrievanceRepo.java
 D:\fuma-backend\src\main\java\com\backend\Repository\ExpensesRepository.java
+D:\fuma-backend\src\main\java\com\backend\Repository\FaceEncodingRepo.java
 D:\fuma-backend\src\main\java\com\backend\Repository\FollowUpsRepo.java
 D:\fuma-backend\src\main\java\com\backend\Repository\FranchisePurchaseOrderRepo.java
 D:\fuma-backend\src\main\java\com\backend\Repository\FranchisePurchaseReturnRepo.java
@@ -210,6 +222,8 @@ D:\fuma-backend\src\main\java\com\backend\Repository\PayrollEarningRepository.ja
 D:\fuma-backend\src\main\java\com\backend\Repository\PayrollEmployeeRepository.java
 D:\fuma-backend\src\main\java\com\backend\Repository\PayRollRepo.java
 D:\fuma-backend\src\main\java\com\backend\Repository\PayrollRepository.java
+D:\fuma-backend\src\main\java\com\backend\Repository\PerformanceFeedbackRepo.java
+D:\fuma-backend\src\main\java\com\backend\Repository\PerformanceKPIRepo.java
 D:\fuma-backend\src\main\java\com\backend\Repository\PermissionRepo.java
 D:\fuma-backend\src\main\java\com\backend\Repository\ProductRepo.java
 D:\fuma-backend\src\main\java\com\backend\Repository\ProductStockRepo.java
@@ -264,7 +278,9 @@ D:\fuma-backend\src\main\java\com\backend\Service\ContactLoginService.java
 D:\fuma-backend\src\main\java\com\backend\Service\CustomerService.java
 D:\fuma-backend\src\main\java\com\backend\Service\DepartmentService.java
 D:\fuma-backend\src\main\java\com\backend\Service\DesignationService.java
+D:\fuma-backend\src\main\java\com\backend\Service\EmployeeGrievanceService.java
 D:\fuma-backend\src\main\java\com\backend\Service\ExpensesService.java
+D:\fuma-backend\src\main\java\com\backend\Service\FaceEncodingService.java
 D:\fuma-backend\src\main\java\com\backend\Service\FollowUpsService.java
 D:\fuma-backend\src\main\java\com\backend\Service\FranchisePurchaseOrderService.java
 D:\fuma-backend\src\main\java\com\backend\Service\FranchisePurchaseReturnService.java
@@ -279,6 +295,8 @@ D:\fuma-backend\src\main\java\com\backend\Service\PayComponentService.java
 D:\fuma-backend\src\main\java\com\backend\Service\PaymentAccountService.java
 D:\fuma-backend\src\main\java\com\backend\Service\PaymentMethodService.java
 D:\fuma-backend\src\main\java\com\backend\Service\PayRollService.java
+D:\fuma-backend\src\main\java\com\backend\Service\PerformanceFeedbackService.java
+D:\fuma-backend\src\main\java\com\backend\Service\PerformanceKPIService.java
 D:\fuma-backend\src\main\java\com\backend\Service\PermissionService.java
 D:\fuma-backend\src\main\java\com\backend\Service\ProductPurchaseReportService.java
 D:\fuma-backend\src\main\java\com\backend\Service\ProductService.java
@@ -327,7 +345,9 @@ D:\fuma-backend\src\main\java\com\backend\ServiceImpl\CustomerImpl.java
 D:\fuma-backend\src\main\java\com\backend\ServiceImpl\DatabaseService.java
 D:\fuma-backend\src\main\java\com\backend\ServiceImpl\DepartmentServiceImpl.java
 D:\fuma-backend\src\main\java\com\backend\ServiceImpl\DesignationServiceImpl.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\EmployeeGrievanceServiceImpl.java
 D:\fuma-backend\src\main\java\com\backend\ServiceImpl\ExpensesServiceImpl.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\FaceEncodingServiceImpl.java
 D:\fuma-backend\src\main\java\com\backend\ServiceImpl\FollowUpsServiceImpl.java
 D:\fuma-backend\src\main\java\com\backend\ServiceImpl\FranchisePurchaseOrderServiceImpl.java
 D:\fuma-backend\src\main\java\com\backend\ServiceImpl\FranchisePurchaseReturnServiceImpl.java
@@ -340,6 +360,8 @@ D:\fuma-backend\src\main\java\com\backend\ServiceImpl\PayComponentServiceImpl.ja
 D:\fuma-backend\src\main\java\com\backend\ServiceImpl\PaymentAccountServiceImpl.java
 D:\fuma-backend\src\main\java\com\backend\ServiceImpl\PaymentMethodServiceImpl.java
 D:\fuma-backend\src\main\java\com\backend\ServiceImpl\PayRollServiceImpl.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\PerformanceFeedbackServiceImpl.java
+D:\fuma-backend\src\main\java\com\backend\ServiceImpl\PerformanceKPIServiceImpl.java
 D:\fuma-backend\src\main\java\com\backend\ServiceImpl\PermissionServiceImpl.java
 D:\fuma-backend\src\main\java\com\backend\ServiceImpl\ProductServiceImpl.java
 D:\fuma-backend\src\main\java\com\backend\ServiceImpl\ProductStockServiceImpl.java

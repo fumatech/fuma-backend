@@ -9,8 +9,11 @@ import com.backend.Entity.PayrollDeduction;
 
 @Repository
 public interface PayrollDeductionRepository extends JpaRepository<PayrollDeduction, Long> {
-	List<PayrollDeduction> findByPayrollEmployeeId(Long payrollEmployeeId);
 
-	void deleteByPayrollEmployeeId(Long payrollEmployeeId);
+    List<PayrollDeduction> findByPayrollEmployeeId(Long payrollEmployeeId);
+
+    void deleteByPayrollEmployeeId(Long payrollEmployeeId);
+
+    List<PayrollDeduction> findByPayrollEmployeeIdIn(List<Long> payrollEmployeeIds);
 
 }
