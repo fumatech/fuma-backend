@@ -111,6 +111,8 @@ public class UserServiceImpl implements UserService {
             existingUser.setBasicSalary(user.getBasicSalary());
             existingUser.setSalaryIn(user.getSalaryIn());
             existingUser.setPayComponentId(user.getPayComponentId());
+            existingUser.setEmployeeType(user.getEmployeeType());
+            existingUser.setHourlyRate(user.getHourlyRate());
 
             existingUser.setAccountHolderName(user.getAccountHolderName());
             existingUser.setAccountNumber(user.getAccountNumber());

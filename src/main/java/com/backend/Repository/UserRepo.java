@@ -23,4 +23,9 @@ public interface UserRepo extends JpaRepository<User, Long> {
     @Query("SELECT u.id, u.firstname, u.lastname FROM User u")
     List<Object[]> findAllIdAndName();
 
+    long countByIsActive(Boolean isActive);
+
+    @Query("SELECT u.departmentId, COUNT(u) FROM User u WHERE u.departmentId IS NOT NULL GROUP BY u.departmentId")
+    List<Object[]> countByDepartmentGroup();
+
 }
