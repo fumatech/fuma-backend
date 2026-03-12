@@ -112,11 +112,21 @@ public class AttendanceController {
     @PostMapping("/face-clock-in")
     public ResponseEntity<?> faceClockIn(@RequestBody Map<String, String> body) {
         String faceDescriptor = body.get("faceDescriptor");
+        String employeeIdStr = body.get("employeeId");
 
         // Match face
         Long matchedEmployeeId = faceEncodingService.matchFace(faceDescriptor);
         if (matchedEmployeeId == null) {
             return ResponseEntity.ok(Map.of("success", false, "message", "Face not recognized"));
+        }
+
+        // If employeeId is provided (employee portal), verify face belongs to logged-in employee
+        if (employeeIdStr != null && !employeeIdStr.isEmpty()) {
+            Long loggedInEmployeeId = Long.valueOf(employeeIdStr);
+            if (!matchedEmployeeId.equals(loggedInEmployeeId)) {
+                return ResponseEntity.ok(Map.of("success", false, "message",
+                        "Face does not belong to the logged-in employee."));
+            }
         }
 
         // Check if already clocked in today
@@ -143,11 +153,21 @@ public class AttendanceController {
     @PostMapping("/face-clock-out")
     public ResponseEntity<?> faceClockOut(@RequestBody Map<String, String> body) {
         String faceDescriptor = body.get("faceDescriptor");
+        String employeeIdStr = body.get("employeeId");
 
         // Match face
         Long matchedEmployeeId = faceEncodingService.matchFace(faceDescriptor);
         if (matchedEmployeeId == null) {
             return ResponseEntity.ok(Map.of("success", false, "message", "Face not recognized"));
+        }
+
+        // If employeeId is provided (employee portal), verify face belongs to logged-in employee
+        if (employeeIdStr != null && !employeeIdStr.isEmpty()) {
+            Long loggedInEmployeeId = Long.valueOf(employeeIdStr);
+            if (!matchedEmployeeId.equals(loggedInEmployeeId)) {
+                return ResponseEntity.ok(Map.of("success", false, "message",
+                        "Face does not belong to the logged-in employee."));
+            }
         }
 
         // Find today's attendance

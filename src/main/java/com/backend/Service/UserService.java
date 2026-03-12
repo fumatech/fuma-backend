@@ -15,7 +15,13 @@ public interface UserService {
 
     boolean authenticate(String email, String password);
 
+    boolean authenticateAdmin(String email, String password);
+
+    boolean authenticateEmployee(String email, String password);
+
     List<User> getallusers();
+
+    long getUserCount();
 
     Optional<User> findById(Long id);
 
