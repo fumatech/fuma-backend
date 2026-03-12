@@ -51,6 +51,30 @@ public class UserController {
         }
     }
 
+    @PostMapping("/admin-login")
+    public ResponseEntity<String> adminLogin(@RequestBody LoginRequest request, HttpSession session) {
+        boolean isAuthenticated = userservice.authenticateAdmin(request.getEmail(), request.getPassword());
+
+        if (isAuthenticated) {
+            session.setAttribute("userEmail", request.getEmail());
+            return new ResponseEntity<>("Login successful", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Invalid credentials or not an admin account", HttpStatus.UNAUTHORIZED);
+        }
+    }
+
+    @PostMapping("/employee-login")
+    public ResponseEntity<String> employeeLogin(@RequestBody LoginRequest request, HttpSession session) {
+        boolean isAuthenticated = userservice.authenticateEmployee(request.getEmail(), request.getPassword());
+
+        if (isAuthenticated) {
+            session.setAttribute("userEmail", request.getEmail());
+            return new ResponseEntity<>("Login successful", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Invalid credentials or not an employee account", HttpStatus.UNAUTHORIZED);
+        }
+    }
+
     @PostMapping("/logout")
     public ResponseEntity<String> logout(HttpSession session) {
         session.invalidate(); // Invalidate the session
@@ -61,6 +85,11 @@ public class UserController {
     public ResponseEntity<List<User>> getAllUsers() {
         List<User> users = userservice.getallusers();
         return new ResponseEntity<>(users, HttpStatus.OK);
+    }
+
+    @GetMapping("/count")
+    public ResponseEntity<Long> getUserCount() {
+        return ResponseEntity.ok(userservice.getUserCount());
     }
 
     @GetMapping("/getall-names")

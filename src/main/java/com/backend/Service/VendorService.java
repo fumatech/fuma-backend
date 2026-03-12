@@ -7,35 +7,37 @@ import com.backend.Entity.Vendor;
 
 public interface VendorService {
 
-	Vendor saveVendor(Vendor Vendor);
+    Vendor saveVendor(Vendor Vendor);
 
-	boolean isActiveUser(String email);
+    boolean isActiveUser(String email);
 
-	Optional<Vendor> findByEmail(String email);
+    Optional<Vendor> findByEmail(String email);
 
-	boolean authenticate(String email, String password);
+    boolean authenticate(String email, String password);
 
-	List<Vendor> getAllVendors();
+    List<Vendor> getAllVendors();
 
-	Vendor updateVendor(Long VendorId, Vendor updatedVendor);
+    long getVendorCount();
 
-	Vendor getVendorById(Long id);
+    Vendor updateVendor(Long VendorId, Vendor updatedVendor);
 
-	void deleteVendorById(Long id);
+    Vendor getVendorById(Long id);
 
-	// Add the following method to the interface
-	Vendor getUserWithRolesAndPermissions(String email);
+    void deleteVendorById(Long id);
 
-	Optional<String> getUserName(String email);
+    // Add the following method to the interface
+    Vendor getUserWithRolesAndPermissions(String email);
 
-	Optional<String> findFirmNameByEmail(String email);
+    Optional<String> getUserName(String email);
 
-	Optional<Vendor> findByVendorId(String vendorId);
+    Optional<String> findFirmNameByEmail(String email);
 
-	Vendor toggleActiveStatus(Long vendorId, boolean isActive);
+    Optional<Vendor> findByVendorId(String vendorId);
 
-	List<Vendor> getAllActiveVendors();
+    Vendor toggleActiveStatus(Long vendorId, boolean isActive);
 
-	List<Vendor> getAllInactiveVendors();
+    List<Vendor> getAllActiveVendors();
+
+    List<Vendor> getAllInactiveVendors();
 
 }

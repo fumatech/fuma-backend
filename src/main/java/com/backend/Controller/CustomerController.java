@@ -29,174 +29,179 @@ import jakarta.servlet.http.HttpSession;
 
 @RestController
 @RequestMapping("/customer")
-@CrossOrigin(origins = { "http://localhost:3000", "http://fusionmastertech.com", "https://fusionmastertech.com",
-		"http://www.fusionmastertech.com", "https://www.fusionmastertech.com" }, allowCredentials = "true")
+@CrossOrigin(origins = {"http://localhost:3000", "http://fusionmastertech.com", "https://fusionmastertech.com",
+    "http://www.fusionmastertech.com", "https://www.fusionmastertech.com"}, allowCredentials = "true")
 public class CustomerController {
 
-	@Autowired
-	private CustomerService customerservice;
+    @Autowired
+    private CustomerService customerservice;
 
-	@Autowired
-	private DatabaseService databaseService;
+    @Autowired
+    private DatabaseService databaseService;
 
-	@PostMapping("/save")
-	public ResponseEntity<?> saveCustomer(@RequestBody Customer customer) {
-		// Check if franchiseId already exists
-		if (customerservice.existsByFranchiseId(customer.getFranchiseId())) {
-			Map<String, String> response = new HashMap<>();
-			response.put("message", "Franchise ID already exists");
-			return ResponseEntity.status(HttpStatus.CONFLICT).body(response);
-		}
+    @PostMapping("/save")
+    public ResponseEntity<?> saveCustomer(@RequestBody Customer customer) {
+        // Check if franchiseId already exists
+        if (customerservice.existsByFranchiseId(customer.getFranchiseId())) {
+            Map<String, String> response = new HashMap<>();
+            response.put("message", "Franchise ID already exists");
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(response);
+        }
 
-		// Create database first
-		DatabaseRequest dbRequest = new DatabaseRequest();
-		dbRequest.setDbName(customer.getDbName());
-		dbRequest.setDbUsername(customer.getDbUsername());
-		dbRequest.setDbPassword(customer.getDbPassword());
+        // Create database first
+        DatabaseRequest dbRequest = new DatabaseRequest();
+        dbRequest.setDbName(customer.getDbName());
+        dbRequest.setDbUsername(customer.getDbUsername());
+        dbRequest.setDbPassword(customer.getDbPassword());
 
-		if (!databaseService.createDatabase(dbRequest)) {
-			Map<String, String> response = new HashMap<>();
-			response.put("message", "Failed to create database");
-			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
-		}
+        if (!databaseService.createDatabase(dbRequest)) {
+            Map<String, String> response = new HashMap<>();
+            response.put("message", "Failed to create database");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+        }
 
-		// Save customer if database creation succeeded
-		Customer savedCustomer = customerservice.saveCustomer(customer);
-		return ResponseEntity.ok(savedCustomer);
-	}
+        // Save customer if database creation succeeded
+        Customer savedCustomer = customerservice.saveCustomer(customer);
+        return ResponseEntity.ok(savedCustomer);
+    }
 
-	@PostMapping("/login")
-	public ResponseEntity<Map<String, String>> login(@RequestBody LoginRequest request, HttpSession session) {
-		boolean isAuthenticated = customerservice.authenticate(request.getEmail(), request.getPassword());
+    @PostMapping("/login")
+    public ResponseEntity<Map<String, String>> login(@RequestBody LoginRequest request, HttpSession session) {
+        boolean isAuthenticated = customerservice.authenticate(request.getEmail(), request.getPassword());
 
-		if (isAuthenticated) {
-			Optional<Customer> customer = customerservice.findByEmailId(request.getEmail());
-			if (customer.isPresent()) {
-				session.setAttribute("userEmail", request.getEmail());
-				session.setAttribute("tenantDbName", customer.get().getDbName());
+        if (isAuthenticated) {
+            Optional<Customer> customer = customerservice.findByEmailId(request.getEmail());
+            if (customer.isPresent()) {
+                session.setAttribute("userEmail", request.getEmail());
+                session.setAttribute("tenantDbName", customer.get().getDbName());
 
-				Map<String, String> response = new HashMap<>();
-				response.put("message", "Login successful");
-				response.put("tenantDbName", customer.get().getDbName());
-				return new ResponseEntity<>(response, HttpStatus.OK);
-			}
-		}
-		return new ResponseEntity<>(Map.of("message", "Invalid credentials or account inactive"),
-				HttpStatus.UNAUTHORIZED);
-	}
+                Map<String, String> response = new HashMap<>();
+                response.put("message", "Login successful");
+                response.put("tenantDbName", customer.get().getDbName());
+                return new ResponseEntity<>(response, HttpStatus.OK);
+            }
+        }
+        return new ResponseEntity<>(Map.of("message", "Invalid credentials or account inactive"),
+                HttpStatus.UNAUTHORIZED);
+    }
 
-	@PostMapping("/logout")
-	public ResponseEntity<String> logout(HttpSession session) {
-		session.invalidate(); // Invalidate the session
-		return new ResponseEntity<>("Logout successful", HttpStatus.OK);
-	}
+    @PostMapping("/logout")
+    public ResponseEntity<String> logout(HttpSession session) {
+        session.invalidate(); // Invalidate the session
+        return new ResponseEntity<>("Logout successful", HttpStatus.OK);
+    }
 
-	@GetMapping("/getall")
-	public ResponseEntity<List<Customer>> getAllCustomers() {
-		List<Customer> customers = customerservice.getAllCustomers();
-		return ResponseEntity.ok(customers);
-	}
+    @GetMapping("/getall")
+    public ResponseEntity<List<Customer>> getAllCustomers() {
+        List<Customer> customers = customerservice.getAllCustomers();
+        return ResponseEntity.ok(customers);
+    }
 
-	@GetMapping("/{id}")
-	public ResponseEntity<Customer> getCustomerById(@PathVariable Long id) {
-		Customer customers = customerservice.getCustomerById(id);
-		if (customers != null) {
-			return ResponseEntity.ok(customers);
-		} else {
-			return ResponseEntity.notFound().build();
-		}
-	}
+    @GetMapping("/count")
+    public ResponseEntity<Long> getCustomerCount() {
+        return ResponseEntity.ok(customerservice.getCustomerCount());
+    }
 
-	@PutMapping("update/{id}")
-	ResponseEntity<Customer> updateCustomer(@PathVariable Long id, @RequestBody Customer updatedCustomer) {
-		Customer custom = customerservice.updateCustomer(id, updatedCustomer);
-		if (custom != null) {
-			return ResponseEntity.ok(custom);
-		} else {
-			return ResponseEntity.notFound().build();
-		}
-	}
+    @GetMapping("/{id}")
+    public ResponseEntity<Customer> getCustomerById(@PathVariable Long id) {
+        Customer customers = customerservice.getCustomerById(id);
+        if (customers != null) {
+            return ResponseEntity.ok(customers);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
-	@DeleteMapping("/delete/{id}")
-	public ResponseEntity<Void> deleteCustomerById(@PathVariable Long id) {
-		customerservice.deleteCustomerById(id);
-		return ResponseEntity.noContent().build();
-	}
+    @PutMapping("update/{id}")
+    ResponseEntity<Customer> updateCustomer(@PathVariable Long id, @RequestBody Customer updatedCustomer) {
+        Customer custom = customerservice.updateCustomer(id, updatedCustomer);
+        if (custom != null) {
+            return ResponseEntity.ok(custom);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
-	@GetMapping("/franchiseName/email/{email}")
-	public ResponseEntity<Map<String, String>> getFirmNameByEmail(@PathVariable String email) {
-		Optional<String> franchiseName = customerservice.findFirmNameByEmail(email);
-		if (franchiseName.isPresent()) {
-			// Return a JSON object with a key "firmName" and the firm name value
-			Map<String, String> response = new HashMap<>();
-			response.put("franchiseName", franchiseName.get());
-			return ResponseEntity.ok(response); // Return the response as a JSON object
-		} else {
-			return ResponseEntity.notFound().build();
-		}
-	}
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Void> deleteCustomerById(@PathVariable Long id) {
+        customerservice.deleteCustomerById(id);
+        return ResponseEntity.noContent().build();
+    }
 
-	// In CustomerController.java
-	@GetMapping("/checkFranchiseId/{franchiseId}")
-	public ResponseEntity<Map<String, Boolean>> checkFranchiseIdExists(@PathVariable String franchiseId) {
-		boolean exists = customerservice.existsByFranchiseId(franchiseId);
-		Map<String, Boolean> response = new HashMap<>();
-		response.put("FranchiseId exists ", exists);
-		return ResponseEntity.ok(response);
-	}
+    @GetMapping("/franchiseName/email/{email}")
+    public ResponseEntity<Map<String, String>> getFirmNameByEmail(@PathVariable String email) {
+        Optional<String> franchiseName = customerservice.findFirmNameByEmail(email);
+        if (franchiseName.isPresent()) {
+            // Return a JSON object with a key "firmName" and the firm name value
+            Map<String, String> response = new HashMap<>();
+            response.put("franchiseName", franchiseName.get());
+            return ResponseEntity.ok(response); // Return the response as a JSON object
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
-	@GetMapping("/email/{email}")
-	public ResponseEntity<Customer> getCustomerByEmailId(@PathVariable String email) {
-		Optional<Customer> customer = customerservice.findByEmailId(email);
-		if (customer.isPresent()) {
-			return ResponseEntity.ok(customer.get());
-		} else {
-			return ResponseEntity.notFound().build();
-		}
-	}
+    // In CustomerController.java
+    @GetMapping("/checkFranchiseId/{franchiseId}")
+    public ResponseEntity<Map<String, Boolean>> checkFranchiseIdExists(@PathVariable String franchiseId) {
+        boolean exists = customerservice.existsByFranchiseId(franchiseId);
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("FranchiseId exists ", exists);
+        return ResponseEntity.ok(response);
+    }
 
-	@GetMapping("/check-email")
-	public ResponseEntity<Map<String, Boolean>> checkEmailExists(@RequestParam String email) {
-		boolean exists = customerservice.existsByEmail(email);
-		Map<String, Boolean> response = new HashMap<>();
-		response.put("emailExists", exists);
-		return ResponseEntity.ok(response);
-	}
+    @GetMapping("/email/{email}")
+    public ResponseEntity<Customer> getCustomerByEmailId(@PathVariable String email) {
+        Optional<Customer> customer = customerservice.findByEmailId(email);
+        if (customer.isPresent()) {
+            return ResponseEntity.ok(customer.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
-	// Toggle activation status
-	@PutMapping("/toggle-active/{id}")
-	public ResponseEntity<Map<String, Object>> toggleCustomerActiveStatus(@PathVariable Long id,
-			@RequestParam boolean isActive) {
+    @GetMapping("/check-email")
+    public ResponseEntity<Map<String, Boolean>> checkEmailExists(@RequestParam String email) {
+        boolean exists = customerservice.existsByEmail(email);
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("emailExists", exists);
+        return ResponseEntity.ok(response);
+    }
 
-		Customer updatedCustomer = customerservice.toggleActiveStatus(id, isActive);
-		if (updatedCustomer != null) {
-			Map<String, Object> response = new HashMap<>();
-			response.put("message", "Customer status updated");
-			response.put("isActive", updatedCustomer.getIsActive());
-			return ResponseEntity.ok(response);
-		} else {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("message", "Customer not found"));
-		}
-	}
+    // Toggle activation status
+    @PutMapping("/toggle-active/{id}")
+    public ResponseEntity<Map<String, Object>> toggleCustomerActiveStatus(@PathVariable Long id,
+            @RequestParam boolean isActive) {
 
-	// Get all active customers
-	@GetMapping("/getallactive")
-	public ResponseEntity<List<Customer>> getAllActiveCustomers() {
-		List<Customer> activeCustomers = customerservice.getAllActiveCustomers();
-		return ResponseEntity.ok(activeCustomers);
-	}
+        Customer updatedCustomer = customerservice.toggleActiveStatus(id, isActive);
+        if (updatedCustomer != null) {
+            Map<String, Object> response = new HashMap<>();
+            response.put("message", "Customer status updated");
+            response.put("isActive", updatedCustomer.getIsActive());
+            return ResponseEntity.ok(response);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("message", "Customer not found"));
+        }
+    }
 
-	// Get all inactive customers
-	@GetMapping("/getallinactive")
-	public ResponseEntity<List<Customer>> getAllInactiveCustomers() {
-		List<Customer> inactiveCustomers = customerservice.getAllInactiveCustomers();
-		return ResponseEntity.ok(inactiveCustomers);
-	}
+    // Get all active customers
+    @GetMapping("/getallactive")
+    public ResponseEntity<List<Customer>> getAllActiveCustomers() {
+        List<Customer> activeCustomers = customerservice.getAllActiveCustomers();
+        return ResponseEntity.ok(activeCustomers);
+    }
 
-	@GetMapping("/franchise/{franchiseId}")
-	public ResponseEntity<Customer> getCustomerByFranchiseId(@PathVariable String franchiseId) {
-		Optional<Customer> customer = customerservice.findByFranchiseId(franchiseId);
-		return customer.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
-	}
+    // Get all inactive customers
+    @GetMapping("/getallinactive")
+    public ResponseEntity<List<Customer>> getAllInactiveCustomers() {
+        List<Customer> inactiveCustomers = customerservice.getAllInactiveCustomers();
+        return ResponseEntity.ok(inactiveCustomers);
+    }
+
+    @GetMapping("/franchise/{franchiseId}")
+    public ResponseEntity<Customer> getCustomerByFranchiseId(@PathVariable String franchiseId) {
+        Optional<Customer> customer = customerservice.findByFranchiseId(franchiseId);
+        return customer.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
 
 }

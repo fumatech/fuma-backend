@@ -7,38 +7,40 @@ import com.backend.Entity.Customer;
 
 public interface CustomerService {
 
-	Customer saveCustomer(Customer customer);
+    Customer saveCustomer(Customer customer);
 
-	List<Customer> getAllCustomers();
+    List<Customer> getAllCustomers();
 
-	Customer updateCustomer(Long CustomerId, Customer updatedCustomer);
+    long getCustomerCount();
 
-	Customer getCustomerById(Long id);
+    Customer updateCustomer(Long CustomerId, Customer updatedCustomer);
 
-	void deleteCustomerById(Long id);
+    Customer getCustomerById(Long id);
 
-	boolean isActiveUser(String email);
+    void deleteCustomerById(Long id);
 
-	Optional<Customer> findByEmail(String email);
+    boolean isActiveUser(String email);
 
-	boolean authenticate(String email, String password);
+    Optional<Customer> findByEmail(String email);
 
-	Optional<String> getUserName(String email);
+    boolean authenticate(String email, String password);
 
-	Optional<String> findFirmNameByEmail(String email);
+    Optional<String> getUserName(String email);
 
-	boolean existsByFranchiseId(String franchiseId);
+    Optional<String> findFirmNameByEmail(String email);
 
-	Optional<Customer> findByEmailId(String email);
+    boolean existsByFranchiseId(String franchiseId);
 
-	boolean existsByEmail(String email);
+    Optional<Customer> findByEmailId(String email);
 
-	List<Customer> getAllActiveCustomers();
+    boolean existsByEmail(String email);
 
-	List<Customer> getAllInactiveCustomers();
+    List<Customer> getAllActiveCustomers();
 
-	Customer toggleActiveStatus(Long id, boolean isActive);
+    List<Customer> getAllInactiveCustomers();
 
-	Optional<Customer> findByFranchiseId(String franchiseId);
+    Customer toggleActiveStatus(Long id, boolean isActive);
+
+    Optional<Customer> findByFranchiseId(String franchiseId);
 
 }

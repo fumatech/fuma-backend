@@ -39,8 +39,39 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public boolean authenticateAdmin(String email, String password) {
+        Optional<User> userOpt = userrepo.findByEmail(email);
+        if (userOpt.isEmpty() || !userOpt.get().getPassword().equals(password) || !userOpt.get().getIsActive()) {
+            return false;
+        }
+        User user = userOpt.get();
+        return user.getRoles() != null && user.getRoles().stream()
+                .anyMatch(role -> "super admin".equalsIgnoreCase(role.getRole()) || "admin".equalsIgnoreCase(role.getRole()));
+    }
+
+    @Override
+    public boolean authenticateEmployee(String email, String password) {
+        Optional<User> userOpt = userrepo.findByEmail(email);
+        if (userOpt.isEmpty() || !userOpt.get().getPassword().equals(password) || !userOpt.get().getIsActive()) {
+            return false;
+        }
+        User user = userOpt.get();
+        if (user.getRoles() == null || user.getRoles().isEmpty()) {
+            return true;
+        }
+        boolean isAdmin = user.getRoles().stream()
+                .anyMatch(role -> "super admin".equalsIgnoreCase(role.getRole()) || "admin".equalsIgnoreCase(role.getRole()));
+        return !isAdmin;
+    }
+
+    @Override
     public List<User> getallusers() {
         return userrepo.findAll();
+    }
+
+    @Override
+    public long getUserCount() {
+        return userrepo.count();
     }
 
     @Override
