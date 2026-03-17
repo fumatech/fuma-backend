@@ -16,7 +16,7 @@ public class HRDocsPermissionSeeder implements CommandLineRunner {
     @Override
     public void run(String... args) {
         saveIfMissing("hr_docs.view");
-      //  saveIfMissing("hr_docs.manage");
+        // saveIfMissing("hr_docs.manage");
     }
 
     private void saveIfMissing(String permissionName) {

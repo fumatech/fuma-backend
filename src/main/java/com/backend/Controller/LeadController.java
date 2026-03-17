@@ -1,6 +1,7 @@
 package com.backend.Controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -48,5 +49,31 @@ public class LeadController {
     @DeleteMapping("/delete/{id}")
     public void deleteLead(@PathVariable Long id) {
         leadService.deleteLeadById(id);
+    }
+
+    @PutMapping("/update-stage/{id}")
+    public Lead updateLeadStage(@PathVariable Long id, @RequestBody Map<String, String> body) {
+        String stage = body.get("stage");
+        return leadService.updateLeadStage(id, stage);
+    }
+
+    @GetMapping("/analytics")
+    public Map<String, Object> getLeadAnalytics() {
+        return leadService.getLeadAnalytics();
+    }
+
+    @GetMapping("/followups/today")
+    public List<Lead> getTodaysFollowUps() {
+        return leadService.getTodaysFollowUps();
+    }
+
+    @GetMapping("/followups/upcoming")
+    public List<Lead> getUpcomingFollowUps() {
+        return leadService.getUpcomingFollowUps();
+    }
+
+    @GetMapping("/followups/overdue")
+    public List<Lead> getOverdueFollowUps() {
+        return leadService.getOverdueFollowUps();
     }
 }
