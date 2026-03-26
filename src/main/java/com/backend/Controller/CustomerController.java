@@ -204,4 +204,15 @@ public class CustomerController {
         return customer.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
+    @PostMapping("/{id}/tags")
+    public ResponseEntity<Customer> assignTags(@PathVariable Long id, @RequestBody java.util.List<Long> tagIds) {
+        Customer updatedCustomer = customerservice.assignTags(id, tagIds);
+        return updatedCustomer != null ? ResponseEntity.ok(updatedCustomer) : ResponseEntity.notFound().build();
+    }
+
+    @GetMapping("/filter")
+    public ResponseEntity<java.util.List<Customer>> getCustomersByTag(@RequestParam String tag) {
+        return ResponseEntity.ok(customerservice.getCustomersByTag(tag));
+    }
+
 }

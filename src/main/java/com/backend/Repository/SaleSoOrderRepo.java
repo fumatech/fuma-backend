@@ -19,6 +19,10 @@ public interface SaleSoOrderRepo extends JpaRepository<SaleSoOrder, Long> {
 	@Query("SELECT s FROM SaleSoOrder s WHERE s.referenceNumber LIKE 'FUMASL%' ORDER BY LENGTH(s.referenceNumber) DESC, s.referenceNumber DESC")
 	List<SaleSoOrder> findTopOrderByReferenceNumber(Pageable pageable);
 
+	List<SaleSoOrder> findBySaleDateBetween(java.sql.Date start, java.sql.Date end);
+
+	List<SaleSoOrder> findByAddedByAndSaleDateBetween(String addedBy, java.sql.Date start, java.sql.Date end);
+
 	@Query("SELECT COALESCE(SUM(s.netTotalAmount - s.taxAmount), 0) FROM SaleSoOrder s")
 
 	BigDecimal totalSaleSo();

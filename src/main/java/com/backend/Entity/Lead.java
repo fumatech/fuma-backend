@@ -81,6 +81,9 @@ public class Lead {
 		if (this.updatedAt == null) {
 			this.updatedAt = LocalDateTime.now();
 		}
+		if (this.addedOn == null) {
+			this.addedOn = LocalDateTime.now();
+		}
 	}
 
 	@PreUpdate
