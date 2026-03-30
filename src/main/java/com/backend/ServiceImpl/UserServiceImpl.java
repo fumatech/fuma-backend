@@ -115,6 +115,7 @@ public class UserServiceImpl implements UserService {
 //	        }
             existingUser.setLanguage(user.getLanguage());
             existingUser.setDateOfBirth(user.getDateOfBirth());
+            existingUser.setDateOfJoining(user.getDateOfJoining());
             existingUser.setGender(user.getGender());
             existingUser.setMaritalStatus(user.getMaritalStatus());
             existingUser.setBloodGroup(user.getBloodGroup());
