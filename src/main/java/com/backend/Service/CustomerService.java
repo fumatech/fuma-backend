@@ -43,4 +43,7 @@ public interface CustomerService {
 
     Optional<Customer> findByFranchiseId(String franchiseId);
 
+    Customer assignTags(Long customerId, java.util.List<Long> tagIds);
+
+    java.util.List<Customer> getCustomersByTag(String tagName);
 }

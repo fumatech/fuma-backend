@@ -20,6 +20,10 @@ public interface SaleDIOrderRepo extends JpaRepository<SaleDIOrder, Long> {
 	@Query("SELECT s FROM SaleDIOrder s WHERE s.referenceNumber LIKE 'FUMADIS%' ORDER BY LENGTH(s.referenceNumber) DESC, s.referenceNumber DESC")
 	List<SaleDIOrder> findTopOrderByReferenceNumber(Pageable pageable);
 
+	List<SaleDIOrder> findBySaleDateBetween(java.sql.Date start, java.sql.Date end);
+
+	List<SaleDIOrder> findByAddedByAndSaleDateBetween(String addedBy, java.sql.Date start, java.sql.Date end);
+
 	@Query("SELECT COALESCE(SUM(s.netTotalAmount - s.taxAmount), 0) FROM SaleDIOrder s")
 	BigDecimal totalSaleDI();
 

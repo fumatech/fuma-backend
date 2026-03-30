@@ -18,7 +18,9 @@ public class CustomerImpl implements CustomerService {
 
     @Override
     public Customer saveCustomer(Customer customer) {
-        // TODO Auto-generated method stub
+        com.backend.Entity.Tag tag = tagRepo.findByName("New Customer")
+                .orElseGet(() -> tagRepo.save(new com.backend.Entity.Tag("New Customer")));
+        customer.getTags().add(tag);
         return customerrepo.save(customer);
     }
 
@@ -177,6 +179,28 @@ public class CustomerImpl implements CustomerService {
     @Override
     public Optional<Customer> findByFranchiseId(String franchiseId) {
         return customerrepo.findByFranchiseId(franchiseId);
+    }
+
+    @Autowired
+    private com.backend.Repository.TagRepo tagRepo;
+
+    @Override
+    public Customer assignTags(Long customerId, List<Long> tagIds) {
+        Optional<Customer> customerOpt = customerrepo.findById(customerId);
+        if (customerOpt.isPresent()) {
+            Customer customer = customerOpt.get();
+            java.util.Set<com.backend.Entity.Tag> tags = new java.util.HashSet<>(tagRepo.findAllById(tagIds));
+            customer.setTags(tags);
+            return customerrepo.save(customer);
+        }
+        return null;
+    }
+
+    @Override
+    public List<Customer> getCustomersByTag(String tagName) {
+        return customerrepo.findAll().stream()
+                .filter(c -> c.getTags().stream().anyMatch(t -> t.getName().equalsIgnoreCase(tagName)))
+                .collect(java.util.stream.Collectors.toList());
     }
 
 }

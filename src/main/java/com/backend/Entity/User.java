@@ -47,6 +47,7 @@ public class User {
 
     private String language;
     private Date dateOfBirth;
+    private Date dateOfJoining;
     private String gender;
     private String maritalStatus;
     private String bloodGroup;
@@ -167,6 +168,14 @@ public class User {
 
     public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
+    }
+
+    public Date getDateOfJoining() {
+        return dateOfJoining;
+    }
+
+    public void setDateOfJoining(Date dateOfJoining) {
+        this.dateOfJoining = dateOfJoining;
     }
 
     public String getGender() {

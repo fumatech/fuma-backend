@@ -9,6 +9,7 @@ import com.backend.Repository.PurchaseDIOrderRepo;
 import com.backend.Repository.PurchaseOrderRepo;
 import com.backend.Repository.PurchaseReturnRepo;
 import com.backend.Repository.SaleDIOrderRepo;
+import com.backend.Repository.ServiceTicketRepo;
 
 @Service
 public class IdGenerator {
@@ -23,7 +24,6 @@ public class IdGenerator {
 	private SaleDIOrderRepo saleDIOrderRepo;
 
 	@Autowired
-
 	private PurchaseReturnRepo PurchaseReturnRepo;
 
 	@Autowired
@@ -31,6 +31,9 @@ public class IdGenerator {
 
 	@Autowired
 	private FranchisePurchaseReturnRepo franchisePurchaseReturnRepo;
+
+	@Autowired
+	private ServiceTicketRepo serviceTicketRepo;
 
 	public synchronized String generatePurchaseOrderId() {
 		Long lastId = purchaseOrderRepo.getLastPurchaseOrderId();
@@ -96,6 +99,12 @@ public class IdGenerator {
 		} else {
 			return "FRPRInvoice01"; // First invoice number
 		}
+	}
+
+	public synchronized String generateTicketNo() {
+		Long lastId = serviceTicketRepo.getLastTicketId();
+		Long nextId = (lastId != null) ? lastId + 1 : 1;
+		return "TKT" + String.format("%04d", nextId);
 	}
 
 }

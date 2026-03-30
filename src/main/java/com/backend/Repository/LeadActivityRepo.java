@@ -10,4 +10,5 @@ import com.backend.Entity.LeadActivity;
 @Repository
 public interface LeadActivityRepo extends JpaRepository<LeadActivity, Long> {
     List<LeadActivity> findByLeadIdOrderByDateDesc(Long leadId);
+    java.util.Optional<LeadActivity> findFirstByLeadIdOrderByDateAsc(Long leadId);
 }

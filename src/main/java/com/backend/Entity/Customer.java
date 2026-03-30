@@ -1,11 +1,16 @@
 package com.backend.Entity;
 
 import java.sql.Date;
+import java.util.HashSet;
+import java.util.Set;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-       
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+
 @Entity
 public class Customer {
 	@Id
@@ -63,6 +68,14 @@ public class Customer {
 	private String ifsc;
 	private String branch;
 	private String taxPayerId;
+
+	@ManyToMany
+	@JoinTable(
+	  name = "customer_tags", 
+	  joinColumns = @JoinColumn(name = "customer_id"), 
+	  inverseJoinColumns = @JoinColumn(name = "tag_id")
+	)
+	private Set<Tag> tags = new HashSet<>();
 
 	public Long getId() {     
 		return id;
@@ -470,6 +483,14 @@ public class Customer {
 
 	public void setTaxPayerId(String taxPayerId) {
 		this.taxPayerId = taxPayerId;
+	}
+
+	public Set<Tag> getTags() {
+		return tags;
+	}
+
+	public void setTags(Set<Tag> tags) {
+		this.tags = tags;
 	}
 
 }
