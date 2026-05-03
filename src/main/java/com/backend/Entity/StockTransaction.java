@@ -23,6 +23,8 @@ public class StockTransaction {
 
 	private Long productId; // Foreign key to Product
 	private Long variationId; // Foreign key to Variation
+	private Long warehouseId; // Foreign key to Warehouse
+	private String referenceId; // External Reference (Order #, Transfer #)
 
 	private int quantity;
 	private String transactionType; // e.g., "purchase", "sale", "adjustment"
@@ -264,6 +266,22 @@ public class StockTransaction {
 
 	public void setStockTransfer(StockTransfer stockTransfer) {
 		this.stockTransfer = stockTransfer;
+	}
+
+	public Long getWarehouseId() {
+		return warehouseId;
+	}
+
+	public void setWarehouseId(Long warehouseId) {
+		this.warehouseId = warehouseId;
+	}
+
+	public String getReferenceId() {
+		return referenceId;
+	}
+
+	public void setReferenceId(String referenceId) {
+		this.referenceId = referenceId;
 	}
 
 }

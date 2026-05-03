@@ -23,13 +23,13 @@ public interface StockTransactionRepo extends JpaRepository<StockTransaction, Lo
 	List<StockTransaction> getTransactions(@Param("productId") Long productId, @Param("variationId") Long variationId);
 
 	// SQL aggregate queries for fast stock calculation
-	@Query("SELECT COALESCE(SUM(CASE WHEN st.transactionType IN ('po_purchase','di_purchase','open_stock','transfer_in','sale_return','product_claimed') THEN st.quantity ELSE -st.quantity END), 0) FROM StockTransaction st WHERE st.productId = :productId AND st.variationId = :variationId")
+	@Query("SELECT COALESCE(SUM(CASE WHEN st.transactionType IN ('po_purchase','di_purchase','open_stock','transfer_in','sale_return','product_claimed', 'INWARD', 'TRANSFER_IN') THEN st.quantity ELSE -st.quantity END), 0) FROM StockTransaction st WHERE st.productId = :productId AND st.variationId = :variationId")
 	int calculateCurrentStock(@Param("productId") Long productId, @Param("variationId") Long variationId);
 
-	@Query("SELECT COALESCE(SUM(CASE WHEN st.transactionType IN ('po_purchase','di_purchase','open_stock','transfer_in','sale_return','product_claimed') THEN st.quantity ELSE -st.quantity END), 0) FROM StockTransaction st WHERE st.productId = :productId")
+	@Query("SELECT COALESCE(SUM(CASE WHEN st.transactionType IN ('po_purchase','di_purchase','open_stock','transfer_in','sale_return','product_claimed', 'INWARD', 'TRANSFER_IN') THEN st.quantity ELSE -st.quantity END), 0) FROM StockTransaction st WHERE st.productId = :productId")
 	int calculateCurrentStockByProduct(@Param("productId") Long productId);
 
-	@Query("SELECT COALESCE(SUM(CASE WHEN st.transactionType IN ('po_purchase','di_purchase','open_stock','transfer_in','sale_return','product_claimed') THEN st.quantity ELSE -st.quantity END), 0) FROM StockTransaction st WHERE st.variationId = :variationId")
+	@Query("SELECT COALESCE(SUM(CASE WHEN st.transactionType IN ('po_purchase','di_purchase','open_stock','transfer_in','sale_return','product_claimed', 'INWARD', 'TRANSFER_IN') THEN st.quantity ELSE -st.quantity END), 0) FROM StockTransaction st WHERE st.variationId = :variationId")
 	int calculateCurrentStockByVariation(@Param("variationId") Long variationId);
 
 }

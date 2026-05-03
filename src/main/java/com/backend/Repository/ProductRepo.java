@@ -15,30 +15,38 @@ import com.backend.Entity.Product;
 @Repository
 public interface ProductRepo extends JpaRepository<Product, Long> {
 
-	@Query("SELECT p FROM Product p WHERE LOWER(p.productName) LIKE LOWER(CONCAT('%', :query, '%')) "
-			+ "OR LOWER(p.sku) LIKE LOWER(CONCAT('%', :query, '%')) "
-			+ "OR LOWER(p.barcode) LIKE LOWER(CONCAT('%', :query, '%'))")
-	List<Product> searchProducts(@Param("query") String query);
+    @Query("SELECT p FROM Product p WHERE LOWER(p.productName) LIKE LOWER(CONCAT('%', :query, '%')) "
+            + "OR LOWER(p.sku) LIKE LOWER(CONCAT('%', :query, '%')) "
+            + "OR LOWER(p.barcode) LIKE LOWER(CONCAT('%', :query, '%'))")
+    List<Product> searchProducts(@Param("query") String query);
 
-	Optional<Product> findBySku(String sku); // Find a product by SKU
+    Optional<Product> findBySku(String sku); // Find a product by SKU
 
-	Optional<Product> findTopByOrderByIdDesc(); // Get the most recent product (to generate the next SKU)
+    Optional<Product> findFirstByBarcodeIgnoreCase(String barcode);
 
-	public boolean existsBySku(String sku);
+    @Query("SELECT DISTINCT p FROM Product p LEFT JOIN FETCH p.productVariations v "
+            + "WHERE LOWER(p.barcode) = LOWER(:barcode) "
+            + "OR LOWER(p.sku) = LOWER(:barcode) "
+            + "OR LOWER(v.subSku) = LOWER(:barcode)")
+    List<Product> findByBarcodeOrVariationSubSku(@Param("barcode") String barcode);
 
-	List<Product> findByStatus(Long status);
+    Optional<Product> findTopByOrderByIdDesc(); // Get the most recent product (to generate the next SKU)
 
-	@Query("SELECT p FROM Product p WHERE " + "(LOWER(p.productName) LIKE LOWER(CONCAT('%', :query, '%')) "
-			+ "OR LOWER(p.sku) LIKE LOWER(CONCAT('%', :query, '%')) "
-			+ "OR LOWER(p.barcode) LIKE LOWER(CONCAT('%', :query, '%'))) " + "AND p.status = 1")
-	List<Product> searchActive(@Param("query") String query);
+    public boolean existsBySku(String sku);
 
-	@Query("SELECT p FROM Product p WHERE " + "(LOWER(p.productName) LIKE LOWER(CONCAT('%', :query, '%')) "
-			+ "OR LOWER(p.sku) LIKE LOWER(CONCAT('%', :query, '%')) "
-			+ "OR LOWER(p.barcode) LIKE LOWER(CONCAT('%', :query, '%'))) " + "AND p.status = 0")
-	List<Product> searchInactive(@Param("query") String query);
+    List<Product> findByStatus(Long status);
 
-	@Query("""
+    @Query("SELECT p FROM Product p WHERE " + "(LOWER(p.productName) LIKE LOWER(CONCAT('%', :query, '%')) "
+            + "OR LOWER(p.sku) LIKE LOWER(CONCAT('%', :query, '%')) "
+            + "OR LOWER(p.barcode) LIKE LOWER(CONCAT('%', :query, '%'))) " + "AND p.status = 1")
+    List<Product> searchActive(@Param("query") String query);
+
+    @Query("SELECT p FROM Product p WHERE " + "(LOWER(p.productName) LIKE LOWER(CONCAT('%', :query, '%')) "
+            + "OR LOWER(p.sku) LIKE LOWER(CONCAT('%', :query, '%')) "
+            + "OR LOWER(p.barcode) LIKE LOWER(CONCAT('%', :query, '%'))) " + "AND p.status = 0")
+    List<Product> searchInactive(@Param("query") String query);
+
+    @Query("""
 			    SELECT new com.backend.Entity.BrandWiseReportDTO(
 			        p.brand,
 
@@ -72,9 +80,9 @@ public interface ProductRepo extends JpaRepository<Product, Long> {
 			    LEFT JOIN SaleDIItem dii ON dii.productId = p.id
 			    GROUP BY p.brand
 			""")
-	List<BrandWiseReportDTO> getBrandWiseReport();
+    List<BrandWiseReportDTO> getBrandWiseReport();
 
-	@Query("""
+    @Query("""
 			    SELECT new com.backend.Entity.CategoryWiseReportDTO(
 			        p.category,
 
@@ -108,6 +116,6 @@ public interface ProductRepo extends JpaRepository<Product, Long> {
 			    LEFT JOIN SaleDIItem dii ON dii.productId = p.id
 			    GROUP BY p.category
 			""")
-	List<CategoryWiseReportDTO> getCategoryWiseReport();
+    List<CategoryWiseReportDTO> getCategoryWiseReport();
 
 }

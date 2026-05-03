@@ -29,4 +29,6 @@ public interface StockTransactionService {
 
     java.util.Map<String, Integer> getBulkCurrentStock(List<java.util.Map<String, Long>> requests);
 
+    // New Production Upgrade method
+    void log(Long warehouseId, Long productId, Long variationId, int quantity, String type, String note, String referenceId, Object entity);
 }
