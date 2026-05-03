@@ -10,6 +10,7 @@ import com.backend.Entity.StockTransfer;
 import com.backend.Entity.StockTransferItems;
 import com.backend.Repository.StockTransferRepo;
 import com.backend.Service.StockTransferService;
+import com.backend.Service.WarehouseStockService;
 
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
@@ -20,19 +21,36 @@ public class StockTransferServiceImpl implements StockTransferService {
 
 	@Autowired
 	private StockTransferRepo stockTransferRepo;
+	
+	@Autowired
+	private WarehouseStockService warehouseStockService;
 
 	@Override
 	public StockTransfer save(StockTransfer stockTransfer) {
+		boolean isWarehouseTransfer = "to_warehouse".equalsIgnoreCase(stockTransfer.getTransferType());
 
 		if (stockTransfer.getStockTransferItems() != null) {
 			stockTransfer.getStockTransferItems().forEach(i -> i.setStockTransfer(stockTransfer));
 		}
 
-		if (stockTransfer.getStockTransactions() != null) {
+		if (!isWarehouseTransfer && stockTransfer.getStockTransactions() != null) {
 			stockTransfer.getStockTransactions().forEach(t -> t.setStockTransfer(stockTransfer));
 		}
-
-		return stockTransferRepo.save(stockTransfer);
+		
+		if (isWarehouseTransfer) {
+			stockTransfer.setLocationTo(null);
+			stockTransfer.setStockTransactions(null);
+		}
+		
+		StockTransfer saved = stockTransferRepo.save(stockTransfer);
+		
+		// For warehouse transfer, only create logical allocation.
+		// Main stock transactions remain untouched.
+		if (isWarehouseTransfer) {
+			warehouseStockService.allocateStock(saved.getTargetWarehouseId(), saved.getStockTransferItems());
+		}
+		
+		return saved;
 	}
 
 	@Override
@@ -55,8 +73,11 @@ public class StockTransferServiceImpl implements StockTransferService {
 		existing.setDate(stockTransfer.getDate());
 		existing.setReferenceNumber(stockTransfer.getReferenceNumber());
 		existing.setStatus(stockTransfer.getStatus());
+		existing.setTransferType(stockTransfer.getTransferType());
 		existing.setLocationFrom(stockTransfer.getLocationFrom());
-		existing.setLocationTo(stockTransfer.getLocationTo());
+		existing.setLocationTo(
+				"to_warehouse".equalsIgnoreCase(stockTransfer.getTransferType()) ? null : stockTransfer.getLocationTo());
+		existing.setTargetWarehouseId(stockTransfer.getTargetWarehouseId());
 		existing.setShippingCharges(stockTransfer.getShippingCharges());
 		existing.setTotalAmount(stockTransfer.getTotalAmount());
 		existing.setNote(stockTransfer.getNote());
@@ -78,7 +99,8 @@ public class StockTransferServiceImpl implements StockTransferService {
 			existing.getStockTransactions().clear();
 		}
 
-		if (stockTransfer.getStockTransactions() != null) {
+		if (!"to_warehouse".equalsIgnoreCase(stockTransfer.getTransferType())
+				&& stockTransfer.getStockTransactions() != null) {
 			for (StockTransaction tx : stockTransfer.getStockTransactions()) {
 				tx.setStockTransfer(existing);
 				existing.getStockTransactions().add(tx);

@@ -23,6 +23,8 @@ public class SaleSoOrder {
 
 	private String orderId;
 
+	private String status;
+
 	private String orderRefernceNumber;
 
 	private String franchise;
@@ -30,6 +32,8 @@ public class SaleSoOrder {
 	private Long franchiseId;
 
 	private Long customerId;
+
+	private Long warehouseId;
 
 	private String referenceNumber;
 
@@ -96,12 +100,28 @@ public class SaleSoOrder {
 		this.orderId = orderId;
 	}
 
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	public Long getCustomerId() {
 		return customerId;
 	}
 
 	public void setCustomerId(Long customerId) {
 		this.customerId = customerId;
+	}
+
+	public Long getWarehouseId() {
+		return warehouseId;
+	}
+
+	public void setWarehouseId(Long warehouseId) {
+		this.warehouseId = warehouseId;
 	}
 
 	public String getOrderRefernceNumber() {

@@ -23,9 +23,14 @@ public class StockTransfer {
 
 	private String status;
 
+	private String transferType;
+
 	private Long locationFrom;
 
 	private Long locationTo;
+
+	private Long sourceWarehouseId;
+	private Long targetWarehouseId;
 
 	private BigDecimal shippingCharges;
 
@@ -71,6 +76,14 @@ public class StockTransfer {
 		this.status = status;
 	}
 
+	public String getTransferType() {
+		return transferType;
+	}
+
+	public void setTransferType(String transferType) {
+		this.transferType = transferType;
+	}
+
 	public Long getLocationFrom() {
 		return locationFrom;
 	}
@@ -85,6 +98,22 @@ public class StockTransfer {
 
 	public void setLocationTo(Long locationTo) {
 		this.locationTo = locationTo;
+	}
+
+	public Long getTargetWarehouseId() {
+		return targetWarehouseId;
+	}
+
+	public void setTargetWarehouseId(Long targetWarehouseId) {
+		this.targetWarehouseId = targetWarehouseId;
+	}
+
+	public Long getSourceWarehouseId() {
+		return sourceWarehouseId;
+	}
+
+	public void setSourceWarehouseId(Long sourceWarehouseId) {
+		this.sourceWarehouseId = sourceWarehouseId;
 	}
 
 	public BigDecimal getShippingCharges() {

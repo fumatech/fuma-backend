@@ -1,12 +1,15 @@
 package com.backend.ServiceImpl;
 
+import java.sql.Date;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.backend.Entity.StockTransaction;
+import com.backend.Entity.*;
 import com.backend.Repository.StockTransactionRepo;
 import com.backend.Service.StockTransactionService;
 
@@ -27,14 +30,16 @@ public class StockTransactionServiceImpl implements StockTransactionService {
     public void validateStockTransactions(List<StockTransaction> stockTransactions) {
         if (stockTransactions != null) {
             for (StockTransaction transaction : stockTransactions) {
-                // Only validate for OUT transactions
                 if (isOutTransaction(transaction.getTransactionType())) {
                     Long productId = transaction.getProductId();
                     Long variationId = transaction.getVariationId();
-                    int currentStock = (variationId != null && variationId > 0) ? getCurrentStock(productId, variationId) : getCurrentStockByProduct(productId);
+                    int currentStock = (variationId != null && variationId > 0)
+                            ? getCurrentStock(productId, variationId)
+                            : getCurrentStockByProduct(productId);
 
                     if (currentStock < transaction.getQuantity()) {
-                        throw new RuntimeException("Insufficient Stock for Product ID: " + transaction.getProductId() + " | Available: " + currentStock);
+                        throw new RuntimeException("Insufficient Stock for Product ID: " + transaction.getProductId()
+                                + " | Available: " + currentStock);
                     }
                 }
             }
@@ -42,108 +47,83 @@ public class StockTransactionServiceImpl implements StockTransactionService {
     }
 
     private boolean isOutTransaction(String type) {
-
-        if (type == null) {
-            return false;
-        }
-        return type.equals("di_sale") || type.equals("so_sale") || type.equals("transfer_out") || type.equals("purchase_return") || type.equals("product_replaced") || type.equals("adjustment");
+        if (type == null) return false;
+        String t = type.toLowerCase();
+        return t.equals("di_sale") || t.equals("so_sale") || t.equals("transfer_out")
+                || t.equals("purchase_return") || t.equals("product_replaced") || t.equals("adjustment")
+                || t.equals("dispatch") || t.equals("transfer_out");
     }
 
     @Override
     public List<StockTransaction> getTransactionsByProduct(Long productId) {
-
         return stockTransactionRepo.findByProductId(productId);
-
     }
 
     @Override
     public List<StockTransaction> getTransactionsByVariation(Long variationId) {
-
         return stockTransactionRepo.findByVariationId(variationId);
-
     }
 
     @Override
     public List<StockTransaction> getAllTransactions() {
-
         return stockTransactionRepo.findAll();
-
     }
 
     @Override
     public List<StockTransaction> getTransactionsByProductAndVariation(Long productId, Long variationId) {
-
         return stockTransactionRepo.findByProductIdAndVariationId(productId, variationId);
-
     }
 
     @Override
     public int getCurrentStock(Long productId, Long variationId) {
-
         if (variationId == null || variationId <= 0) {
             return stockTransactionRepo.calculateCurrentStockByProduct(productId);
-
         }
-
         return stockTransactionRepo.calculateCurrentStock(productId, variationId);
-
     }
 
     @Override
     public int getCurrentStockByProduct(Long productId) {
-
         return stockTransactionRepo.calculateCurrentStockByProduct(productId);
-
     }
 
     @Override
     public int getCurrentStockByvariation(Long variationId) {
-
         return stockTransactionRepo.calculateCurrentStockByVariation(variationId);
-
     }
 
     @Override
-
-    public java.util.Map<String, Integer> getBulkCurrentStock(
-            java.util.List<java.util.Map<String, Long>> requests) {
-
-        // LinkedHashMap is used to maintain insertion order
-        java.util.Map<String, Integer> result = new java.util.LinkedHashMap<>();
-
-        // Loop through each request item in the list
-        for (java.util.Map<String, Long> req : requests) {
-
-            // Extract productId from request map
+    public Map<String, Integer> getBulkCurrentStock(List<Map<String, Long>> requests) {
+        Map<String, Integer> result = new LinkedHashMap<>();
+        for (Map<String, Long> req : requests) {
             Long productId = req.get("productId");
-
-            // Extract variationId from request map (can be null)
             Long variationId = req.get("variationId");
+            String key = productId + "_" + (variationId != null ? variationId : "null");
+            result.put(key, getCurrentStock(productId, variationId));
+        }
+        return result;
+    }
 
-            // Create unique key using productId and variationId
-            // Format: productId_variationId (example: 101_5 or 101_null)
-            String key = productId + "_"
-                    + (variationId != null ? variationId : "null");
+    @Override
+    public void log(Long warehouseId, Long productId, Long variationId, int quantity, String type, String note, String referenceId, Object entity) {
+        StockTransaction transaction = new StockTransaction();
+        transaction.setWarehouseId(warehouseId);
+        transaction.setProductId(productId);
+        transaction.setVariationId(variationId);
+        transaction.setQuantity(quantity);
+        transaction.setTransactionType(type);
+        transaction.setNote(note);
+        transaction.setReferenceId(referenceId);
+        transaction.setDate(new Date(System.currentTimeMillis()));
 
-            // If variationId is present and greater than 0
-            // then calculate stock based on product + variation
-            if (variationId != null && variationId > 0) {
-                result.put(
-                        key,
-                        stockTransactionRepo.calculateCurrentStock(productId, variationId)
-                );
-
-            } else {
-                // If variationId is null or 0
-                // calculate stock only based on productId
-                result.put(
-                        key,
-                        stockTransactionRepo.calculateCurrentStockByProduct(productId)
-                );
-            }
+        if (entity instanceof PurchasePoOrder) {
+            transaction.setPurchasePoOrder((PurchasePoOrder) entity);
+        } else if (entity instanceof SaleSoOrder) {
+            transaction.setSaleSoOrder((SaleSoOrder) entity);
+        } else if (entity instanceof StockTransfer) {
+            transaction.setStockTransfer((StockTransfer) entity);
         }
 
-        // Return map containing stock values for all requested items
-        return result;
+        stockTransactionRepo.save(transaction);
     }
 }
