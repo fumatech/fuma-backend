@@ -39,6 +39,10 @@ public class PurchasePoItem {
 	@JsonBackReference
 	private PurchasePoOrder purchasePoOrder;
 
+	private Boolean isCustomItem;
+	private String description;
+	private String unit;
+
 	// Getters and Setters for all fields
 
 	public Long getId() {
@@ -167,6 +171,30 @@ public class PurchasePoItem {
 
 	public void setTaxAmount(BigDecimal taxAmount) {
 		this.taxAmount = taxAmount;
+	}
+
+	public Boolean getIsCustomItem() {
+		return isCustomItem;
+	}
+
+	public void setIsCustomItem(Boolean isCustomItem) {
+		this.isCustomItem = isCustomItem;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getUnit() {
+		return unit;
+	}
+
+	public void setUnit(String unit) {
+		this.unit = unit;
 	}
 
 }
